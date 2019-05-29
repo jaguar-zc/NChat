@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="white">#ffffff</color>
+
+    <color name="navigationColorSelected">#000000</color>
+    <color name="navigationColor">#0f1040</color>
+    <color name="navigationItemColor">#000000</color>
+    <color name="red">#F44336</color>
+    <color name="gray">#ACABAB</color>
+    <color name="light_gray">#dadde6</color>
+    <color name="black">#000000</color>
+    <color name="tag">#3a3b5d</color>
+
+    <!--//292b50-->
+</resources>
