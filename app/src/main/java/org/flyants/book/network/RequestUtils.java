@@ -1,7 +1,7 @@
 package org.flyants.book.network;
 
 
-import org.flyants.book.FlyantsApplication;
+import org.flyants.book.NChatApplication;
 import org.flyants.book.network.okhttp.HeaderInterceptor;
 import org.flyants.book.network.okhttp.LoggingInterceptor;
 import org.flyants.book.network.okhttp.RewriteCacheControlInterceptor;
@@ -22,7 +22,7 @@ public abstract class RequestUtils {
 
 
     static {
-        File httpCacheDirectory = new File(FlyantsApplication.getFlyantsApplication().getCacheDir(), "FlyantsHttpCache");//这里为了方便直接把文件放在了SD卡根目录的HttpCache中，一般放在context.getCacheDir()中
+        File httpCacheDirectory = new File(NChatApplication.getFlyantsApplication().getCacheDir(), "FlyantsHttpCache");//这里为了方便直接把文件放在了SD卡根目录的HttpCache中，一般放在context.getCacheDir()中
         int cacheSize = 10 * 1024 * 1024;//设置缓存文件大小为10M
         Cache cache = new Cache(httpCacheDirectory, cacheSize);
 

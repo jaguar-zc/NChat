@@ -1,6 +1,6 @@
 package org.flyants.book.network.okhttp;
 
-import org.flyants.book.FlyantsApplication;
+import org.flyants.book.NChatApplication;
 import org.flyants.book.utils.NetworkUtil;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class RewriteCacheControlInterceptor implements Interceptor {
 
         Request request = chain.request();
         //无网自动访问缓存
-        if(!NetworkUtil.IsNetWorkEnable(FlyantsApplication.getFlyantsApplication())){
+        if(!NetworkUtil.IsNetWorkEnable(NChatApplication.getFlyantsApplication())){
             request = request.newBuilder()
                     .cacheControl(CacheControl.FORCE_CACHE)//只访问缓存
                     .build();

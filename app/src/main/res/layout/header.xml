@@ -15,7 +15,7 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:padding="15dp"
-                android:src="@mipmap/toolbar_return">
+                android:src="@mipmap/adb">
             </ImageView>
 
             <TextView

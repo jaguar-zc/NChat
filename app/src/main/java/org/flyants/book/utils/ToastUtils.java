@@ -2,13 +2,13 @@ package org.flyants.book.utils;
 
 import com.maning.mndialoglibrary.MToast;
 
-import org.flyants.book.FlyantsApplication;
+import org.flyants.book.NChatApplication;
 
 public abstract class ToastUtils {
 
 
     public static void show(String str){
-        MToast.makeTextShort(FlyantsApplication.getFlyantsApplication(), str);
+        MToast.makeTextShort(NChatApplication.getFlyantsApplication(), str);
 
 //        Toast.makeText(DuomiApplication.getDuomiApplication(),str,Toast.LENGTH_LONG).show();
 //        Toast toast = new Toast(DuomiApplication.getDuomiApplication());

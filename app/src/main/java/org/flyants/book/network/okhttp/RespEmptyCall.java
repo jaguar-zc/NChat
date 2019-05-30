@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.maning.mndialoglibrary.MProgressDialog;
 
-import org.flyants.book.FlyantsApplication;
+import org.flyants.book.NChatApplication;
 import org.flyants.book.network.RespError;
 import org.flyants.book.utils.JsonUtils;
 import org.flyants.book.utils.ToastUtils;
@@ -30,7 +30,7 @@ public class RespEmptyCall  implements Callback<ResponseBody> {
     }
 
     public RespEmptyCall(boolean isLooding, String loodingText) {
-        this(FlyantsApplication.getFlyantsApplication(),isLooding,loodingText);
+        this(NChatApplication.getFlyantsApplication(),isLooding,loodingText);
     }
 
     public RespEmptyCall(Context context, boolean isLooding, String loodingText) {

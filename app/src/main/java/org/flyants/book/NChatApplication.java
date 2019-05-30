@@ -2,8 +2,8 @@ package org.flyants.book;
 
 import android.app.Application;
 
-public class FlyantsApplication extends Application {
-    static FlyantsApplication flyantsApplication;
+public class NChatApplication extends Application {
+    static NChatApplication flyantsApplication;
 
 
     @Override
@@ -12,7 +12,7 @@ public class FlyantsApplication extends Application {
         flyantsApplication = this;
     }
 
-    public static FlyantsApplication getFlyantsApplication() {
+    public static NChatApplication getFlyantsApplication() {
         return flyantsApplication;
     }
 }
