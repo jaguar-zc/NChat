@@ -12,6 +12,9 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -28,6 +31,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.setting.SettingView"></activity>
+        <activity android:name=".view.setting.accountsecurity.AccountSecurityView"></activity>
+        <activity android:name=".view.setting.msgnotice.MsgNoticeView"></activity>
+        <activity android:name=".view.setting.privacy.PrivacyView"></activity>
+        <activity android:name=".view.setting.chatrecord.ChatRecordView"></activity>
+        <activity android:name=".view.setting.chatbackground.ChatBackgroundView"></activity>
+        <activity android:name=".view.setting.general.GeneralView"></activity>
+        <activity android:name=".view.my.meqrcode.MeQrCodeView"></activity>
+        <activity android:name=".view.my.meinfo.MeInfoView"></activity>
     </application>
 
 </manifest>

@@ -39,11 +39,14 @@ public abstract class BaseActivity<P extends PrecenterEvent> extends Activity  i
         return R.color.white;
     }
 
+
+    public Boolean isTextDark(){return true;}
+
     @Override
     protected void onCreate( @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏
-        StatusBarUtil.setStatusBarMode(this, true, getStatusBarColor());
+        StatusBarUtil.setStatusBarMode(this, isTextDark(), getStatusBarColor());
         setContentView(getLayoutId());
         ButterKnife.bind(this );
         if(applyPermission().size() > 0){

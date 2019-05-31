@@ -9,10 +9,13 @@
 
     <color name="switch_on">#00d35a</color>
     <color name="red">#F44336</color>
+    <color name="mqr">#ffde25</color>
     <color name="gray">#ACABAB</color>
     <color name="light_gray">#dadde6</color>
     <color name="black">#000000</color>
+    <color name="item_text">#04040e</color>
     <color name="tag">#3a3b5d</color>
+    <color name="chat_background_color">#2c2f36</color>
 
     <!--//292b50-->
 </resources>

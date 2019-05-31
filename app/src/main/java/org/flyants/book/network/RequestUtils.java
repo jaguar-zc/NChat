@@ -16,7 +16,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public abstract class RequestUtils {
 
-    private static final String HOST = "http://icooding.oss-cn-shenzhen.aliyuncs.com";
+//    private static final String HOST = "http://icooding.oss-cn-shenzhen.aliyuncs.com";
+    private static final String HOST = "http://88.88.10.82:10000";
 
     private static Retrofit retrofit;
 

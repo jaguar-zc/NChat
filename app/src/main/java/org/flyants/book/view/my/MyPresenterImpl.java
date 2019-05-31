@@ -3,6 +3,7 @@ package org.flyants.book.view.my;
 import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.okhttp.RespCall;
 import org.flyants.book.resources.Apis;
+import org.flyants.book.store.UserStore;
 import org.flyants.common.mvp.impl.BasePresenter;
 
 import java.util.ArrayList;
@@ -15,7 +16,6 @@ public class MyPresenterImpl  extends BasePresenter<MyView,UiMyView> {
 
     public MyPresenterImpl(MyView t, UiMyView uiMyView) {
         super(t, uiMyView);
-
     }
 
     @Override
@@ -25,19 +25,17 @@ public class MyPresenterImpl  extends BasePresenter<MyView,UiMyView> {
 
     @Override
     public void onViewStart() {
-        apis.userInfo().enqueue(new RespCall<UserInfo>() {
-            @Override
-            public void onResp(UserInfo resp) {
-                uiView.setVeiwAttrs(resp);
-            }
-        });
-
-        apis.getWorksModelList().enqueue(new RespCall<List<WorksModel>>() {
-            @Override
-            public void onResp(List<WorksModel> resp) {
-                uiView.setWordsList(resp);
-            }
-        });
+        if (UserStore.getUserInfo() == null) {
+            apis.userInfo().enqueue(new RespCall<UserInfo>() {
+                @Override
+                public void onResp(UserInfo resp) {
+                    UserStore.setUserInfo(resp);
+                    uiView.setVeiwAttrs(resp);
+                }
+            });
+        }else{
+            uiView.setVeiwAttrs(UserStore.getUserInfo());
+        }
     }
 
     @Override

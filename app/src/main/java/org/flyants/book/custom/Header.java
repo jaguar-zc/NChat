@@ -45,6 +45,13 @@ public class Header extends LinearLayout {
         headerLeft.setOnClickListener(null);
     }
 
+
+
+    public void setBackColorWhite(){
+        headerLeft.setImageResource(R.mipmap.ahv);
+    }
+
+
     public void setHeaderLeft(int res){
         headerLeft.setImageResource(res);
     }
@@ -55,8 +62,18 @@ public class Header extends LinearLayout {
     }
 
     public void setBackgrundColor(int resColor){
-        container.setBackgroundColor(getResources().getColor(resColor));
+        if(resColor == 0){
+            container.setBackground(null);
+        }else {
+            container.setBackgroundColor(getResources().getColor(resColor));
+        }
     }
+
+    public void setBackgrund(int color){
+            container.setBackgroundColor(color);
+    }
+
+
 
 
     public void setHeaderRight(View view){

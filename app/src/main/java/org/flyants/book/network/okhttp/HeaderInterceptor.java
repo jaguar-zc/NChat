@@ -1,6 +1,8 @@
 package org.flyants.book.network.okhttp;
 
 
+import org.flyants.book.NChatApplication;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -17,7 +19,7 @@ public class HeaderInterceptor implements Interceptor {
 
         Request request = chain.request()
                 .newBuilder()
-                .addHeader(Authorization, Authorization)
+                .addHeader(Authorization, NChatApplication.token)
                 .build();
         Response response = chain.proceed(request);
 //        if (response.code() == 200 && response.body().contentLength() == 0) {

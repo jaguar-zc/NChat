@@ -1,78 +1,130 @@
 package org.flyants.book.view.my;
 
 
+import java.util.Date;
+
 public class UserInfo   {
 
-    private String name = "悄悄泪";
-    private String icon = "http://icooding.oss-cn-shenzhen.aliyuncs.com/common/temp_icon.png";
-    private Integer npnetbsp = 98;
-    private Integer assist = 29;//赞
-    private Integer collection = 1;//收藏
-    private Integer fans = 321;//粉丝
-    private Integer attention = 29;//关注
-    private String individualitySignature = "优秀的设计师帅的不像实力派";//个性签名
+    private String id;
+    private String peopleNo;
+    private Long createTime;
+    private String encodedPrincipal;
+    private String nickName;
+    private String phone;
+    private String sex;
+    private String language ;
+    private String country;
+    private String province;
+    private String city;
+    private String introduction;
+    private Integer peopleAssistCount;
 
-    public String getName() {
-        return name;
+
+    public String getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getIcon() {
-        return icon;
+    public String getPeopleNo() {
+        return peopleNo;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setPeopleNo(String peopleNo) {
+        this.peopleNo = peopleNo;
     }
 
-    public Integer getNpnetbsp() {
-        return npnetbsp;
+    public Long getCreateTime() {
+        return createTime;
     }
 
-    public void setNpnetbsp(Integer npnetbsp) {
-        this.npnetbsp = npnetbsp;
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
     }
 
-    public Integer getAssist() {
-        return assist;
+    public String getEncodedPrincipal() {
+        return encodedPrincipal;
     }
 
-    public void setAssist(Integer assist) {
-        this.assist = assist;
+    public void setEncodedPrincipal(String encodedPrincipal) {
+        this.encodedPrincipal = encodedPrincipal;
     }
 
-    public Integer getCollection() {
-        return collection;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setCollection(Integer collection) {
-        this.collection = collection;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
-    public Integer getFans() {
-        return fans;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setFans(Integer fans) {
-        this.fans = fans;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public Integer getAttention() {
-        return attention;
+    public String getSex() {
+        return sex;
     }
 
-    public void setAttention(Integer attention) {
-        this.attention = attention;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public String getIndividualitySignature() {
-        return individualitySignature;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setIndividualitySignature(String individualitySignature) {
-        this.individualitySignature = individualitySignature;
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public Integer getPeopleAssistCount() {
+        return peopleAssistCount;
+    }
+
+    public void setPeopleAssistCount(Integer peopleAssistCount) {
+        this.peopleAssistCount = peopleAssistCount;
+    }
+
+    public String getLocation() {
+        return String.format("%s %s %s",getCountry(),getProvince(),getCity());
     }
 }

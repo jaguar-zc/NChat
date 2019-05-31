@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <org.flyants.book.custom.Header
+        android:id="@+id/idHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </org.flyants.book.custom.Header>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/windowBackground"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/j4"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ui_padding"
+            android:background="@color/windowBackground"
+            android:textSize="@dimen/small_size"
+            android:textColor="@color/gray"
+            android:text="开启后，我们会将聊天记录加密后进行存储，在别的设备上登录也能看到聊天记录。"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="@dimen/item_setting_height"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/itemTextColor"
+                android:textSize="@dimen/item_size"
+                android:text="聊天记录云存储"/>
+
+            <Switch
+                android:id="@+id/message_cloud_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:thumb="@drawable/switch_custom_thumb_selector"
+                android:track="@drawable/switch_custom_track_selector" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/download_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_setting_height"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/itemTextColor"
+                android:textSize="@dimen/item_size"
+                android:text="下载聊天记录"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/afc"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
