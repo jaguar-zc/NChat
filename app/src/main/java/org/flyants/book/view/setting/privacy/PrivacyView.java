@@ -4,12 +4,14 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import org.flyants.book.R;
+import org.flyants.book.custom.Header;
 import org.flyants.common.mvp.impl.BaseActivity;
 
 import butterknife.BindView;
 
 public class PrivacyView extends BaseActivity<PrivacyPresenter> implements UIPrivacyView {
 
+    @BindView(R.id.idHeader) Header idHeader;
     @BindView(R.id.item_add_friends_type) LinearLayout item_add_friends_type;
     @BindView(R.id.add_my_friends_verify)  Switch add_my_friends_verify;
     @BindView(R.id.item_contact_black) LinearLayout item_contact_black;
@@ -30,7 +32,7 @@ public class PrivacyView extends BaseActivity<PrivacyPresenter> implements UIPri
 
     @Override
     public void onViewInit() {
-
+        idHeader.setHeaderTitle("隐私保护中心");
     }
 
     @Override

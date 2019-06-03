@@ -22,17 +22,12 @@ class MeQrCodePrecenter  extends BasePresenter<MeQrCodeView,UIMeQrCodeView> {
 
     @Override
     public void onViewStart() {
-        if(UserStore.getUserInfo() == null){
-            apis.userInfo().enqueue(new RespCall<UserInfo>() {
-                @Override
-                public void onResp(UserInfo resp) {
-                    UserStore.setUserInfo(resp);
-                    uiView.setViewAttrs(UserStore.getUserInfo());
-                }
-            });
-        }else {
-            uiView.setViewAttrs(UserStore.getUserInfo());
-        }
+        UserStore.me.getUserInfo(context,new UserStore.OnUserInfo(){
+            @Override
+            public void OnUserInfo(UserInfo userInfo) {
+                uiView.setViewAttrs(userInfo);
+            }
+        });
     }
 
     @Override

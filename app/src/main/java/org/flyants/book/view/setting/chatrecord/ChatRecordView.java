@@ -4,17 +4,17 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import org.flyants.book.R;
+import org.flyants.book.custom.Header;
 import org.flyants.common.mvp.impl.BaseActivity;
 
 import butterknife.BindView;
 
 public class ChatRecordView extends BaseActivity<ChatRecordPresenter> implements UIChatRecord {
 
-
+    @BindView(R.id.idHeader) Header idHeader;
 
     @BindView(R.id.message_cloud_store)  Switch message_cloud_store;
     @BindView(R.id.download_layout)  LinearLayout download_layout;
-
 
 
     @Override
@@ -29,7 +29,7 @@ public class ChatRecordView extends BaseActivity<ChatRecordPresenter> implements
 
     @Override
     public void onViewInit() {
-
+        idHeader.setHeaderTitle("聊天记录管理");
     }
 
     @Override

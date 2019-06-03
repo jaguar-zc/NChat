@@ -6,6 +6,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import org.flyants.book.R;
+import org.flyants.book.custom.Header;
 import org.flyants.book.view.setting.accountsecurity.AccountSecurityView;
 import org.flyants.book.view.setting.general.GeneralView;
 import org.flyants.book.view.setting.msgnotice.MsgNoticeView;
@@ -18,6 +19,7 @@ import butterknife.OnClick;
 
 public class SettingView extends BaseActivity<SettingPresenter> implements UISettingView {
 
+    @BindView(R.id.idHeader) Header idHeader;
     @BindView(R.id.setting_item_account) LinearLayout setting_item_account;
     @BindView(R.id.setting_item_chat_record)  LinearLayout setting_item_chat_record;
     @BindView(R.id.setting_item_message_notify)  LinearLayout setting_item_message_notify;
@@ -40,7 +42,7 @@ public class SettingView extends BaseActivity<SettingPresenter> implements UISet
 
     @Override
     public void onViewInit() {
-
+        idHeader.setHeaderTitle("设置");
     }
 
     @Override

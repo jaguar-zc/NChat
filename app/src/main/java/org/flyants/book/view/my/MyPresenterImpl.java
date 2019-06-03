@@ -25,17 +25,12 @@ public class MyPresenterImpl  extends BasePresenter<MyView,UiMyView> {
 
     @Override
     public void onViewStart() {
-        if (UserStore.getUserInfo() == null) {
-            apis.userInfo().enqueue(new RespCall<UserInfo>() {
-                @Override
-                public void onResp(UserInfo resp) {
-                    UserStore.setUserInfo(resp);
-                    uiView.setVeiwAttrs(resp);
-                }
-            });
-        }else{
-            uiView.setVeiwAttrs(UserStore.getUserInfo());
-        }
+        UserStore.me.getUserInfo(context,new UserStore.OnUserInfo(){
+            @Override
+            public void OnUserInfo(UserInfo userInfo) {
+                uiView.setVeiwAttrs(userInfo);
+            }
+        });
     }
 
     @Override

@@ -19,18 +19,12 @@ class MeInfoPrecenter  extends BasePresenter<MeInfoView,UIMeInfoView> implements
 
     @Override
     public void onViewInit() {
-        if(UserStore.getUserInfo() == null){
-            apis = RequestUtils.build(Apis.class);
-            apis.userInfo().enqueue(new RespCall<UserInfo>() {
-                @Override
-                public void onResp(UserInfo resp) {
-                    UserStore.setUserInfo(resp);
-                    uiView.setViewAttrs(UserStore.getUserInfo());
-                }
-            });
-        }else {
-            uiView.setViewAttrs(UserStore.getUserInfo());
-        }
+        UserStore.me.getUserInfo(context,new UserStore.OnUserInfo(){
+            @Override
+            public void OnUserInfo(UserInfo userInfo) {
+                uiView.setViewAttrs(userInfo);
+            }
+        });
     }
 
     @Override

@@ -1,5 +1,7 @@
 package org.flyants.book.view.setting.accountsecurity;
 
+import org.flyants.book.store.UserStore;
+import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BasePresenter;
 
 class AccountSecurityPresenter extends BasePresenter<AccountSecurityView,UIAccountSecurity> {
@@ -11,6 +13,13 @@ class AccountSecurityPresenter extends BasePresenter<AccountSecurityView,UIAccou
 
     @Override
     public void onViewInit() {
+
+        UserStore.me.getUserInfo(context, new UserStore.OnUserInfo() {
+            @Override
+            public void OnUserInfo(UserInfo userInfo) {
+                uiView.setViewAttrs(userInfo);
+            }
+        });
 
     }
 

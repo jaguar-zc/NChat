@@ -18,7 +18,7 @@ public abstract class RequestUtils {
 
 //    private static final String HOST = "http://icooding.oss-cn-shenzhen.aliyuncs.com";
 //    private static final String HOST = "http://flyants-api.devopscloud.cn:10000";
-    private static final String HOST = "http://35.220.209.140:10000";
+    private static final String HOST = "http://flyants-api.devopscloud.cn:10000";
 
     private static Retrofit retrofit;
 
