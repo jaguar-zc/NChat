@@ -22,6 +22,7 @@ import retrofit2.http.Query;
 public interface Apis {
 
     @POST("/api/v1/app/login")
+//    Call<ResponseBody> loginByPassword(@Body LoginReq loginReq);
     Call<LoginResp> loginByPassword(@Body LoginReq loginReq);
 
     @GET("/api/v1/app/people/info")

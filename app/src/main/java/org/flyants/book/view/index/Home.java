@@ -1,12 +1,9 @@
 package org.flyants.book.view.index;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.NavigationView;
@@ -67,7 +64,7 @@ public class Home extends AppCompatActivity {
         });
         fragmentManager = getSupportFragmentManager();
         init();
-        navView.setSelectedIndex(2);
+        navView.setSelectedIndex(0);
     }
 
     private void init() {

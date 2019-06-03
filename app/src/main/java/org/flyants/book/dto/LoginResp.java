@@ -1,6 +1,8 @@
 package org.flyants.book.dto;
 
-public class LoginResp {
+import org.flyants.book.utils.RespError;
+
+public class LoginResp extends RespError {
     private String token;
 
     public String getToken() {

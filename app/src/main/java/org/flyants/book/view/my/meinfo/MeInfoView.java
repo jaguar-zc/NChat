@@ -1,8 +1,13 @@
 package org.flyants.book.view.my.meinfo;
 
 import android.graphics.Color;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.liaoinstan.springview.container.DefaultFooter;
+import com.liaoinstan.springview.container.DefaultHeader;
+import com.liaoinstan.springview.widget.SpringView;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
@@ -15,7 +20,9 @@ import butterknife.BindView;
 
 public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInfoView {
 
-    @BindView(R.id.idHeader)  Header idHeader;
+    @BindView(R.id.springView) SpringView springView;
+//    @BindView(R.id.idHeader)  Header idHeader;
+    @BindView(R.id.idHeader)  ImageView idHeader;
 
     @BindView(R.id.icon) ImageView icon;
     @BindView(R.id.nickName)  TextView nickName;
@@ -30,6 +37,12 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
 
     ImageLoader imageLoader = new CenterCropImageLoaderImpl();
 
+
+    @Override
+    public int getStatusBarColor() {
+        return R.color.me_info_status_color;
+    }
+
     @Override
     public MeInfoPrecenter buildPresenter() {
         return new MeInfoPrecenter(this,this);
@@ -42,8 +55,17 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
 
     @Override
     public void onViewInit() {
-//        idHeader.setBackgrund(Color.parseColor("#50FFFFFF"));
-        idHeader.setHeaderTitle("");
+//        idHeader.setHeaderTitle("");
+//        idHeader.setBackgrund(R.color.transparent);
+        idHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        springView.setHeader(new DefaultHeader(this));
+        springView.setFooter(new DefaultFooter(this));
+        springView.setListener(getPresenter());
     }
 
     @Override

@@ -29,7 +29,7 @@ public class NChatApplication extends Application {
         apis.loginByPassword(loginReq).enqueue(new RespCall<LoginResp>() {
             @Override
             public void onResp(LoginResp resp) {
-                token = resp.getToken();
+                NChatApplication.token = resp.getToken();
             }
         });
 

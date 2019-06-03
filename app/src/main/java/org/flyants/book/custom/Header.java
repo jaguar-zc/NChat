@@ -73,9 +73,6 @@ public class Header extends LinearLayout {
             container.setBackgroundColor(color);
     }
 
-
-
-
     public void setHeaderRight(View view){
         headerRight.addView(view);
     }

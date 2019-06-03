@@ -36,8 +36,6 @@ public class ExperienceView extends BaseFragment<ExperiencePrecenter> implements
     @Override
     public void onViewInit() {
         adapter = new ExperienceAdapter(recycler_view);
-
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext() );
         recycler_view.setLayoutManager(layoutManager);
         layoutManager.setOrientation(OrientationHelper. VERTICAL);

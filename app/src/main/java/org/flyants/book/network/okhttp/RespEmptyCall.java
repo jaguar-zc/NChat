@@ -5,8 +5,8 @@ import android.content.Context;
 import com.maning.mndialoglibrary.MProgressDialog;
 
 import org.flyants.book.NChatApplication;
-import org.flyants.book.network.RespError;
 import org.flyants.book.utils.JsonUtils;
+import org.flyants.book.utils.RespError;
 import org.flyants.book.utils.ToastUtils;
 
 import okhttp3.ResponseBody;
@@ -61,11 +61,11 @@ public class RespEmptyCall  implements Callback<ResponseBody> {
         }else{
             try {
                 RespError error = JsonUtils.toBean(response.errorBody().string(), RespError.class);
-                if(NotToastErrorCode.contains(error.getCode())){
-                    onFailure(call,null);
-                }else{
-                    ToastUtils.show(error.getMessage());
-                }
+//                if(NotToastErrorCode.contains(error.getCode())){
+//                    onFailure(call,null);
+//                }else{
+                    ToastUtils.show(error.getResp_msg());
+//                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -6,8 +6,8 @@ import android.content.Context;
 import com.maning.mndialoglibrary.MProgressDialog;
 
 import org.flyants.book.NChatApplication;
-import org.flyants.book.network.RespError;
 import org.flyants.book.utils.JsonUtils;
+import org.flyants.book.utils.RespError;
 import org.flyants.book.utils.ToastUtils;
 
 import retrofit2.Call;
@@ -54,11 +54,11 @@ public abstract class RespCall<T> implements Callback<T> {
         if(response.code() != 200){
             try {
                 RespError error = JsonUtils.toBean(response.errorBody().string(), RespError.class);
-                if(NotToastErrorCode.contains(error.getCode())){
-                    onServerError();
-                }else{
-                    ToastUtils.show(error.getMessage());
-                }
+//                if(NotToastErrorCode.contains(error.getResp_code())){
+//                    onServerError();
+//                }else{
+                    ToastUtils.show(error.getResp_msg());
+//                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
