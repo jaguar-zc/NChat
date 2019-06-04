@@ -36,9 +36,9 @@ public class PasswordView extends BaseActivity<PasswordPrecenter> implements UIP
     }
 
     @Override
-    public void setVerifyCode(String format, int mqr) {
-        get_sms_code.setText(format);
-        get_sms_code.setTextColor(mqr);
+    public void setVerifyCode(String text, int color) {
+        get_sms_code.setText(text);
+        get_sms_code.setTextColor(color);
     }
 
     @Override
