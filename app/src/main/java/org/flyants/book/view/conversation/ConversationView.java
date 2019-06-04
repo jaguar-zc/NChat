@@ -46,7 +46,6 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
         springView.setFooter(new DefaultFooter(getContext()));
         springView.setListener(getPresenter());
         springView.setEnableFooter(false);
-
     }
 
     @Override
@@ -63,7 +62,7 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
 
     @Override
     public void onViewStart() {
-
+        getPresenter().onRefresh();
     }
 
     @Override

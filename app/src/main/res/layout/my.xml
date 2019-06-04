@@ -84,18 +84,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="@drawable/setting_item"
                 android:padding ="@dimen/ui_padding" >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:background="@null"
                     android:text="二维码名片"
                     android:textColor="@color/item_text"
                     android:textSize="@dimen/item_size" />
 
                 <View
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1">
                 </View>
                 <ImageView
@@ -107,6 +109,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
+                    android:background="@null"
                     android:src="@mipmap/afc" />
             </LinearLayout>
 
@@ -116,18 +119,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:background="@drawable/setting_item"
                     android:padding ="@dimen/ui_padding" >
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="钱包"
+                        android:background="@null"
                         android:textColor="@color/item_text"
                         android:textSize="@dimen/item_size" />
 
                     <View
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="0dp"
                         android:layout_weight="1">
                     </View>
 
@@ -135,6 +140,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_vertical"
+                        android:background="@null"
                         android:src="@mipmap/afc" />
             </LinearLayout>
 
@@ -143,18 +149,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="@drawable/setting_item"
                 android:padding ="@dimen/ui_padding" >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="表情"
+                    android:background="@null"
                     android:textColor="@color/item_text"
                     android:textSize="@dimen/item_size" />
 
                 <View
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1">
                 </View>
 
@@ -162,6 +170,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
+                    android:background="@null"
                     android:src="@mipmap/afc" />
             </LinearLayout>
 
@@ -170,18 +179,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="@drawable/setting_item"
                 android:padding ="@dimen/ui_padding" >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="帮助与反馈"
+                    android:background="@null"
                     android:textColor="@color/item_text"
                     android:textSize="@dimen/item_size" />
 
                 <View
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1">
                 </View>
 
@@ -189,6 +200,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
+                    android:background="@null"
                     android:src="@mipmap/afc" />
             </LinearLayout>
 
@@ -197,18 +209,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="@drawable/setting_item"
                 android:padding ="@dimen/ui_padding" >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="设置"
+                    android:background="@null"
                     android:textColor="@color/item_text"
                     android:textSize="@dimen/item_size" />
 
                 <View
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1">
                 </View>
 
@@ -216,6 +230,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
+                    android:background="@null"
                     android:src="@mipmap/afc" />
             </LinearLayout>
 

@@ -1,16 +1,20 @@
 package org.flyants.book.view.setting.accountsecurity;
 
+import android.content.Intent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.view.my.UserInfo;
+import org.flyants.book.view.setting.password.PasswordView;
+import org.flyants.book.view.setting.privacy.PrivacyView;
 import org.flyants.common.mvp.impl.BaseActivity;
 
 import java.text.MessageFormat;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class AccountSecurityView  extends BaseActivity<AccountSecurityPresenter> implements UIAccountSecurity  {
 
@@ -53,4 +57,10 @@ public class AccountSecurityView  extends BaseActivity<AccountSecurityPresenter>
     public void onViewDestroy() {
 
     }
+    @OnClick(R.id.setting_item_password)
+    public void onClickPasswordView(){
+        startActivity(new Intent(getActivity(), PasswordView.class));
+    }
+
+
 }

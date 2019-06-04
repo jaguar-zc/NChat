@@ -3,10 +3,11 @@ package org.flyants.book.view.conversation;
 import com.liaoinstan.springview.widget.SpringView;
 
 import org.flyants.book.network.RequestUtils;
-import org.flyants.book.network.okhttp.RespCall;
 import org.flyants.book.resources.ConversationApis;
-import org.flyants.book.utils.RespList;
+import org.flyants.book.store.ConversationStore;
 import org.flyants.common.mvp.impl.BasePresenter;
+
+import java.util.List;
 
 class ConversationPrecenter extends BasePresenter<ConversationView, UIConversationView> implements SpringView.OnFreshListener{
 
@@ -17,11 +18,17 @@ class ConversationPrecenter extends BasePresenter<ConversationView, UIConversati
     }
 
     @Override
+    public void onViewInit() {
+        conversationApis = RequestUtils.build(ConversationApis.class);
+    }
+
+
+    @Override
     public void onRefresh() {
-        conversationApis.getConversationList().enqueue(new RespCall<RespList<ConversationResp>>() {
+        ConversationStore.me.getConversationList(context,new ConversationStore.OnConversationList(){
             @Override
-            public void onResp(RespList<ConversationResp> resp) {
-                uiView.setPullLoadMoreCompleted(0,resp);
+            public void onConversationList(List<ConversationResp> list) {
+                uiView.setPullLoadMoreCompleted(0,list);
             }
         });
     }
@@ -39,11 +46,6 @@ class ConversationPrecenter extends BasePresenter<ConversationView, UIConversati
     @Override
     public void onViewDestroy() {
 
-    }
-
-    @Override
-    public void onViewInit() {
-        conversationApis = RequestUtils.build(ConversationApis.class);
     }
 
 

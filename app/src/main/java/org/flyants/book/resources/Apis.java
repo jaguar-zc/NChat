@@ -12,6 +12,7 @@ import org.flyants.book.view.my.UserInfo;
 import org.flyants.book.view.my.WorksModel;
 import org.flyants.book.view.setting.VersionResp;
 import org.flyants.book.view.setting.accountsecurity.SetPasswordReq;
+import org.flyants.book.view.setting.password.SendSmsCodeReq;
 
 import java.util.List;
 
@@ -37,12 +38,11 @@ public interface Apis {
     @GET("/api/v1/app/people/assistPeople")
     Call<ResponseBody> assistPeople(@Query("assistPeopleId") String assistPeopleId);
 
-
     @PUT("/api/v1/app/people/editPeopleIntroduction")
     Call<ResponseBody> editPeopleIntroduction(@Query("introduction") String introduction);
 
     @PUT("/api/v1/app/people/setPassword")
-    Call<LoginResp> setPassword(@Body SetPasswordReq passwordReq);
+    Call<ResponseBody> setPassword(@Body SetPasswordReq passwordReq);
 
     @PUT("/api/v1/app/people/updatePeopleInfo")
     Call<ResponseBody> updatePeopleInfo(@Body UserInfo userInfo);
@@ -54,6 +54,11 @@ public interface Apis {
 
     @PUT("/api/v1/app/comments/publish")
     Call<ResponseBody> commentPublish(@Body CommentsPublishReq publishReq);
+
+
+    @POST("/api/v1/app/system/sendSmsCode")
+    Call<ResponseBody> sendSmsCode(@Body SendSmsCodeReq smsCodeReq);
+
 
 
     @GET("/flyants-resource/my-page-works.json")

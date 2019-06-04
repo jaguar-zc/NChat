@@ -32,10 +32,10 @@ public class ConversationAdapter extends BaseRecyclerAdapter<ConversationResp> {
 
     @Override
     public void convert(RecyclerHolder holder, ConversationResp item, int position, boolean isScrolling) {
-//        imageLoader.loader(item.getIcon(),holder.getView(R.id.icon));
-//        holder.setText(R.id.username,item.getUsername());
-//        holder.setText(R.id.time_str,item.getTimeStr());
-//        holder.setText(R.id.last_msg,item.getLastMsg());
+        imageLoader.loader(item.getIcon(),holder.getView(R.id.icon));
+        holder.setText(R.id.name,item.getName());
+        holder.setText(R.id.time,item.getType());
+        holder.setText(R.id.msg,item.getType());
     }
 
     public ConversationAdapter(RecyclerView v, Collection<ConversationResp> datas, int itemLayoutId) {

@@ -9,6 +9,7 @@
         <item name="android:background">@color/white</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="editTextBackground">@color/white</item>
     </style>
 
 </resources>

@@ -10,8 +10,10 @@
     <color name="switch_on">#00d35a</color>
     <color name="red">#F44336</color>
     <color name="mqr">#ffde25</color>
+    <color name="light_mqr">#fff7c2</color>
     <color name="gray">#ACABAB</color>
     <color name="light_gray">#dadde6</color>
+    <color name="light_hit">#f5f7fa</color>
     <color name="black">#000000</color>
     <color name="black_text">#2b2f36</color>
     <color name="transparent">@android:color/transparent</color>
