@@ -136,7 +136,6 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@mipmap/adv" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
@@ -150,76 +149,50 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_margin_top"
-        android:background="@color/windowBackground"></View>
+        android:background="@color/windowBackground">
+    </View>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/ui_padding"
-        android:paddingRight="@dimen/ui_padding">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"></View>
-
-            <TextView
-                android:id="@+id/dynamic_lable"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_margin="@dimen/item_margin_top"
-                android:text="动态"
-                android:textColor="@color/itemTextColor"
-                android:textSize="@dimen/title_selected_size" />
-
-            <TextView
-                android:id="@+id/info_lable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/item_margin_top"
-                android:text="资料"
-                android:textColor="@color/black_text"
-                android:textSize="@dimen/title_selected_size"
-                android:textStyle="bold" />
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"></View>
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/basic_info_layout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ui_padding"
+            android:layout_marginRight="@dimen/ui_padding"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="基本信息"
+                android:text="资料"
                 android:textColor="@color/black_text"
+                android:gravity="center_vertical"
                 android:textSize="@dimen/title_selected_size"
                 android:textStyle="bold" />
-
             <TextView
                 android:id="@+id/location"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:text="所在地：   四川成都"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/item_size" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></View>
-
         </LinearLayout>
-    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_margin_top"
+        android:background="@color/windowBackground">
+    </View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/ui_padding"
+        android:layout_marginRight="@dimen/ui_padding"
+        android:gravity="center_vertical"
+        android:text="动态"
+        android:textColor="@color/black_text"
+        android:textSize="@dimen/title_selected_size"
+        android:textStyle="bold"/>
+
+
+
 </LinearLayout>

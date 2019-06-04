@@ -63,7 +63,7 @@ public class Header extends LinearLayout {
 
     public void setBackgrundColor(int resColor){
         if(resColor == 0){
-            container.setBackground(null);
+            container.setBackgroundResource(R.color.transparent);
         }else {
             container.setBackgroundColor(getResources().getColor(resColor));
         }

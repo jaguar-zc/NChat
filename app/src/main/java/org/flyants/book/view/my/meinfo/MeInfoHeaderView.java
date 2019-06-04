@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import org.flyants.book.R;
 
 import butterknife.BindView;
@@ -34,14 +33,14 @@ public class MeInfoHeaderView {
     @BindView(R.id.send_dynamic) ImageView send_dynamic;
     @BindView(R.id.edit_people_info) ImageView edit_people_info;
 
-    @BindView(R.id.dynamic_lable) TextView dynamic_lable;
-    @BindView(R.id.info_lable)  TextView info_lable;
+//    @BindView(R.id.dynamic_lable) TextView dynamic_lable;
+//    @BindView(R.id.info_lable)  TextView info_lable;
 
     @BindView(R.id.basic_info_layout) LinearLayout basic_info_layout;
     @BindView(R.id.location)  TextView location;
 
-    public MeInfoHeaderView(Activity activity) {
-        rootView = LayoutInflater.from(activity).inflate(R.layout.me_info_header, null ,false);
+    public MeInfoHeaderView(Activity activity, ViewGroup group) {
+        rootView = LayoutInflater.from(activity).inflate(R.layout.me_info_header, group ,false);
         ButterKnife.bind(this,rootView);
     }
 
@@ -52,22 +51,22 @@ public class MeInfoHeaderView {
     public void setRecycler_view(RecyclerView recycler_view) {
         this.recycler_view = recycler_view;
     }
-
-    @OnClick(R.id.info_lable)
-    public void info_lable(){
-        dynamic_lable.setTypeface(Typeface.DEFAULT);
-        info_lable.setTypeface(Typeface.DEFAULT_BOLD);
-        basic_info_layout.setVisibility(View.VISIBLE);
-        recycler_view.setVisibility(View.GONE);
-    }
-
-    @OnClick(R.id.dynamic_lable)
-    public void dynamic_lable(){
-        dynamic_lable.setTypeface(Typeface.DEFAULT_BOLD);
-        info_lable.setTypeface(Typeface.DEFAULT);
-        recycler_view.setVisibility(View.VISIBLE);
-        basic_info_layout.setVisibility(View.GONE);
-    }
+//
+//    @OnClick(R.id.info_lable)
+//    public void onclickinfo_lable(){
+//        dynamic_lable.setTypeface(Typeface.DEFAULT);
+//        info_lable.setTypeface(Typeface.DEFAULT_BOLD);
+////        basic_info_layout.setVisibility(View.VISIBLE);
+////        recycler_view.setVisibility(View.GONE);
+//    }
+//
+//    @OnClick(R.id.dynamic_lable)
+//    public void onclickdynamic_lable(){
+//        dynamic_lable.setTypeface(Typeface.DEFAULT_BOLD);
+//        info_lable.setTypeface(Typeface.DEFAULT);
+////        recycler_view.setVisibility(View.VISIBLE);
+////        basic_info_layout.setVisibility(View.GONE);
+//    }
 
 
     @OnClick(R.id.send_message)

@@ -4,38 +4,41 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.liaoinstan.springview.container.DefaultFooter;
 import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
 
 import org.flyants.book.R;
-import org.flyants.book.custom.Header;
+import org.flyants.book.custom.EmptySpringHeader;
 import org.flyants.book.custom.ProxyRecyclerViewAdapter;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
 import org.flyants.book.view.dynamic.DynamicResp;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
+import org.flyants.common.utils.StatusBarUtil;
 
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInfoView {
 
     @BindView(R.id.springView) SpringView springView;
-    @BindView(R.id.idHeader) Header idHeader;
+//    @BindView(R.id.idHeader) Header idHeader;
+    @BindView(R.id.id_header_layout) LinearLayout id_header_layout;
+    @BindView(R.id.idHeader) ImageView idHeader;
 
     @BindView(R.id.recycler_view)  RecyclerView recycler_view;
 
     MeInfoHeaderView meInfoHeader;
     ImageLoader imageLoader = new CenterCropImageLoaderImpl();
     MeInfoAdapter adapter;
-
 
     @Override
     public int getStatusBarColor() {
@@ -50,30 +53,49 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
 
     @Override
     public int getLayoutId() {
-        meInfoHeader = new MeInfoHeaderView(this);
+        StatusBarUtil.setTranslucentStatus(this);
         return R.layout.me_info;
     }
 
     @Override
     public void onViewInit() {
-        idHeader.setHeaderTitle("");
-        idHeader.setBackgrundColor(0);
+
+        ViewGroup.LayoutParams layoutParams = id_header_layout.getLayoutParams();
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(layoutParams);
+        lp.setMargins(0,getStatusBarHeight(),0,0);
+        id_header_layout.setLayoutParams(lp);
+
+        meInfoHeader = new MeInfoHeaderView(this,springView);
+        meInfoHeader.setRecycler_view(recycler_view);
+        meInfoHeader.setPresenter(getPresenter());
+//        idHeader.setHeaderTitle("");
+//        idHeader.setBackgrundColor(0);
+
+        idHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         adapter = new MeInfoAdapter(recycler_view);
+
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity() );
         layoutManager.setOrientation(OrientationHelper. VERTICAL);
         recycler_view.setLayoutManager(layoutManager);
 
-        ProxyRecyclerViewAdapter proxyRecyclerViewAdapter = new ProxyRecyclerViewAdapter(adapter);
-        proxyRecyclerViewAdapter.addHeaderView(meInfoHeader.rootView);
-        recycler_view.setAdapter(proxyRecyclerViewAdapter);
+        ProxyRecyclerViewAdapter proxyAdapter = new ProxyRecyclerViewAdapter(adapter);
+        proxyAdapter.addHeaderView(meInfoHeader.rootView);
+        recycler_view.setAdapter(proxyAdapter);
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));
         recycler_view.setItemAnimator( new DefaultItemAnimator());
+//        springView.setHeader(new EmptySpringHeader());
         springView.setHeader(new DefaultHeader(getActivity()));
         springView.setFooter(new DefaultFooter(getActivity()));
         springView.setListener(getPresenter());
-        meInfoHeader.setPresenter(getPresenter());
-        meInfoHeader.setRecycler_view(recycler_view);
+        springView.setEnableFooter(true);
+        springView.setEnableHeader(true);
     }
 
     @Override
@@ -88,12 +110,10 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
         meInfoHeader. nickName.setText(resp.getNickName() + "");
         meInfoHeader. chat_no.setText(getString(R.string.AntsChatId) + ":" + resp.getPeopleNo() + "");
         meInfoHeader. people_introduction.setText(resp.getIntroduction() + "");
-
         if (resp.getPeopleAssistCount() > 0) {
             meInfoHeader.peopleAssist.setImageResource(R.mipmap.ab0);
         }
         meInfoHeader.peopleAssistCount.setText(resp.getPeopleAssistCount() + "");
-
         meInfoHeader.location.setText("所在地：   " + resp.getLocation() + "");
     }
 
@@ -101,7 +121,6 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
     public void onViewDestroy() {
 
     }
-
 
     @Override
     public void setPullLoadMoreCompleted(int page, List<DynamicResp> list) {

@@ -29,7 +29,7 @@ class MeInfoAdapter  extends BaseRecyclerAdapter<DynamicResp> {
 
 
     public MeInfoAdapter(RecyclerView recyclerView) {
-        this(recyclerView, lists, R.layout.found_item);
+        this(recyclerView, lists, R.layout.dynamic_item);
     }
 
     @Override
