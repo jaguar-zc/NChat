@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.flyants.book.R;
+import org.flyants.book.custom.Header;
 import org.flyants.book.utils.ToastUtils;
 import org.flyants.common.mvp.impl.BaseActivity;
 
@@ -15,6 +16,7 @@ import butterknife.OnClick;
 
 public class PasswordView extends BaseActivity<PasswordPrecenter> implements UIPasswordView {
 
+    @BindView(R.id.idHeader)  Header idHeader;
     @BindView(R.id.send_phone) TextView send_phone;
     @BindView(R.id.get_sms_code) TextView get_sms_code;
     @BindView(R.id.sms_code)  EditText sms_code;
@@ -72,7 +74,7 @@ public class PasswordView extends BaseActivity<PasswordPrecenter> implements UIP
 
     @Override
     public void onViewInit() {
-
+        idHeader.setHeaderTitle("");
     }
 
     @Override
