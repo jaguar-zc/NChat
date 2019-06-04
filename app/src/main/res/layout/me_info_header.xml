@@ -2,17 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@null"
+    android:background="@mipmap/temp_found_item"
     android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:background="@mipmap/u0" />
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@null"
+        android:paddingTop="30dp"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@mipmap/u0" />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -157,13 +160,13 @@
             android:id="@+id/basic_info_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/ui_padding"
-            android:layout_marginRight="@dimen/ui_padding"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="资料"
+                android:layout_marginLeft="@dimen/ui_padding"
+                android:layout_marginRight="@dimen/ui_padding"
                 android:textColor="@color/black_text"
                 android:gravity="center_vertical"
                 android:textSize="@dimen/title_selected_size"
@@ -172,6 +175,8 @@
                 android:id="@+id/location"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/ui_padding"
+                android:layout_marginRight="@dimen/ui_padding"
                 android:text="所在地：   四川成都"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/item_size" />
@@ -181,18 +186,21 @@
         android:layout_height="@dimen/layout_margin_top"
         android:background="@color/windowBackground">
     </View>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="@dimen/ui_padding"
-        android:layout_marginRight="@dimen/ui_padding"
-        android:gravity="center_vertical"
-        android:text="动态"
-        android:textColor="@color/black_text"
-        android:textSize="@dimen/title_selected_size"
-        android:textStyle="bold"/>
-
-
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/ui_padding"
+        android:paddingRight="@dimen/ui_padding"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:text="动态"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/title_selected_size"
+            android:textStyle="bold"/>
+    </LinearLayout>
 
 </LinearLayout>

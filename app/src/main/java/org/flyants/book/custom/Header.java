@@ -45,6 +45,10 @@ public class Header extends LinearLayout {
         headerLeft.setOnClickListener(null);
     }
 
+    public void setHeaderBackgroundAlpha(int alpha){
+        container.getBackground().setAlpha(alpha);
+    }
+
 
 
     public void setBackColorWhite(){

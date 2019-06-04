@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.liaoinstan.springview.container.DefaultFooter;
 import com.liaoinstan.springview.container.DefaultHeader;
@@ -15,6 +16,7 @@ import com.liaoinstan.springview.widget.SpringView;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.EmptySpringHeader;
+import org.flyants.book.custom.Header;
 import org.flyants.book.custom.ProxyRecyclerViewAdapter;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
@@ -33,6 +35,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
 //    @BindView(R.id.idHeader) Header idHeader;
     @BindView(R.id.id_header_layout) LinearLayout id_header_layout;
     @BindView(R.id.idHeader) ImageView idHeader;
+    @BindView(R.id.header_right) ImageView header_right;
 
     @BindView(R.id.recycler_view)  RecyclerView recycler_view;
 
@@ -61,7 +64,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
     public void onViewInit() {
 
         ViewGroup.LayoutParams layoutParams = id_header_layout.getLayoutParams();
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(layoutParams);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(layoutParams);
         lp.setMargins(0,getStatusBarHeight(),0,0);
         id_header_layout.setLayoutParams(lp);
 
@@ -90,8 +93,8 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
         recycler_view.setAdapter(proxyAdapter);
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));
         recycler_view.setItemAnimator( new DefaultItemAnimator());
-//        springView.setHeader(new EmptySpringHeader());
-        springView.setHeader(new DefaultHeader(getActivity()));
+        springView.setHeader(new EmptySpringHeader());
+//        springView.setHeader(new DefaultHeader(getActivity()));
         springView.setFooter(new DefaultFooter(getActivity()));
         springView.setListener(getPresenter());
         springView.setEnableFooter(true);
@@ -125,6 +128,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
     @Override
     public void setPullLoadMoreCompleted(int page, List<DynamicResp> list) {
         springView.onFinishFreshAndLoad();
+        adapter.notifyDataSetChanged();
     }
 
 

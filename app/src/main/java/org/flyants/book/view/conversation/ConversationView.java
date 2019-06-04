@@ -1,4 +1,4 @@
-package org.flyants.book.view.experience;
+package org.flyants.book.view.conversation;
 
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,22 +10,23 @@ import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
 
 import org.flyants.book.R;
+import org.flyants.book.view.experience.FoundDto;
 import org.flyants.common.mvp.impl.BaseFragment;
 
 import java.util.List;
 
 import butterknife.BindView;
 
-public class ExperienceView extends BaseFragment<ExperiencePrecenter> implements UIExperienceView {
+public class ConversationView extends BaseFragment<ConversationPrecenter> implements UIConversationView {
 
     @BindView(R.id.springView) SpringView springView;
     @BindView(R.id.recycler_view) RecyclerView recycler_view;
-    private ExperienceAdapter adapter;
+    private ConversationAdapter adapter;
 
 
     @Override
-    public ExperiencePrecenter buildPresenter() {
-        return new ExperiencePrecenter(this,this);
+    public ConversationPrecenter buildPresenter() {
+        return new ConversationPrecenter(this,this);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class ExperienceView extends BaseFragment<ExperiencePrecenter> implements
 
     @Override
     public void onViewInit() {
-        adapter = new ExperienceAdapter(recycler_view);
+        adapter = new ConversationAdapter(recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext() );
         layoutManager.setOrientation(OrientationHelper. VERTICAL);
         recycler_view.setLayoutManager(layoutManager);
@@ -48,12 +49,12 @@ public class ExperienceView extends BaseFragment<ExperiencePrecenter> implements
     }
 
     @Override
-    public void setPullLoadMoreCompleted(int page, List<FoundDto> list) {
+    public void setPullLoadMoreCompleted(int page, List<ConversationResp> list) {
 
     }
 
     @Override
-    public void setVeiwAttrs(FoundDto resp) {
+    public void setVeiwAttrs(ConversationResp resp) {
 
     }
 

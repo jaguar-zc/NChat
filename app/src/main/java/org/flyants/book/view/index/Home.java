@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.NavigationView;
-import org.flyants.book.view.experience.ExperienceView;
+import org.flyants.book.view.conversation.ConversationView;
 import org.flyants.book.view.inspiration.InspirationView;
 import org.flyants.book.view.my.MyView;
 import org.flyants.common.mvp.impl.BaseFragment;
@@ -65,10 +65,11 @@ public class Home extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         init();
 //        navView.setSelectedIndex(0);
+        setTabSelection(0);
     }
 
     private void init() {
-        fragmentList.add(new ExperienceView());
+        fragmentList.add(new ConversationView());
         fragmentList.add(new InspirationView());
         fragmentList.add(new MyView());
 //        navView.setSelectedItemId(R.id.navigation_1);

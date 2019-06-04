@@ -1,4 +1,4 @@
-package org.flyants.book.view.experience;
+package org.flyants.book.view.conversation;
 
 import android.support.v7.widget.RecyclerView;
 
@@ -12,15 +12,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ExperienceAdapter extends BaseRecyclerAdapter<ConversationDto> {
+public class ConversationAdapter extends BaseRecyclerAdapter<ConversationResp> {
 
     ImageLoader imageLoader = new CenterCropImageLoaderImpl();
 
 
-    static List<ConversationDto>   lists = new ArrayList<ConversationDto>(){
-        public List<ConversationDto> $(){
+    static List<ConversationResp>   lists = new ArrayList<ConversationResp>(){
+        public List<ConversationResp> $(){
             for (int i = 0; i < 10; i++) {
-                this.add(new ConversationDto());
+                this.add(new ConversationResp());
             }
             return this;
         }
@@ -29,19 +29,19 @@ public class ExperienceAdapter extends BaseRecyclerAdapter<ConversationDto> {
 
 
 
-    public ExperienceAdapter(RecyclerView recyclerView) {
-        this(recyclerView, lists, R.layout.experience_item);
+    public ConversationAdapter(RecyclerView recyclerView) {
+        this(recyclerView, lists, R.layout.conversation_item);
     }
 
     @Override
-    public void convert(RecyclerHolder holder, ConversationDto item, int position, boolean isScrolling) {
+    public void convert(RecyclerHolder holder, ConversationResp item, int position, boolean isScrolling) {
 //        imageLoader.loader(item.getIcon(),holder.getView(R.id.icon));
 //        holder.setText(R.id.username,item.getUsername());
 //        holder.setText(R.id.time_str,item.getTimeStr());
 //        holder.setText(R.id.last_msg,item.getLastMsg());
     }
 
-    public ExperienceAdapter(RecyclerView v, Collection<ConversationDto> datas, int itemLayoutId) {
+    public ConversationAdapter(RecyclerView v, Collection<ConversationResp> datas, int itemLayoutId) {
         super(v, datas, itemLayoutId);
     }
 

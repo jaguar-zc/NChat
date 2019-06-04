@@ -2,56 +2,81 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/me_bg"
     android:orientation="vertical">
     <!--<org.flyants.book.custom.Header-->
-        <!--android:id="@+id/idHeader"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content">-->
+    <!--android:id="@+id/idHeader"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
     <!--</org.flyants.book.custom.Header>-->
-    <LinearLayout
-        android:id="@+id/id_header_layout"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@null">
-        <ImageView
-            android:id="@+id/idHeader"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:padding="15dp"
-            android:background="@null"
-            android:src="@mipmap/adb">
-        </ImageView>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+    <!--<LinearLayout-->
+    <!--android:id="@+id/id_header_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="55dp"-->
+    <!--android:background="@null">-->
+    <!--<ImageView-->
+    <!--android:id="@+id/idHeader"-->
+    <!--android:layout_width="50dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:padding="15dp"-->
+    <!--android:background="@null"-->
+    <!--android:src="@mipmap/adb">-->
+    <!--</ImageView>-->
+    <!--<View-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1">-->
 
-        </View>
-        <ImageView
-            android:id="@+id/header_right"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:padding="15dp"
-            android:background="@null"
-            android:src="@mipmap/ab9">
-        </ImageView>
-    </LinearLayout>
+    <!--</View>-->
+    <!--<ImageView-->
+    <!--android:id="@+id/header_right"-->
+    <!--android:layout_width="50dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:padding="15dp"-->
+    <!--android:background="@null"-->
+    <!--android:src="@mipmap/ab9">-->
+    <!--</ImageView>-->
+    <!--</LinearLayout>-->
 
     <com.liaoinstan.springview.widget.SpringView
         android:id="@+id/springView"
-        android:background="@null"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-            <LinearLayout
+        android:layout_height="match_parent"
+        android:background="@color/meinfo_bg">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:orientation="vertical">
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
+            <LinearLayout
+                android:id="@+id/id_header_layout"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null">
+                <ImageView
+                    android:id="@+id/idHeader"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:padding="15dp"
+                    android:src="@mipmap/adb">
+                </ImageView>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                </View>
+                <ImageView
+                    android:id="@+id/header_right"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:padding="15dp"
+                    android:src="@mipmap/ab9">
+                </ImageView>
             </LinearLayout>
+        </RelativeLayout>
+
     </com.liaoinstan.springview.widget.SpringView>
 </LinearLayout>

@@ -20,6 +20,7 @@
     <color name="chat_background_color">#2c2f36</color>
     <color name="me_info_status_color">#5c9edc</color>
     <color name="no_bg">@null</color>
+    <color name="meinfo_bg">#110e09</color>
 
     <!--//292b50-->
 </resources>
