@@ -85,7 +85,7 @@ class PasswordPrecenter extends BasePresenter<PasswordView, UIPasswordView> {
         @Override
         public void onTick(long millisUntilFinished) {
             reRendSmsCode = reRendSmsCode - 1;
-            uiView.setVerifyCode(String.format("%s秒后重新发送", reRendSmsCode), R.color.mqr);
+            uiView.setVerifyCode(String.format("%s秒后重发", reRendSmsCode), R.color.mqr);
         }
 
         @Override
