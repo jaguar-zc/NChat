@@ -10,6 +10,8 @@ import org.flyants.book.utils.JsonUtils;
 import org.flyants.book.utils.RespError;
 import org.flyants.book.utils.ToastUtils;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -76,6 +78,11 @@ public abstract class RespCall<T> implements Callback<T> {
         if(this.isLooding){
             MProgressDialog.dismissProgress();
         }
-        ToastUtils.show("网络开小差了");
+        try {
+            RespError error = JsonUtils.toBean(call.execute().errorBody().string(), RespError.class);
+            ToastUtils.show(error.getResp_msg());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

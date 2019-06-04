@@ -10,27 +10,24 @@ import org.flyants.book.view.base.RecyclerHolder;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class ConversationAdapter extends BaseRecyclerAdapter<ConversationResp> {
 
     ImageLoader imageLoader = new CenterCropImageLoaderImpl();
 
-
-    static List<ConversationResp>   lists = new ArrayList<ConversationResp>(){
-        public List<ConversationResp> $(){
-            for (int i = 0; i < 10; i++) {
-                this.add(new ConversationResp());
-            }
-            return this;
-        }
-    }.$();
-
-
+//
+//    static List<ConversationResp>   lists = new ArrayList<ConversationResp>(){
+//        public List<ConversationResp> $(){
+//            for (int i = 0; i < 10; i++) {
+//                this.add(new ConversationResp());
+//            }
+//            return this;
+//        }
+//    }.$();
 
 
     public ConversationAdapter(RecyclerView recyclerView) {
-        this(recyclerView, lists, R.layout.conversation_item);
+        this(recyclerView, new ArrayList<>(), R.layout.conversation_item);
     }
 
     @Override

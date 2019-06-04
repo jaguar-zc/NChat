@@ -1,5 +1,7 @@
 package org.flyants.book.utils;
 
+import android.widget.Toast;
+
 import com.maning.mndialoglibrary.MToast;
 
 import org.flyants.book.NChatApplication;
@@ -8,9 +10,9 @@ public abstract class ToastUtils {
 
 
     public static void show(String str){
-        MToast.makeTextShort(NChatApplication.getFlyantsApplication(), str);
+//        MToast.makeTextShort(NChatApplication.getFlyantsApplication(), str);
 
-//        Toast.makeText(DuomiApplication.getDuomiApplication(),str,Toast.LENGTH_LONG).show();
+        Toast.makeText(NChatApplication.getFlyantsApplication(),str, Toast.LENGTH_LONG).show();
 //        Toast toast = new Toast(DuomiApplication.getDuomiApplication());
 //        toast.setGravity(Gravity.CENTER, 0, 0);
 //        toast.setDuration(Toast.LENGTH_LONG);

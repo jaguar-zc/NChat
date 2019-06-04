@@ -48,7 +48,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
 
     implementation 'org.apache.commons:commons-lang3:3.7'
-    implementation 'com.wuxiaolong.pullloadmorerecyclerview:library:1.0.4'
+//    implementation 'com.wuxiaolong.pullloadmorerecyclerview:library:1.0.4'
 
 
     //SpringView核心库 (只包含DefaultHeader/Footer)

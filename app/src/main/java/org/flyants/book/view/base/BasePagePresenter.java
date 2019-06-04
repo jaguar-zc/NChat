@@ -1,6 +1,7 @@
 package org.flyants.book.view.base;
 
-import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
+
+import com.liaoinstan.springview.widget.SpringView;
 
 import org.flyants.book.network.okhttp.RespCall;
 import org.flyants.book.utils.Page;
@@ -10,7 +11,7 @@ import java.util.List;
 
 import retrofit2.Call;
 
-public  abstract class BasePagePresenter<V,UI,DATA> extends BasePresenter<V,UI> implements PullLoadMoreRecyclerView.PullLoadMoreListener {
+public  abstract class BasePagePresenter<V,UI,DATA> extends BasePresenter<V,UI> implements  SpringView.OnFreshListener {
 
 
     public int page = 1;
@@ -36,18 +37,28 @@ public  abstract class BasePagePresenter<V,UI,DATA> extends BasePresenter<V,UI> 
 
     @Override
     public void onViewStart() {
-        onRefresh();
+
     }
 
     @Override
     public void onRefresh() {
-        page = 1;
+                page = 1;
         onLoadDataList();
     }
 
     @Override
-    public void onLoadMore() {
+    public void onLoadmore() {
         onLoadDataList();
+    }
+
+    @Override
+    public void onViewInit() {
+
+    }
+
+    @Override
+    public void onViewDestroy() {
+
     }
 
     public abstract void onNextPage(int page , List<DATA> list);

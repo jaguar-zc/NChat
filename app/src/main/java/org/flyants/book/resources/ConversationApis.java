@@ -9,13 +9,12 @@ import org.flyants.book.view.conversation.EditConversationReq;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface ConversationApis {
 
-    @GET("/api/v1/app/conversation/list")
+    @POST("/api/v1/app/conversation/list")
     Call<RespList<ConversationResp>> getConversationList();
 
     @POST("/api/v1/app/conversation/createGroupConversation")

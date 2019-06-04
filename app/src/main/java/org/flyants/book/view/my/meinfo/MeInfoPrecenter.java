@@ -1,7 +1,5 @@
 package org.flyants.book.view.my.meinfo;
 
-import com.liaoinstan.springview.widget.SpringView;
-
 import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.okhttp.RespEmptyCall;
 import org.flyants.book.resources.Apis;
@@ -16,7 +14,7 @@ import java.util.List;
 
 import retrofit2.Call;
 
-class MeInfoPrecenter  extends BasePagePresenter<MeInfoView,UIMeInfoView, DynamicResp> implements  SpringView.OnFreshListener {
+class MeInfoPrecenter  extends BasePagePresenter<MeInfoView,UIMeInfoView, DynamicResp> {
 
     Apis apis ;
     DynamicApis dynamicApis ;
@@ -35,7 +33,6 @@ class MeInfoPrecenter  extends BasePagePresenter<MeInfoView,UIMeInfoView, Dynami
                 uiView.setViewAttrs(userInfo);
             }
         });
-
     }
 
     @Override
@@ -46,11 +43,6 @@ class MeInfoPrecenter  extends BasePagePresenter<MeInfoView,UIMeInfoView, Dynami
     @Override
     public void onNextPage(int page, List<DynamicResp> list) {
         uiView.setPullLoadMoreCompleted(page,list);
-    }
-
-    @Override
-    public void onLoadmore() {
-
     }
 
     @Override

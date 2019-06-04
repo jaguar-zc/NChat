@@ -1,14 +1,15 @@
 package org.flyants.book.view.conversation;
 
 public class ConversationResp {
-    private Integer dontDisturb ;//(integer, optional),
-    private String icon;// (string, optional),
+
     private String id;// (string, optional),
-    private String  messageUserId ;//(string, optional),
+    private String type;// (string, optional) = ['SINGLE', 'GROUP']stringEnum:"SINGLE", "GROUP"
     private String  name;// (string, optional),
+    private String icon;// (string, optional),
     private String tags;// (string, optional),
     private Integer top;// (integer, optional),
-    private String type;// (string, optional) = ['SINGLE', 'GROUP']stringEnum:"SINGLE", "GROUP"
+    private Integer dontDisturb  ;//(integer, optional),
+    private String  messageUserId ;//(string, optional),
 
     public Integer getDontDisturb() {
         return dontDisturb;

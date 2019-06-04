@@ -13,7 +13,7 @@ public class NChatApplication extends Application {
 
     static NChatApplication flyantsApplication;
 
-    public static String token = "";
+    public static String token = " f369e37c-e456-4d28-8ce5-cdd6138a142c";
 
 
     @Override
@@ -21,17 +21,17 @@ public class NChatApplication extends Application {
         super.onCreate();
         flyantsApplication = this;
 
-        Apis apis = RequestUtils.build(Apis.class);
+//        Apis apis = RequestUtils.build(Apis.class);
 
-        LoginReq loginReq = new LoginReq();
-        loginReq.setUsername("18981063280");
-        loginReq.setPassword("123456");
-        apis.loginByPassword(loginReq).enqueue(new RespCall<LoginResp>() {
-            @Override
-            public void onResp(LoginResp resp) {
-                NChatApplication.token = resp.getToken();
-            }
-        });
+//        LoginReq loginReq = new LoginReq();
+//        loginReq.setUsername("18981063280");
+//        loginReq.setPassword("123456");
+//        apis.loginByPassword(loginReq).enqueue(new RespCall<LoginResp>() {
+//            @Override
+//            public void onResp(LoginResp resp) {
+//                NChatApplication.token = resp.getToken();
+//            }
+//        });
 
     }
 

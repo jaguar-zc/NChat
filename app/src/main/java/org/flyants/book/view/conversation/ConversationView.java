@@ -10,7 +10,6 @@ import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
 
 import org.flyants.book.R;
-import org.flyants.book.view.experience.FoundDto;
 import org.flyants.common.mvp.impl.BaseFragment;
 
 import java.util.List;
@@ -46,11 +45,15 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
         springView.setHeader(new DefaultHeader(getContext()));
         springView.setFooter(new DefaultFooter(getContext()));
         springView.setListener(getPresenter());
+        springView.setEnableFooter(false);
+
     }
 
     @Override
     public void setPullLoadMoreCompleted(int page, List<ConversationResp> list) {
-
+        springView.onFinishFreshAndLoad();
+        adapter.refresh(list);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -60,7 +63,7 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
 
     @Override
     public void onViewStart() {
-//        springView.callFresh();
+
     }
 
     @Override
