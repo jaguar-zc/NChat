@@ -64,7 +64,7 @@ public class Home extends AppCompatActivity {
         });
         fragmentManager = getSupportFragmentManager();
         init();
-        navView.setSelectedIndex(0);
+//        navView.setSelectedIndex(0);
     }
 
     private void init() {

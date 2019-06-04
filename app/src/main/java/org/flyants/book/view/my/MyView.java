@@ -64,7 +64,7 @@ public class MyView extends BaseFragment<MyPresenterImpl> implements UiMyView  {
     public void setVeiwAttrs(UserInfo resp) {
         imageLoader.loader(resp.getEncodedPrincipal(),icon);
         nickname.setText(resp.getNickName()+"");
-        nchat_no.setText(getString(R.string.app_name)+"号:"+resp.getPeopleNo()+"");
+        nchat_no.setText(getString(R.string.AntsChatId)+":"+resp.getPeopleNo()+"");
     }
 
 

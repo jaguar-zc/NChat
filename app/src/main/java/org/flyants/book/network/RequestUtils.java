@@ -2,6 +2,7 @@ package org.flyants.book.network;
 
 
 import org.flyants.book.NChatApplication;
+import org.flyants.book.R;
 import org.flyants.book.network.okhttp.HeaderInterceptor;
 import org.flyants.book.network.okhttp.LoggingInterceptor;
 import org.flyants.book.network.okhttp.RewriteCacheControlInterceptor;
@@ -18,7 +19,7 @@ public abstract class RequestUtils {
 
 //    private static final String HOST = "http://icooding.oss-cn-shenzhen.aliyuncs.com";
 //    private static final String HOST = "http://flyants-api.devopscloud.cn:10000";
-    private static final String HOST = "http://flyants-api.devopscloud.cn:10000";
+//    private static final String HOST = "http://flyants-api.devopscloud.cn:10000";
 
     private static Retrofit retrofit;
 
@@ -41,7 +42,7 @@ public abstract class RequestUtils {
         OkHttpClient client = builder.build();
         retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(HOST)
+                .baseUrl(NChatApplication.getFlyantsApplication().getString(R.string.host))
                 .client(client)
                 .build();
     }

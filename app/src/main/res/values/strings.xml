@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">蚂蚁飞聊</string>
+    <string name="app_name">AntsChat</string>
+    <string name="host">http://88.88.10.82:10000</string>
+    <string name="AntsChatId">AntsChatId</string>
     <string name="title_activity_home">Home</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

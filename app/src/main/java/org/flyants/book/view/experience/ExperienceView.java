@@ -37,8 +37,8 @@ public class ExperienceView extends BaseFragment<ExperiencePrecenter> implements
     public void onViewInit() {
         adapter = new ExperienceAdapter(recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext() );
-        recycler_view.setLayoutManager(layoutManager);
         layoutManager.setOrientation(OrientationHelper. VERTICAL);
+        recycler_view.setLayoutManager(layoutManager);
         recycler_view.setAdapter(adapter);
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));
         recycler_view.setItemAnimator( new DefaultItemAnimator());

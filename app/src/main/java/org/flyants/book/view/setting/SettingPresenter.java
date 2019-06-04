@@ -4,6 +4,7 @@ import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.okhttp.RespCall;
 import org.flyants.book.resources.Apis;
 import org.flyants.common.mvp.impl.BasePresenter;
+import org.flyants.common.utils.APKVersionCodeUtils;
 
 public class SettingPresenter extends BasePresenter<SettingView,UISettingView> {
 
@@ -21,12 +22,17 @@ public class SettingPresenter extends BasePresenter<SettingView,UISettingView> {
 
     @Override
     public void onViewStart() {
-        apis.getVersion().enqueue(new RespCall<VersionResp>() {
-            @Override
-            public void onResp(VersionResp resp) {
-                uiView.setVersionView(resp);
-            }
-        });
+        VersionResp versionResp = new VersionResp();
+        versionResp.setRemake("体验新版本");
+        versionResp.setVersionCode( APKVersionCodeUtils.getVersionCode(context));
+        versionResp.setVersionName( APKVersionCodeUtils.getVerName(context));
+        uiView.setVersionView(versionResp);
+//        apis.getVersion().enqueue(new RespCall<VersionResp>() {
+//            @Override
+//            public void onResp(VersionResp resp) {
+//                uiView.setVersionView(resp);
+//            }
+//        });
     }
 
     @Override

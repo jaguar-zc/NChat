@@ -13,11 +13,13 @@
     <color name="gray">#ACABAB</color>
     <color name="light_gray">#dadde6</color>
     <color name="black">#000000</color>
+    <color name="black_text">#2b2f36</color>
     <color name="transparent">@android:color/transparent</color>
     <color name="item_text">#04040e</color>
     <color name="tag">#3a3b5d</color>
     <color name="chat_background_color">#2c2f36</color>
     <color name="me_info_status_color">#5c9edc</color>
+    <color name="no_bg">@null</color>
 
     <!--//292b50-->
 </resources>
