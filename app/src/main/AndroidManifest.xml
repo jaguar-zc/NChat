@@ -40,6 +40,8 @@
         <activity android:name=".view.my.meqrcode.MeQrCodeView"></activity>
         <activity android:name=".view.my.meinfo.MeInfoView"></activity>
         <activity android:name=".view.setting.password.PasswordView"></activity>
+        <activity android:name=".view.login.LoginView"></activity>
+        <activity android:name=".view.login.LoginCodeView"></activity>
     </application>
 
 </manifest>

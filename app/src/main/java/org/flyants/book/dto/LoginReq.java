@@ -1,22 +1,34 @@
 package org.flyants.book.dto;
 
 public class LoginReq {
-    private String username;
-    private String password;
+    public enum LoginType {
+        PHONE, PASSWORD
+    }
+    private LoginType method;
+    private String phone;
+    private String mark;
 
-    public String getUsername() {
-        return username;
+    public LoginType getMethod() {
+        return method;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setMethod(LoginType method) {
+        this.method = method;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
     }
 }

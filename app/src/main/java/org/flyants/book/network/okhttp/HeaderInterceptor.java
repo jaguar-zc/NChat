@@ -2,6 +2,7 @@ package org.flyants.book.network.okhttp;
 
 
 import org.flyants.book.NChatApplication;
+import org.flyants.book.utils.SharedPreferencesHelper;
 
 import java.io.IOException;
 
@@ -19,7 +20,7 @@ public class HeaderInterceptor implements Interceptor {
 
         Request request = chain.request()
                 .newBuilder()
-                .addHeader(Authorization, NChatApplication.token)
+                .addHeader(Authorization, SharedPreferencesHelper.$().getSharedPreference("token","").toString())
                 .build();
         Response response = chain.proceed(request);
 //        if (response.code() == 200 && response.body().contentLength() == 0) {

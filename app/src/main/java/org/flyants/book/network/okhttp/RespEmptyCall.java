@@ -9,6 +9,8 @@ import org.flyants.book.utils.JsonUtils;
 import org.flyants.book.utils.RespError;
 import org.flyants.book.utils.ToastUtils;
 
+import java.io.IOException;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +48,7 @@ public class RespEmptyCall  implements Callback<ResponseBody> {
         
     }
 
-    public void onFail(){
+    public void onFail(RespError error){
 
     }
 
@@ -66,6 +68,7 @@ public class RespEmptyCall  implements Callback<ResponseBody> {
 //                }else{
                     ToastUtils.show(error.getResp_msg());
 //                }
+                onFail(error);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -77,7 +80,12 @@ public class RespEmptyCall  implements Callback<ResponseBody> {
         if(this.isLooding){
             MProgressDialog.dismissProgress();
         }
-        ToastUtils.show("网络开小差了");
-        onFail();
+        try {
+            ToastUtils.show("网络开小差了");
+            RespError error = JsonUtils.toBean(call.execute().errorBody().string(), RespError.class);
+            onFail(error);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -88,4 +88,12 @@ public class SettingView extends BaseActivity<SettingPresenter> implements UISet
         startActivity(new Intent(getActivity(), MsgNoticeView.class));
     }
 
+
+    @OnClick(R.id.logout)
+    public void onLogout(){
+        getPresenter().logout();
+    }
+
+
+
 }

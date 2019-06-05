@@ -9,27 +9,25 @@ import org.flyants.book.view.base.BaseRecyclerAdapter;
 import org.flyants.book.view.base.RecyclerHolder;
 import org.flyants.book.view.dynamic.DynamicResp;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 class MeInfoAdapter  extends BaseRecyclerAdapter<DynamicResp> {
 
     ImageLoader imageLoader = new CenterCropImageLoaderImpl();
 
 
-    static List<DynamicResp> lists = new ArrayList<DynamicResp>() {
-        public List<DynamicResp> $() {
-            for (int i = 0; i < 10; i++) {
-                this.add(new DynamicResp());
-            }
-            return this;
-        }
-    }.$();
+//    static List<DynamicResp> lists = new ArrayList<DynamicResp>() {
+//        public List<DynamicResp> $() {
+//            for (int i = 0; i < 10; i++) {
+//                this.add(new DynamicResp());
+//            }
+//            return this;
+//        }
+//    }.$();
 
 
     public MeInfoAdapter(RecyclerView recyclerView) {
-        this(recyclerView, lists, R.layout.dynamic_item);
+        this(recyclerView, null, R.layout.dynamic_item);
     }
 
     @Override

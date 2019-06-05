@@ -20,6 +20,9 @@ class PasswordPrecenter extends BasePresenter<PasswordView, UIPasswordView> {
     public int reRendSmsCode = 60;//还剩于多少秒重发
 
 
+    String phone;
+
+
     public PasswordPrecenter(PasswordView t, UIPasswordView uiPasswordView) {
         super(t, uiPasswordView);
     }
@@ -36,6 +39,7 @@ class PasswordPrecenter extends BasePresenter<PasswordView, UIPasswordView> {
             @Override
             public void OnUserInfo(UserInfo userInfo) {
                 uiView.setViewAttrs(userInfo.getPhone());
+                phone = userInfo.getPhone();
             }
         });
     }
@@ -50,7 +54,7 @@ class PasswordPrecenter extends BasePresenter<PasswordView, UIPasswordView> {
             return;
         }
 
-        apis.sendSmsCode(new SendSmsCodeReq()).enqueue(new RespEmptyCall() {
+        apis.sendSmsCode(phone).enqueue(new RespEmptyCall() {
             public void onSuccess() {
                 timer.start();
             }

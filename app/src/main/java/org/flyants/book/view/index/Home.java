@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.NavigationView;
+import org.flyants.book.store.UserStore;
 import org.flyants.book.view.conversation.ConversationView;
 import org.flyants.book.view.inspiration.InspirationView;
 import org.flyants.book.view.my.MyView;
@@ -63,6 +64,7 @@ public class Home extends AppCompatActivity {
             }
         });
         fragmentManager = getSupportFragmentManager();
+        UserStore.me.login(this);
         init();
 //        navView.setSelectedIndex(0);
         setTabSelection(0);

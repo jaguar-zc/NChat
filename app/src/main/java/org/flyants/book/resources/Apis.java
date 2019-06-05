@@ -27,7 +27,7 @@ import retrofit2.http.Query;
 public interface Apis {
 
     @POST("/api/v1/app/login")
-    Call<LoginResp> loginByPassword(@Body LoginReq loginReq);
+    Call<LoginResp> login(@Body LoginReq loginReq);
 
     @POST("/api/v1/app/logout")
     Call<ResponseBody> logout();
@@ -56,8 +56,8 @@ public interface Apis {
     Call<ResponseBody> commentPublish(@Body CommentsPublishReq publishReq);
 
 
-    @POST("/api/v1/app/system/sendSmsCode")
-    Call<ResponseBody> sendSmsCode(@Body SendSmsCodeReq smsCodeReq);
+    @GET("/api/v1/app/system/sendSmsCode")
+    Call<ResponseBody> sendSmsCode(@Query("phone") String phone);
 
 
 

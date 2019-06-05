@@ -59,7 +59,7 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));
         recycler_view.setItemAnimator( new DefaultItemAnimator());
         springView.setHeader(new DefaultHeader(getContext()));
-        springView.setFooter(new DefaultFooter(getContext()));
+//        springView.setFooter(new DefaultFooter(getContext()));
         springView.setListener(getPresenter());
         springView.setEnableFooter(false);
     }

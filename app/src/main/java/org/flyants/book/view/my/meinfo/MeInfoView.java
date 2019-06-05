@@ -103,7 +103,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
 
     @Override
     public void onViewStart() {
-
+        getPresenter().onRefresh();
     }
 
 
@@ -128,6 +128,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
     @Override
     public void setPullLoadMoreCompleted(int page, List<DynamicResp> list) {
         springView.onFinishFreshAndLoad();
+        adapter.addDataList(list);
         adapter.notifyDataSetChanged();
     }
 

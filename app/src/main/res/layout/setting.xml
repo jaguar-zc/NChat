@@ -220,11 +220,11 @@
         <TextView
             android:id="@+id/logout"
             android:layout_width="match_parent"
+            android:background="@drawable/setting_item"
             android:layout_height="@dimen/item_setting_height"
             android:layout_marginTop="50dp"
             android:gravity="center"
             android:textColor="@color/red"
-            android:background="@drawable/setting_item"
             android:text="退出登录"/>
 
     </LinearLayout>

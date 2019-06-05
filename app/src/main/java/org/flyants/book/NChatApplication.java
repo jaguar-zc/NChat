@@ -2,19 +2,10 @@ package org.flyants.book;
 
 import android.app.Application;
 
-import org.flyants.book.dto.LoginReq;
-import org.flyants.book.dto.LoginResp;
-import org.flyants.book.network.RequestUtils;
-import org.flyants.book.network.okhttp.RespCall;
-import org.flyants.book.resources.Apis;
-
 public class NChatApplication extends Application {
 
 
     static NChatApplication flyantsApplication;
-
-    public static String token = " f369e37c-e456-4d28-8ce5-cdd6138a142c";
-
 
     @Override
     public void onCreate() {
@@ -32,7 +23,6 @@ public class NChatApplication extends Application {
 //                NChatApplication.token = resp.getToken();
 //            }
 //        });
-
     }
 
     public static NChatApplication getFlyantsApplication() {

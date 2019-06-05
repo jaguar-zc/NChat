@@ -1,8 +1,13 @@
 package org.flyants.book.view.setting;
 
+import android.content.Intent;
+
 import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.okhttp.RespCall;
+import org.flyants.book.network.okhttp.RespEmptyCall;
 import org.flyants.book.resources.Apis;
+import org.flyants.book.store.UserStore;
+import org.flyants.book.view.login.LoginView;
 import org.flyants.common.mvp.impl.BasePresenter;
 import org.flyants.common.utils.APKVersionCodeUtils;
 
@@ -38,5 +43,16 @@ public class SettingPresenter extends BasePresenter<SettingView,UISettingView> {
     @Override
     public void onViewDestroy() {
 
+    }
+
+    public void logout() {
+        apis.logout().enqueue(new RespEmptyCall(){
+            @Override
+            public void onSuccess() {
+                super.onSuccess();
+                UserStore.me.clean();
+                UserStore.me.login(view);
+            }
+        });
     }
 }

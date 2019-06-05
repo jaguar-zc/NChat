@@ -1,13 +1,15 @@
 <resources>
     <string name="app_name">AntsChat</string>
-    <string name="host">http://flyants-api.devopscloud.cn:10000</string>
-    <!--<string name="host">http://88.88.10.82:10000</string>-->
+    <!--<string name="host">http://flyants-api.devopscloud.cn:10000</string>-->
+    <string name="host">http://88.88.10.82:10000</string>
     <string name="AntsChatId">AntsChatId</string>
     <string name="title_activity_home">Home</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="version">v1.0</string>
+    <string name="input_phone">输入手机号</string>
     <string name="input_sms_code">输入验证码</string>
     <string name="input_new_password">输入新密码</string>
+    <string name="shared_preferences_name">AntsChat</string>
 </resources>

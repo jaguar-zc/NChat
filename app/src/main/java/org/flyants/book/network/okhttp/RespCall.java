@@ -81,7 +81,7 @@ public abstract class RespCall<T> implements Callback<T> {
         try {
             RespError error = JsonUtils.toBean(call.execute().errorBody().string(), RespError.class);
             ToastUtils.show(error.getResp_msg());
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
