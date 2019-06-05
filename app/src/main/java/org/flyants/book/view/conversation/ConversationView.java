@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.liaoinstan.springview.container.DefaultFooter;
 import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
 
@@ -34,7 +33,7 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
 
     @Override
     public int getLayoutId() {
-        return R.layout.experience;
+        return R.layout.conversation;
     }
 
     @Override

@@ -11,18 +11,6 @@ public class NChatApplication extends Application {
     public void onCreate() {
         super.onCreate();
         flyantsApplication = this;
-
-//        Apis apis = RequestUtils.build(Apis.class);
-
-//        LoginReq loginReq = new LoginReq();
-//        loginReq.setUsername("18981063280");
-//        loginReq.setPassword("123456");
-//        apis.loginByPassword(loginReq).enqueue(new RespCall<LoginResp>() {
-//            @Override
-//            public void onResp(LoginResp resp) {
-//                NChatApplication.token = resp.getToken();
-//            }
-//        });
     }
 
     public static NChatApplication getFlyantsApplication() {

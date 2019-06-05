@@ -3,16 +3,14 @@ package org.flyants.book.resources;
 import org.flyants.book.dto.LoginReq;
 import org.flyants.book.dto.LoginResp;
 import org.flyants.book.utils.Page;
-import org.flyants.book.view.dynamic.CommentsPublishReq;
+import org.flyants.book.view.dynamic.publish.CommentsPublishReq;
 import org.flyants.book.view.dynamic.CommentsSimpleResp;
-import org.flyants.book.view.dynamic.DynamicResp;
 import org.flyants.book.view.experience.ConversationDto;
 import org.flyants.book.view.experience.FoundDto;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.book.view.my.WorksModel;
 import org.flyants.book.view.setting.VersionResp;
 import org.flyants.book.view.setting.accountsecurity.SetPasswordReq;
-import org.flyants.book.view.setting.password.SendSmsCodeReq;
 
 import java.util.List;
 

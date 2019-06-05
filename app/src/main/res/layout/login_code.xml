@@ -102,6 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:gravity="center_vertical"
+                android:background="@null"
                 android:text="56s 后重新发送"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/title_size" />

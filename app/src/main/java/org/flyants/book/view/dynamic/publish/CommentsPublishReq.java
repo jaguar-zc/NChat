@@ -1,4 +1,4 @@
-package org.flyants.book.view.dynamic;
+package org.flyants.book.view.dynamic.publish;
 
 public class CommentsPublishReq {
 

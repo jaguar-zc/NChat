@@ -1,232 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+<org.flyants.book.custom.Header
+    android:id="@+id/idHeader"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <org.flyants.book.custom.Header
-        android:id="@+id/idHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </org.flyants.book.custom.Header>
+    android:layout_height="wrap_content">
+</org.flyants.book.custom.Header>
+<org.flyants.component.scrollview.ReboundScrollView
+    android:layout_width="match_parent"
+    android:scrollbars="none"
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/windowBackground"
         android:orientation="vertical">
+
         <LinearLayout
             android:id="@+id/setting_item_account"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_setting_height"
             android:layout_marginTop="@dimen/item_margin_top"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
             android:background="@drawable/setting_item"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/itemTextColor"
                 android:background="@null"
-                android:textSize="@dimen/item_size"
-                android:text="账号与安全"/>
+                android:text="账号与安全"
+                android:textColor="@color/itemTextColor"
+                android:textSize="@dimen/item_size" />
+
             <View
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="0dp"/>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
             <!--<Switch-->
-                <!--android:id="@+id/message_notify"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:checked="true"-->
-                <!--android:thumb="@drawable/switch_custom_thumb_selector"-->
-                <!--android:track="@drawable/switch_custom_track_selector" />-->
+            <!--android:id="@+id/message_notify"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:checked="true"-->
+            <!--android:thumb="@drawable/switch_custom_thumb_selector"-->
+            <!--android:track="@drawable/switch_custom_track_selector" />-->
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@null"
-                android:src="@mipmap/afc"/>
+                android:src="@mipmap/afc" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/setting_item_chat_record"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_setting_height"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:gravity="center_vertical"
             android:background="@drawable/setting_item"
-            android:orientation="horizontal">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/itemTextColor"
                 android:background="@null"
-                android:textSize="@dimen/item_size"
-                android:text="聊天记录管理"/>
+                android:text="聊天记录管理"
+                android:textColor="@color/itemTextColor"
+                android:textSize="@dimen/item_size" />
+
             <View
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="0dp"/>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@null"
-                android:src="@mipmap/afc"/>
+                android:src="@mipmap/afc" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/setting_item_message_notify"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_setting_height"
             android:layout_marginTop="@dimen/item_margin_top"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:gravity="center_vertical"
             android:background="@drawable/setting_item"
-            android:orientation="horizontal">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/itemTextColor"
                 android:background="@null"
-                android:textSize="@dimen/item_size"
-                android:text="新消息通知"/>
+                android:text="新消息通知"
+                android:textColor="@color/itemTextColor"
+                android:textSize="@dimen/item_size" />
+
             <View
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="0dp"/>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@null"
-                android:src="@mipmap/afc"/>
+                android:src="@mipmap/afc" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/setting_item_privacy"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_setting_height"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:gravity="center_vertical"
             android:background="@drawable/setting_item"
-            android:orientation="horizontal">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/itemTextColor"
                 android:background="@null"
-                android:textSize="@dimen/item_size"
-                android:text="隐私保护中心"/>
+                android:text="隐私保护中心"
+                android:textColor="@color/itemTextColor"
+                android:textSize="@dimen/item_size" />
+
             <View
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="0dp"/>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@null"
-                android:src="@mipmap/afc"/>
+                android:src="@mipmap/afc" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/setting_item_general"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_setting_height"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:gravity="center_vertical"
             android:background="@drawable/setting_item"
-            android:orientation="horizontal">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/itemTextColor"
                 android:background="@null"
-                android:textSize="@dimen/item_size"
-                android:text="通用"/>
+                android:text="通用"
+                android:textColor="@color/itemTextColor"
+                android:textSize="@dimen/item_size" />
+
             <View
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="0dp"/>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@null"
-                android:src="@mipmap/afc"/>
+                android:src="@mipmap/afc" />
         </LinearLayout>
-
 
 
         <LinearLayout
             android:id="@+id/setting_item_share"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/item_margin_top"
             android:layout_height="@dimen/item_setting_height"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/item_margin_top"
             android:background="@drawable/setting_item"
-            android:orientation="horizontal">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/itemTextColor"
                 android:background="@null"
-                android:textSize="@dimen/item_size"
-                android:text="推荐给好友"/>
+                android:text="推荐给好友"
+                android:textColor="@color/itemTextColor"
+                android:textSize="@dimen/item_size" />
+
             <View
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="0dp"/>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@null"
-                android:src="@mipmap/afc"/>
+                android:src="@mipmap/afc" />
         </LinearLayout>
+
         <LinearLayout
 
             android:id="@+id/version_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_setting_height"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:gravity="center_vertical"
             android:background="@drawable/setting_item"
-            android:orientation="horizontal">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/itemTextColor"
                 android:background="@null"
-                android:textSize="@dimen/item_size"
-                android:text="检查更新"/>
+                android:text="检查更新"
+                android:textColor="@color/itemTextColor"
+                android:textSize="@dimen/item_size" />
+
             <View
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="0dp"/>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
             <TextView
                 android:id="@+id/version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/version"/>
+                android:text="@string/version" />
+
             <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@null"
-            android:src="@mipmap/afc"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@null"
+                android:src="@mipmap/afc" />
         </LinearLayout>
 
 
         <TextView
             android:id="@+id/logout"
             android:layout_width="match_parent"
-            android:background="@drawable/setting_item"
             android:layout_height="@dimen/item_setting_height"
             android:layout_marginTop="50dp"
+            android:background="@drawable/setting_item"
             android:gravity="center"
-            android:textColor="@color/red"
-            android:text="退出登录"/>
+            android:text="退出登录"
+            android:textColor="@color/red" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="100dp"></View>
 
     </LinearLayout>
-
+</org.flyants.component.scrollview.ReboundScrollView>
 </LinearLayout>

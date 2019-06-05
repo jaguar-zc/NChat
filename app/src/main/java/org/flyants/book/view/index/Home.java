@@ -9,7 +9,7 @@ import org.flyants.book.R;
 import org.flyants.book.custom.NavigationView;
 import org.flyants.book.store.UserStore;
 import org.flyants.book.view.conversation.ConversationView;
-import org.flyants.book.view.inspiration.InspirationView;
+import org.flyants.book.view.dynamic.DynamicListView;
 import org.flyants.book.view.my.MyView;
 import org.flyants.common.mvp.impl.BaseFragment;
 import org.flyants.common.utils.StatusBarUtil;
@@ -72,7 +72,7 @@ public class Home extends AppCompatActivity {
 
     private void init() {
         fragmentList.add(new ConversationView());
-        fragmentList.add(new InspirationView());
+        fragmentList.add(new DynamicListView());
         fragmentList.add(new MyView());
 //        navView.setSelectedItemId(R.id.navigation_1);
     }

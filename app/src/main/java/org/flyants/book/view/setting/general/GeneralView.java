@@ -8,10 +8,9 @@ import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.store.AppConfigStrore;
 import org.flyants.book.view.setting.chatbackground.ChatBackgroundView;
-import org.flyants.book.view.setting.privacy.PrivacyView;
 import org.flyants.common.mvp.impl.BaseActivity;
-import org.flyants.component.wheel.OnSelectedItem;
-import org.flyants.component.wheel.SelectedViewUtils;
+import org.flyants.component.selected.OnSelectedItem;
+import org.flyants.component.selected.SelectedViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;

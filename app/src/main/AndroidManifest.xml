@@ -40,6 +40,7 @@
         <activity android:name=".view.setting.password.PasswordView"></activity>
         <activity android:name=".view.login.LoginView"></activity>
         <activity android:name=".view.login.LoginCodeView"></activity>
+        <activity android:name=".view.dynamic.publish.DynamicPublishView"></activity>
     </application>
 
 </manifest>

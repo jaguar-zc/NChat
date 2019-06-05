@@ -1,6 +1,7 @@
 package org.flyants.book.view.setting;
 
 import android.content.Intent;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import org.flyants.book.view.setting.msgnotice.MsgNoticeView;
 import org.flyants.book.view.setting.chatrecord.ChatRecordView;
 import org.flyants.book.view.setting.privacy.PrivacyView;
 import org.flyants.common.mvp.impl.BaseActivity;
+import org.flyants.component.alert.AlertUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -91,9 +93,12 @@ public class SettingView extends BaseActivity<SettingPresenter> implements UISet
 
     @OnClick(R.id.logout)
     public void onLogout(){
-        getPresenter().logout();
+        AlertUtils.tipClick(this, "确定要退出吗?", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getPresenter().logout();
+            }
+        });
     }
-
-
 
 }

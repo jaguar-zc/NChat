@@ -1,4 +1,4 @@
-package org.flyants.component.wheel;
+package org.flyants.component.selected;
 
 import android.app.Activity;
 import android.view.Gravity;
