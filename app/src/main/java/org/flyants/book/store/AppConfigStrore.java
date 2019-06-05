@@ -1,32 +1,29 @@
 package org.flyants.book.store;
 
+import android.content.Context;
+
 /**
  * APP 设置
  */
 public class AppConfigStrore {
-    private Integer chatRecordCloudStore;//聊天记录云存储
-    private Integer messageNotifyVoice;//消息通知声音
-    private Integer messageNotifyShake;//消息通知震动
 
-    private Integer addMeMethod;//添加我的方式
-    private Integer addMeVerify;//添加我需要验证
+    private Integer chatRecordCloudStore = 0;//聊天记录云存储
+    private Integer messageNotifyVoice = 0;//消息通知声音
+    private Integer messageNotifyShake = 0;//消息通知震动
 
-    private Integer allowTomeRecommendedGroup;//允许向我推荐内容
+    private Integer addMeMethod = 0;//添加我的方式
+    private Integer addMeVerify = 0;//添加我需要验证
 
-    private Integer dynameicVideoPlayNet;//动态视频自动播放网络   WI-FI 4G
+    private Integer allowTomeRecommendedGroup = 0;//允许向我推荐内容
+
+    private Integer dynameicVideoPlayNet = 0;//动态视频自动播放网络   WI-FI 4G
 
     public static AppConfigStrore me = new AppConfigStrore();
 
 
-
-
-
-
-
-
-
-
-
+    public void loaderAppConfig(Context context,OnAppConfigStrore onAppConfigStrore){
+        onAppConfigStrore.OnAppConfigStrore(this);
+    }
 
 
 
@@ -95,5 +92,9 @@ public class AppConfigStrore {
 
     public void setDynameicVideoPlayNet(Integer dynameicVideoPlayNet) {
         this.dynameicVideoPlayNet = dynameicVideoPlayNet;
+    }
+
+    public interface OnAppConfigStrore{
+        void OnAppConfigStrore(AppConfigStrore appConfigStrore);
     }
 }

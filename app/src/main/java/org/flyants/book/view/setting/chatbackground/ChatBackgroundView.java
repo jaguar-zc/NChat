@@ -8,8 +8,7 @@ import butterknife.BindView;
 
 public class ChatBackgroundView extends BaseActivity<ChatBackgroundViewPrecenter> implements UIChatBackgroundView {
 
-    @BindView(R.id.idHeader)
-    Header idHeader;
+    @BindView(R.id.idHeader)  Header idHeader;
     @Override
     public int getStatusBarColor() {
         return R.color.chat_background_color;
