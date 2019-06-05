@@ -16,6 +16,8 @@ import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
 import org.flyants.common.utils.StatusBarUtil;
 
+import java.text.MessageFormat;
+
 import butterknife.BindView;
 
 public class MeQrCodeView extends BaseActivity<MeQrCodePrecenter> implements UIMeQrCodeView {
@@ -27,6 +29,7 @@ public class MeQrCodeView extends BaseActivity<MeQrCodePrecenter> implements UIM
     @BindView(R.id.me_qrcode) ImageView me_qrcode;
     @BindView(R.id.nickName) TextView nickName;
     @BindView(R.id.chat_no) TextView chat_no;
+    @BindView(R.id.call_me) TextView call_me;
     ImageLoader imageLoader = new CenterCropImageLoaderImpl();
     @Override
     public int getStatusBarColor() {
@@ -49,6 +52,7 @@ public class MeQrCodeView extends BaseActivity<MeQrCodePrecenter> implements UIM
         idHeader.setTitleColor(R.color.white);
         idHeader.setBackgrundColor(R.color.chat_background_color);
         idHeader.setBackColorWhite();
+        call_me.setText(MessageFormat.format("用{0}加我好友",getString(R.string.app_name)));
     }
 
     @Override
@@ -65,7 +69,7 @@ public class MeQrCodeView extends BaseActivity<MeQrCodePrecenter> implements UIM
     public void setViewAttrs(UserInfo resp) {
         imageLoader.loader(resp.getEncodedPrincipal(),icon);
         nickName.setText(resp.getNickName()+"");
-        chat_no.setText(getString(R.string.app_name)+"号:"+resp.getPeopleNo()+"");
+        chat_no.setText(getString(R.string.AntsChatId)+":"+resp.getPeopleNo()+"");
 
         try {
             Bitmap mBitmap = EncodingHandler.createQRCode(resp.getPeopleNo(), 500);

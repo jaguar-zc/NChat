@@ -6,7 +6,7 @@
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:paddingLeft="20dp"
         android:paddingRight="5dp"
         android:orientation="horizontal">
@@ -25,12 +25,12 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:padding="10dp"
+            android:padding="5dp"
             android:src="@mipmap/adl"/>
         <ImageView
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:padding="10dp"
+            android:padding="5dp"
             android:src="@mipmap/ae5"/>
     </LinearLayout>
     <com.liaoinstan.springview.widget.SpringView

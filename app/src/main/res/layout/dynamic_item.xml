@@ -72,13 +72,20 @@
             android:textSize="@dimen/item_size"
             android:text="风景纷1ffdwf非我非非反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦反反复复烦烦烦烦烦烦烦烦烦纷" />
     </LinearLayout>
-
-    <org.flyants.book.custom.NineGridDynamicImageListLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/layout_nine_grid"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:sapcing="4dp" />
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+        <org.flyants.book.custom.NineGridDynamicImageListLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/layout_nine_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:sapcing="4dp" >
+        </org.flyants.book.custom.NineGridDynamicImageListLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/conments_layout"
