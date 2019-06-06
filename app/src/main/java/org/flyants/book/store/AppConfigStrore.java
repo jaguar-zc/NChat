@@ -2,99 +2,60 @@ package org.flyants.book.store;
 
 import android.content.Context;
 
+import org.flyants.book.dto.PeopleAppConfig;
+import org.flyants.book.network.RequestUtils;
+import org.flyants.book.network.okhttp.RespCall;
+import org.flyants.book.network.okhttp.RespEmptyCall;
+import org.flyants.book.resources.Apis;
+import org.flyants.common.store.IUpdate;
+import org.flyants.common.store.OnCallback;
+
 /**
  * APP 设置
  */
-public class AppConfigStrore {
+public class AppConfigStrore implements IUpdate<PeopleAppConfig> {
 
-    private Integer chatRecordCloudStore = 0;//聊天记录云存储
-    private Integer messageNotifyVoice = 0;//消息通知声音
-    private Integer messageNotifyShake = 0;//消息通知震动
+    private PeopleAppConfig appConfig;
 
-    private Integer addMeMethod = 0;//添加我的方式
-    private Integer addMeVerify = 0;//添加我需要验证
+    private static AppConfigStrore me = new AppConfigStrore();
 
-    private Integer allowTomeRecommendedGroup = 0;//允许向我推荐内容
+    public static AppConfigStrore getInstance(){
+        return me;
+    }
 
-    private Integer dynameicVideoPlayNet = 0;//动态视频自动播放网络   WI-FI 4G
-
-    public static AppConfigStrore me = new AppConfigStrore();
-
-
-    public void loaderAppConfig(Context context,OnAppConfigStrore onAppConfigStrore){
-        onAppConfigStrore.OnAppConfigStrore(this);
+    @Override
+    public void loadObject(Context context, OnCallback<PeopleAppConfig> callback) {
+        if(appConfig == null){
+            Apis apis = RequestUtils.build(Apis.class);;
+            apis.getPeopleConfig().enqueue(new RespCall<PeopleAppConfig>() {
+                @Override
+                public void onResp(PeopleAppConfig resp) {
+                    appConfig = resp;
+                    callback.call(appConfig);
+                }
+            });
+        }else{
+            callback.call(appConfig);
+        }
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    public Integer getChatRecordCloudStore() {
-        return chatRecordCloudStore;
+    @Override
+    public void update(PeopleAppConfig appConfig) {
+        Apis apis = RequestUtils.build(Apis.class);
+        apis.updatePeopleConfig(appConfig).enqueue(new RespEmptyCall(){
+            @Override
+            public void onSuccess() {
+                super.onSuccess();
+                clean();
+            }
+        });
     }
 
-    public void setChatRecordCloudStore(Integer chatRecordCloudStore) {
-        this.chatRecordCloudStore = chatRecordCloudStore;
+    @Override
+    public void clean() {
+        appConfig = null;
     }
 
-    public Integer getMessageNotifyVoice() {
-        return messageNotifyVoice;
-    }
 
-    public void setMessageNotifyVoice(Integer messageNotifyVoice) {
-        this.messageNotifyVoice = messageNotifyVoice;
-    }
-
-    public Integer getMessageNotifyShake() {
-        return messageNotifyShake;
-    }
-
-    public void setMessageNotifyShake(Integer messageNotifyShake) {
-        this.messageNotifyShake = messageNotifyShake;
-    }
-
-    public Integer getAddMeMethod() {
-        return addMeMethod;
-    }
-
-    public void setAddMeMethod(Integer addMeMethod) {
-        this.addMeMethod = addMeMethod;
-    }
-
-    public Integer getAddMeVerify() {
-        return addMeVerify;
-    }
-
-    public void setAddMeVerify(Integer addMeVerify) {
-        this.addMeVerify = addMeVerify;
-    }
-
-    public Integer getAllowTomeRecommendedGroup() {
-        return allowTomeRecommendedGroup;
-    }
-
-    public void setAllowTomeRecommendedGroup(Integer allowTomeRecommendedGroup) {
-        this.allowTomeRecommendedGroup = allowTomeRecommendedGroup;
-    }
-
-    public Integer getDynameicVideoPlayNet() {
-        return dynameicVideoPlayNet;
-    }
-
-    public void setDynameicVideoPlayNet(Integer dynameicVideoPlayNet) {
-        this.dynameicVideoPlayNet = dynameicVideoPlayNet;
-    }
-
-    public interface OnAppConfigStrore{
-        void OnAppConfigStrore(AppConfigStrore appConfigStrore);
-    }
 }

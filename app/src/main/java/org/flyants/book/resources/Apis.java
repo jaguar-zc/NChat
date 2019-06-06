@@ -1,5 +1,6 @@
 package org.flyants.book.resources;
 
+import org.flyants.book.dto.PeopleAppConfig;
 import org.flyants.book.dto.LoginReq;
 import org.flyants.book.dto.LoginResp;
 import org.flyants.book.utils.Page;
@@ -45,6 +46,11 @@ public interface Apis {
     @PUT("/api/v1/app/people/updatePeopleInfo")
     Call<ResponseBody> updatePeopleInfo(@Body UserInfo userInfo);
 
+    @GET("/api/v1/app/people/config")
+    Call<PeopleAppConfig> getPeopleConfig();
+
+    @PUT("/api/v1/app/people/config")
+    Call<ResponseBody> updatePeopleConfig(@Body PeopleAppConfig appConfig);
 
     @GET("/api/v1/app/comments/list")
     Call<Page<CommentsSimpleResp>> getCommentsList(@Query("page") int page, @Query("commentsType") String commentsType, @Query("resourceId") String resourceId);

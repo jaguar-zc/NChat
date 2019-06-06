@@ -4,6 +4,7 @@ import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.okhttp.RespEmptyCall;
 import org.flyants.book.resources.Apis;
 import org.flyants.book.resources.DynamicApis;
+import org.flyants.common.store.OnCallback;
 import org.flyants.book.store.UserStore;
 import org.flyants.book.utils.Page;
 import org.flyants.book.view.base.BasePagePresenter;
@@ -27,10 +28,10 @@ class MeInfoPrecenter  extends BasePagePresenter<MeInfoView,UIMeInfoView, Dynami
     public void onViewInit() {
         apis = RequestUtils.build(Apis.class);
         dynamicApis = RequestUtils.build(DynamicApis.class);
-        UserStore.me.getUserInfo(context,new UserStore.OnUserInfo(){
+        UserStore.getInstence().loadObject(context, new OnCallback<UserInfo>() {
             @Override
-            public void OnUserInfo(UserInfo userInfo) {
-                uiView.setViewAttrs(userInfo);
+            public void call(UserInfo userInfo) {
+                    uiView.setViewAttrs(userInfo);
             }
         });
     }
@@ -51,14 +52,14 @@ class MeInfoPrecenter  extends BasePagePresenter<MeInfoView,UIMeInfoView, Dynami
     }
 
     public void peopleAssist() {
-        UserStore.me.getUserInfo(context,new UserStore.OnUserInfo(){
+        UserStore.getInstence().loadObject(context, new OnCallback<UserInfo>() {
             @Override
-            public void OnUserInfo(UserInfo userInfo) {
+            public void call(UserInfo userInfo) {
                 apis.assistPeople(userInfo.getId()).enqueue(new RespEmptyCall(){
                     @Override
                     public void onSuccess() {
                         super.onSuccess();
-                        UserStore.me.clean();
+                        UserStore.getInstence().clean();
                         onViewInit();
                     }
                 });

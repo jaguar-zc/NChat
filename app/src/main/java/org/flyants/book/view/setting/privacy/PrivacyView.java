@@ -1,15 +1,24 @@
 package org.flyants.book.view.setting.privacy;
 
+import android.content.Intent;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
+import org.flyants.book.store.AppConfigStrore;
+import org.flyants.book.view.setting.addmetype.AddMeMethodView;
 import org.flyants.common.mvp.impl.BaseActivity;
+import org.flyants.component.selected.OnSelectedItem;
+import org.flyants.component.selected.SelectedViewUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
 
 public class PrivacyView extends BaseActivity<PrivacyPresenter> implements UIPrivacyView {
 
@@ -19,6 +28,13 @@ public class PrivacyView extends BaseActivity<PrivacyPresenter> implements UIPri
     @BindView(R.id.item_contact_black) LinearLayout item_contact_black;
     @BindView(R.id.item_layout_line_4)  LinearLayout item_layout_line_4;
     @BindView(R.id.item_layout_line_5)  LinearLayout item_layout_line_5;
+
+    List<Object> list = new ArrayList<Object>();
+    {
+        list.add("移动网络和WI-FI");
+        list.add("仅Wi-Fi");
+        list.add("关闭");
+    }
 
     @BindView(R.id.allow_tome_recommended_group)  Switch allow_tome_recommended_group;
 
@@ -56,6 +72,12 @@ public class PrivacyView extends BaseActivity<PrivacyPresenter> implements UIPri
     @OnCheckedChanged(R.id.allow_tome_recommended_group)
     public void onAllowTomeRecommendedGroup(CompoundButton buttonView, boolean isChecked){
         getPresenter().setAllowTomeRecommendedGroup(isChecked);
+    }
+
+
+    @OnClick(R.id.item_add_friends_type)
+    public void onClickitem_add_friends_type(){
+        startActivity(new Intent(this, AddMeMethodView.class));
     }
 
     @Override

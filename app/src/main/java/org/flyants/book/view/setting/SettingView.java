@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
+import org.flyants.book.view.setting.about.AboutView;
 import org.flyants.book.view.setting.accountsecurity.AccountSecurityView;
 import org.flyants.book.view.setting.general.GeneralView;
 import org.flyants.book.view.setting.msgnotice.MsgNoticeView;
@@ -28,7 +29,7 @@ public class SettingView extends BaseActivity<SettingPresenter> implements UISet
     @BindView(R.id.setting_item_privacy)  LinearLayout setting_item_privacy;
     @BindView(R.id.setting_item_general)  LinearLayout setting_item_general;
     @BindView(R.id.setting_item_share)  LinearLayout setting_item_share;
-    @BindView(R.id.version_layout)  LinearLayout version_layout;
+    @BindView(R.id.about_layout)  LinearLayout about_layout;
     @BindView(R.id.version)  TextView version;
     @BindView(R.id.logout)  TextView logout;
 
@@ -89,6 +90,12 @@ public class SettingView extends BaseActivity<SettingPresenter> implements UISet
     public void onClickMsgNoticeView(){
         startActivity(new Intent(getActivity(), MsgNoticeView.class));
     }
+
+    @OnClick(R.id.about_layout)
+    public void onClickAbout(){
+        startActivity(new Intent(getActivity(), AboutView.class));
+    }
+
 
 
     @OnClick(R.id.logout)

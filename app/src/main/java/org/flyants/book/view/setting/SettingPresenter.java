@@ -51,9 +51,9 @@ public class SettingPresenter extends BasePresenter<SettingView,UISettingView> {
             @Override
             public void onSuccess() {
                 super.onSuccess();
-                UserStore.me.clean();
+                UserStore.getInstence().clean();
                 SharedPreferencesHelper.$().clear();
-                UserStore.me.login(view);
+                UserStore.getInstence().login(view);
             }
         });
     }

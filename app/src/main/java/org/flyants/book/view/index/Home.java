@@ -64,7 +64,7 @@ public class Home extends AppCompatActivity {
             }
         });
         fragmentManager = getSupportFragmentManager();
-        UserStore.me.login(this);
+        UserStore.getInstence().login(this);
         init();
 //        navView.setSelectedIndex(0);
         setTabSelection(0);

@@ -26,12 +26,10 @@ public class GeneralView extends BaseActivity<GeneralViewPrecenter> implements U
     @BindView(R.id.item_setting_auto_video_lable) TextView item_setting_auto_video_lable;
 
     List<Object> list = new ArrayList<Object>();
-
     {
         list.add("仅WI-FI");
-        list.add("4G网络");
-        list.add("3G网络");
-        list.add("2G网络");
+        list.add("移动网络和WI-FI");
+        list.add("关闭");
     }
 
 
@@ -65,18 +63,20 @@ public class GeneralView extends BaseActivity<GeneralViewPrecenter> implements U
 
     }
 
+
+
+
+
     @OnClick(R.id.item_setting_auto_video)
     public void onClickitem_setting_auto_video(){
         SelectedViewUtils.show(this, list, new OnSelectedItem() {
             @Override
             public void onSelected(int index) {
                 setViewAttrs(index);
-                AppConfigStrore.me.setDynameicVideoPlayNet(index);
+                getPresenter().setDynameicVideoPlayNet(index);
             }
         });
     }
-
-
 
     @OnClick(R.id.item_setting_background)
     public void onClickitem_setting_background(){

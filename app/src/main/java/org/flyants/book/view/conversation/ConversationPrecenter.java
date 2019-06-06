@@ -5,6 +5,7 @@ import com.liaoinstan.springview.widget.SpringView;
 import org.flyants.book.network.RequestUtils;
 import org.flyants.book.resources.ConversationApis;
 import org.flyants.book.store.ConversationStore;
+import org.flyants.common.store.OnCallback;
 import org.flyants.common.mvp.impl.BasePresenter;
 
 import java.util.List;
@@ -25,10 +26,10 @@ class ConversationPrecenter extends BasePresenter<ConversationView, UIConversati
 
     @Override
     public void onRefresh() {
-        ConversationStore.me.getConversationList(context,new ConversationStore.OnConversationList(){
+        ConversationStore.getInstence().loadObject(context, new OnCallback<List<ConversationResp>>() {
             @Override
-            public void onConversationList(List<ConversationResp> list) {
-                uiView.setPullLoadMoreCompleted(0,list);
+            public void call(List<ConversationResp> resps) {
+                uiView.setPullLoadMoreCompleted(0,resps);
             }
         });
     }

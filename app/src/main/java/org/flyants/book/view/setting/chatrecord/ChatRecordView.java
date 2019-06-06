@@ -36,8 +36,8 @@ public class ChatRecordView extends BaseActivity<ChatRecordPresenter> implements
 
 
     @Override
-    public void setViewAttrs(Integer messageCloudStore) {
-        message_cloud_store.setChecked(messageCloudStore == 1);
+    public void setViewAttrs(Integer chatRecordCloudStore) {
+        message_cloud_store.setChecked(chatRecordCloudStore == 1);
     }
 
     @OnCheckedChanged(R.id.message_notify_shake)

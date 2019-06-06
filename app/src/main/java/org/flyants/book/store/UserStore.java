@@ -5,37 +5,42 @@ import android.content.Context;
 import android.content.Intent;
 
 import org.apache.commons.lang3.StringUtils;
-import org.flyants.book.NChatApplication;
 import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.okhttp.RespCall;
 import org.flyants.book.resources.Apis;
 import org.flyants.book.utils.SharedPreferencesHelper;
-import org.flyants.book.view.index.Home;
 import org.flyants.book.view.login.LoginView;
 import org.flyants.book.view.my.UserInfo;
+import org.flyants.common.store.IStore;
+import org.flyants.common.store.OnCallback;
 
-public class UserStore {
-    public static UserStore me = new UserStore();
+public class UserStore implements IStore<UserInfo> {
+    private static UserStore me = new UserStore();
 
     private UserInfo userInfo;
 
+    public static UserStore getInstence(){
+        return me;
+    }
+
+    @Override
     public void clean() {
         userInfo = null;
     }
 
-
-    public void getUserInfo(Context context, OnUserInfo onUserInfo) {
+    @Override
+    public void loadObject(Context context, OnCallback<UserInfo> callback) {
         if (userInfo == null) {
             Apis build = RequestUtils.build(Apis.class);
             build.userInfo().enqueue(new RespCall<UserInfo>() {
                 @Override
                 public void onResp(UserInfo resp) {
                     userInfo = resp;
-                    onUserInfo.OnUserInfo(userInfo);
+                    callback.call(userInfo);
                 }
             });
         } else {
-            onUserInfo.OnUserInfo(userInfo);
+            callback.call(userInfo);
         }
     }
 
@@ -45,8 +50,4 @@ public class UserStore {
         }
     }
 
-
-    public interface OnUserInfo {
-        public void OnUserInfo(UserInfo userInfo);
-    }
 }

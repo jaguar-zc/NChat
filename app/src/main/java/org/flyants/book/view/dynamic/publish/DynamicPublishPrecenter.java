@@ -1,10 +1,11 @@
 package org.flyants.book.view.dynamic.publish;
 
+import org.flyants.common.store.OnCallback;
 import org.flyants.book.store.UserStore;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BasePresenter;
 
-class DynamicPublishPrecenter extends BasePresenter<DynamicPublishView,UIDynamicPublishView> implements UserStore.OnUserInfo {
+class DynamicPublishPrecenter extends BasePresenter<DynamicPublishView,UIDynamicPublishView>  implements OnCallback<UserInfo> {
 
 
 
@@ -15,11 +16,11 @@ class DynamicPublishPrecenter extends BasePresenter<DynamicPublishView,UIDynamic
 
     @Override
     public void onViewInit() {
-        UserStore.me.getUserInfo(context,this);
+        UserStore.getInstence().loadObject(context,this);
     }
 
     @Override
-    public void OnUserInfo(UserInfo userInfo) {
+    public void call(UserInfo userInfo) {
         uiView.setViewAttrs(userInfo);
     }
 

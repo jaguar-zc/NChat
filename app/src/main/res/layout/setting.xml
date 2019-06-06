@@ -211,8 +211,7 @@ android:orientation="vertical">
         </LinearLayout>
 
         <LinearLayout
-
-            android:id="@+id/version_layout"
+            android:id="@+id/about_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_setting_height"
             android:background="@drawable/setting_item"
@@ -225,7 +224,7 @@ android:orientation="vertical">
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:text="检查更新"
+                android:text="@string/about"
                 android:textColor="@color/itemTextColor"
                 android:textSize="@dimen/item_size" />
 

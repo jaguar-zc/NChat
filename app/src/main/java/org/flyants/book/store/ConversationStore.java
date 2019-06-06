@@ -7,41 +7,37 @@ import org.flyants.book.network.okhttp.RespCall;
 import org.flyants.book.resources.ConversationApis;
 import org.flyants.book.utils.RespList;
 import org.flyants.book.view.conversation.ConversationResp;
+import org.flyants.common.store.IStore;
+import org.flyants.common.store.OnCallback;
 
 import java.util.List;
 
-public class ConversationStore {
+public class ConversationStore implements IStore<List<ConversationResp> > {
 
-    public static ConversationStore me = new ConversationStore();
-    List<ConversationResp> conversationRespList;
+    private static ConversationStore me = new ConversationStore();
+    private List<ConversationResp> conversationRespList;
 
-    private void clean(){
+    public static ConversationStore getInstence(){
+        return me;
+    }
+
+    public void clean(){
         conversationRespList = null;
     }
 
-
-    public void getConversationList(Context context, OnConversationList conversationList){
+    @Override
+    public void loadObject(Context context, OnCallback<List<ConversationResp> > callback) {
         if(conversationRespList == null){
             ConversationApis conversationApis = RequestUtils.build(ConversationApis.class);;
             conversationApis.getConversationList().enqueue(new RespCall<RespList<ConversationResp>>() {
                 @Override
                 public void onResp(RespList<ConversationResp> resp) {
                     conversationRespList = resp;
-                    conversationList.onConversationList(resp);
+                    callback.call(resp);
                 }
             });
         }else{
-            conversationList.onConversationList(conversationRespList);
+            callback.call(conversationRespList);
         }
     }
-
-
-
-
-
-    public interface OnConversationList{
-        void onConversationList(List<ConversationResp> list);
-    }
-
-
 }

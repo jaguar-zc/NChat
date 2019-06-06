@@ -7,6 +7,7 @@ import org.flyants.book.R;
 import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.okhttp.RespEmptyCall;
 import org.flyants.book.resources.Apis;
+import org.flyants.common.store.OnCallback;
 import org.flyants.book.store.UserStore;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.book.view.setting.accountsecurity.SetPasswordReq;
@@ -35,9 +36,9 @@ class PasswordPrecenter extends BasePresenter<PasswordView, UIPasswordView> {
 
     @Override
     public void onViewStart() {
-        UserStore.me.getUserInfo(context, new UserStore.OnUserInfo() {
+        UserStore.getInstence().loadObject(context, new OnCallback<UserInfo>() {
             @Override
-            public void OnUserInfo(UserInfo userInfo) {
+            public void call(UserInfo userInfo) {
                 uiView.setViewAttrs(userInfo.getPhone());
                 phone = userInfo.getPhone();
             }

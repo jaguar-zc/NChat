@@ -1,9 +1,11 @@
 package org.flyants.book.view.setting.msgnotice;
 
+import org.flyants.book.dto.PeopleAppConfig;
 import org.flyants.book.store.AppConfigStrore;
 import org.flyants.common.mvp.impl.BasePresenter;
+import org.flyants.common.store.OnCallback;
 
-class MsgNoticePresenter extends BasePresenter<MsgNoticeView,UIMsgNotice> implements AppConfigStrore.OnAppConfigStrore {
+class MsgNoticePresenter extends BasePresenter<MsgNoticeView,UIMsgNotice> implements OnCallback<PeopleAppConfig> {
 
 
     public MsgNoticePresenter(MsgNoticeView t, UIMsgNotice uiMsgNotice) {
@@ -12,12 +14,12 @@ class MsgNoticePresenter extends BasePresenter<MsgNoticeView,UIMsgNotice> implem
 
     @Override
     public void onViewInit() {
-        AppConfigStrore.me.loaderAppConfig(context,this);
+        AppConfigStrore.getInstance().loadObject(context,this);
     }
 
     @Override
-    public void OnAppConfigStrore(AppConfigStrore appConfigStrore) {
-        uiView.setViewAttrs(appConfigStrore.getMessageNotifyShake(),appConfigStrore.getMessageNotifyVoice());
+    public void call(PeopleAppConfig config) {
+        uiView.setViewAttrs(config.getMessageNotifyShake(),config.getMessageNotifyVoice());
     }
 
     @Override
@@ -31,10 +33,22 @@ class MsgNoticePresenter extends BasePresenter<MsgNoticeView,UIMsgNotice> implem
     }
 
     public void setMessageNotifyVoice(Boolean checked) {
-        AppConfigStrore.me.setMessageNotifyVoice(checked?1:0);
+        AppConfigStrore.getInstance().loadObject(context, new OnCallback<PeopleAppConfig>() {
+            @Override
+            public void call(PeopleAppConfig appConfig) {
+                appConfig.setMessageNotifyVoice(checked?1:0);
+                AppConfigStrore.getInstance().update(appConfig);
+            }
+        });
     }
 
     public void setMessageNotifyShake(Boolean checked) {
-        AppConfigStrore.me.setMessageNotifyShake(checked?1:0);
+        AppConfigStrore.getInstance().loadObject(context, new OnCallback<PeopleAppConfig>() {
+            @Override
+            public void call(PeopleAppConfig appConfig) {
+                appConfig.setMessageNotifyShake(checked?1:0);
+                AppConfigStrore.getInstance().update(appConfig);
+            }
+        });
     }
 }

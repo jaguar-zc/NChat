@@ -1,9 +1,11 @@
 package org.flyants.book.view.setting.privacy;
 
+import org.flyants.book.dto.PeopleAppConfig;
 import org.flyants.book.store.AppConfigStrore;
 import org.flyants.common.mvp.impl.BasePresenter;
+import org.flyants.common.store.OnCallback;
 
-class PrivacyPresenter extends BasePresenter<PrivacyView,UIPrivacyView> implements AppConfigStrore.OnAppConfigStrore  {
+class PrivacyPresenter extends BasePresenter<PrivacyView,UIPrivacyView> implements OnCallback<PeopleAppConfig> {
 
 
     public PrivacyPresenter(PrivacyView t, UIPrivacyView uiPrivacyView) {
@@ -12,12 +14,12 @@ class PrivacyPresenter extends BasePresenter<PrivacyView,UIPrivacyView> implemen
 
     @Override
     public void onViewInit() {
-        AppConfigStrore.me.loaderAppConfig(context,this);
+        AppConfigStrore.getInstance().loadObject(context,this);
     }
 
     @Override
-    public void OnAppConfigStrore(AppConfigStrore appConfigStrore) {
-        uiView.setViewAttrs(appConfigStrore.getAddMeVerify(),appConfigStrore.getAllowTomeRecommendedGroup());
+    public void call(PeopleAppConfig appConfig) {
+        uiView.setViewAttrs(appConfig.getAddMeVerify(),appConfig.getAllowTomeRecommendedGroup());
     }
 
     @Override
@@ -31,10 +33,22 @@ class PrivacyPresenter extends BasePresenter<PrivacyView,UIPrivacyView> implemen
     }
 
     public void setAddMyFriendsVerify(boolean isChecked) {
-        AppConfigStrore.me.setAddMeVerify(isChecked?1:0);
+        AppConfigStrore.getInstance().loadObject(context, new OnCallback<PeopleAppConfig>() {
+            @Override
+            public void call(PeopleAppConfig appConfig) {
+                appConfig.setAddMeVerify(isChecked?1:0);
+                AppConfigStrore.getInstance().update(appConfig);
+            }
+        });
     }
 
     public void setAllowTomeRecommendedGroup(boolean isChecked) {
-        AppConfigStrore.me.setAllowTomeRecommendedGroup(isChecked?1:0);
+        AppConfigStrore.getInstance().loadObject(context, new OnCallback<PeopleAppConfig>() {
+            @Override
+            public void call(PeopleAppConfig appConfig) {
+                appConfig.setAllowTomeRecommendedGroup(isChecked?1:0);
+                AppConfigStrore.getInstance().update(appConfig);
+            }
+        });
     }
 }

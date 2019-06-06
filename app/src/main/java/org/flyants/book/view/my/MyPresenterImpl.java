@@ -1,8 +1,8 @@
 package org.flyants.book.view.my;
 
 import org.flyants.book.network.RequestUtils;
-import org.flyants.book.network.okhttp.RespCall;
 import org.flyants.book.resources.Apis;
+import org.flyants.common.store.OnCallback;
 import org.flyants.book.store.UserStore;
 import org.flyants.common.mvp.impl.BasePresenter;
 
@@ -25,9 +25,9 @@ public class MyPresenterImpl  extends BasePresenter<MyView,UiMyView> {
 
     @Override
     public void onViewStart() {
-        UserStore.me.getUserInfo(context,new UserStore.OnUserInfo(){
+        UserStore.getInstence().loadObject(context, new OnCallback<UserInfo>() {
             @Override
-            public void OnUserInfo(UserInfo userInfo) {
+            public void call(UserInfo userInfo) {
                 uiView.setVeiwAttrs(userInfo);
             }
         });

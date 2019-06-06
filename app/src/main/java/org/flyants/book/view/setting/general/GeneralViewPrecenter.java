@@ -1,9 +1,11 @@
 package org.flyants.book.view.setting.general;
 
+import org.flyants.book.dto.PeopleAppConfig;
 import org.flyants.book.store.AppConfigStrore;
 import org.flyants.common.mvp.impl.BasePresenter;
+import org.flyants.common.store.OnCallback;
 
-class GeneralViewPrecenter extends BasePresenter<GeneralView, UIGeneralView> implements AppConfigStrore.OnAppConfigStrore {
+class GeneralViewPrecenter extends BasePresenter<GeneralView, UIGeneralView>  {
 
 
     public GeneralViewPrecenter(GeneralView t, UIGeneralView uiGeneralView) {
@@ -12,12 +14,12 @@ class GeneralViewPrecenter extends BasePresenter<GeneralView, UIGeneralView> imp
 
     @Override
     public void onViewInit() {
-        AppConfigStrore.me.loaderAppConfig(context,this);
-    }
-
-    @Override
-    public void OnAppConfigStrore(AppConfigStrore appConfigStrore) {
-        uiView.setViewAttrs(appConfigStrore.getDynameicVideoPlayNet());
+        AppConfigStrore.getInstance().loadObject(context, new OnCallback<PeopleAppConfig>() {
+            @Override
+            public void call(PeopleAppConfig appConfig) {
+                uiView.setViewAttrs(appConfig.getDynameicVideoPlayNet());
+            }
+        });
     }
 
     @Override
@@ -28,5 +30,15 @@ class GeneralViewPrecenter extends BasePresenter<GeneralView, UIGeneralView> imp
     @Override
     public void onViewDestroy() {
 
+    }
+
+    public void setDynameicVideoPlayNet(int index) {
+        AppConfigStrore.getInstance().loadObject(context, new OnCallback<PeopleAppConfig>() {
+            @Override
+            public void call(PeopleAppConfig appConfig) {
+                appConfig.setDynameicVideoPlayNet(index);
+                AppConfigStrore.getInstance().update(appConfig);
+            }
+        });
     }
 }
