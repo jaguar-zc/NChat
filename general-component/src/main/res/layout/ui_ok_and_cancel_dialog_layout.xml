@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/ui_dialog_parent_rl"
         android:layout_width="match_parent"
-        android:layout_height="206dp"
+        android:layout_height="166dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/shape_dialog_radius">
@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:textColor="@color/black"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:text="Title" />

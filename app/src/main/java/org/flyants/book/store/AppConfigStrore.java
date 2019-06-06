@@ -7,6 +7,7 @@ import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.okhttp.RespCall;
 import org.flyants.book.network.okhttp.RespEmptyCall;
 import org.flyants.book.resources.Apis;
+import org.flyants.book.utils.LogUtils;
 import org.flyants.common.store.IUpdate;
 import org.flyants.common.store.OnCallback;
 
@@ -54,6 +55,7 @@ public class AppConfigStrore implements IUpdate<PeopleAppConfig> {
 
     @Override
     public void clean() {
+        LogUtils.d(AppConfigStrore.class.getSimpleName(),"clean");
         appConfig = null;
     }
 

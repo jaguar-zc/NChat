@@ -40,7 +40,7 @@ public class ChatRecordView extends BaseActivity<ChatRecordPresenter> implements
         message_cloud_store.setChecked(chatRecordCloudStore == 1);
     }
 
-    @OnCheckedChanged(R.id.message_notify_shake)
+    @OnCheckedChanged(R.id.message_cloud_store)
     public void onMessageCloudStore(CompoundButton buttonView, boolean isChecked){
         getPresenter().setMessageCloudStore(isChecked);
     }
