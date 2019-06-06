@@ -30,9 +30,12 @@ import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
 import org.flyants.common.utils.StatusBarUtil;
 
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
 public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInfoView {
 
@@ -55,6 +58,11 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
         return R.color.white;
     }
 
+
+    @Override
+    public List<String> applyPermission() {
+        return Arrays.asList(READ_EXTERNAL_STORAGE);
+    }
 
     @Override
     public MeInfoPrecenter buildPresenter() {
