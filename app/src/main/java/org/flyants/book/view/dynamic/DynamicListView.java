@@ -43,9 +43,15 @@ public class DynamicListView extends BaseFragment<DynamicListPrecenter> implemen
     }
 
     @Override
-    public void setPullLoadMoreCompleted(int i, List<DynamicResp> rows) {
+    public void setPullLoadMoreCompleted(int page, List<DynamicResp> rows) {
         springView.onFinishFreshAndLoad();
-        adapter.refresh(rows);
+        if(page == 1){
+            adapter.refresh(rows);
+        }else{
+            if(rows.size() > 0){
+                adapter.addDataList(rows);
+            }
+        }
         adapter.notifyDataSetChanged();
     }
 

@@ -13,11 +13,8 @@ import java.util.List;
 
 class DynamicListPrecenter extends BasePresenter<DynamicListView,UIDynamicListView>  implements SpringView.OnFreshListener{
 
-
     DynamicApis dynamicApis ;
-
     int page = 1;
-
 
     public DynamicListPrecenter(DynamicListView t, UIDynamicListView uiDynamicListView) {
         super(t, uiDynamicListView);
@@ -37,29 +34,29 @@ class DynamicListPrecenter extends BasePresenter<DynamicListView,UIDynamicListVi
         dynamicApis.getDynamicListByFriend(page).enqueue(new RespCall<Page<DynamicResp>>() {
             @Override
             public void onResp(Page<DynamicResp> resp) {
-                page++;
-//                uiView.setPullLoadMoreCompleted(page,resp.getRows());
-                for (int i = 0; i < 10; i++) {
-                    DynamicResp dynamicResp = new DynamicResp();
-                    dynamicResp.setEncodedPrincipal("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
-                    dynamicResp.setCommentsCount(1);
-                    dynamicResp.setVisibility(DynamicVisibility.ALL);
-                    dynamicResp.setNickName("哇哈哈");
-                    dynamicResp.setText("i你哥哥格局积分非法违法飞飞哥哥哥哥纷纷个愤愤愤愤愤愤愤愤愤愤愤愤愤愤愤愤愤愤水水水水水水水水水水水水水古风哥哥哥哥哥哥哥哥哥哥哥哥哥哥哥哥哥");
-                    List<String> images = new ArrayList<>();
-                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
-                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
-                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
-                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
-                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
-                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
-                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
-                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
-                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
-                    dynamicResp.setImages(images);
-                    resp.getRows().add(dynamicResp);
-                }
                 uiView.setPullLoadMoreCompleted(page,resp.getRows());
+                page++;
+//                for (int i = 0; i < 10; i++) {
+//                    DynamicResp dynamicResp = new DynamicResp();
+//                    dynamicResp.setEncodedPrincipal("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
+//                    dynamicResp.setCommentsCount(1);
+//                    dynamicResp.setVisibility(DynamicVisibility.ALL);
+//                    dynamicResp.setNickName("哇哈哈");
+//                    dynamicResp.setText("i你哥哥格局积分非法违法飞飞哥哥哥哥纷纷个愤愤愤愤愤愤愤愤愤愤愤愤愤愤愤愤愤愤水水水水水水水水水水水水水古风哥哥哥哥哥哥哥哥哥哥哥哥哥哥哥哥哥");
+//                    List<String> images = new ArrayList<>();
+//                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
+//                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
+//                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
+//                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
+//                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
+//                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
+//                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
+//                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
+//                    images.add("http://flyants.oss-cn-shanghai.aliyuncs.com/conversation/1ef897ba-3472-4928-814f-e468681504b7.jpg");
+//                    dynamicResp.setImages(images);
+//                    resp.getRows().add(dynamicResp);
+//                }
+//                uiView.setPullLoadMoreCompleted(page,resp.getRows());
 
             }
         });
