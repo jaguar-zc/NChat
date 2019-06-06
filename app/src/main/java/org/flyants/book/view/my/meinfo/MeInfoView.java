@@ -1,5 +1,10 @@
 package org.flyants.book.view.my.meinfo;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -39,6 +44,8 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
 
     @BindView(R.id.recycler_view)  RecyclerView recycler_view;
 
+    private static int RESULT_LOAD_IMAGE = 1;
+
     MeInfoHeaderView meInfoHeader;
     ImageLoader imageLoader = new CenterCropImageLoaderImpl();
     MeInfoAdapter adapter;
@@ -60,6 +67,16 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
         return R.layout.me_info;
     }
 
+
+    View.OnClickListener iconClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent( Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+            startActivityForResult(i, RESULT_LOAD_IMAGE);
+        }
+    };
+
     @Override
     public void onViewInit() {
 
@@ -71,6 +88,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
         meInfoHeader = new MeInfoHeaderView(this,springView);
         meInfoHeader.setRecycler_view(recycler_view);
         meInfoHeader.setPresenter(getPresenter());
+        meInfoHeader.icon.setOnClickListener(iconClick);
 //        idHeader.setHeaderTitle("");
 //        idHeader.setBackgrundColor(0);
 
@@ -140,5 +158,27 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
             result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            meInfoHeader.icon.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+        }
     }
 }

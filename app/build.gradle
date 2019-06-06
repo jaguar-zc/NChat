@@ -66,6 +66,9 @@ dependencies {
 // Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
+
+//    implementation 'com.jph.takephoto:takephoto_library:4.1.0'
+
     implementation project(path: ':flyants-base')
     implementation project(path: ':general-component')
 }
