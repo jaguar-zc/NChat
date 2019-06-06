@@ -27,6 +27,7 @@ import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
 import org.flyants.book.view.dynamic.DynamicResp;
 import org.flyants.book.view.my.UserInfo;
+import org.flyants.book.view.photoalbum.SimplePhotoAlbumView;
 import org.flyants.common.mvp.impl.BaseActivity;
 import org.flyants.common.utils.StatusBarUtil;
 
@@ -79,9 +80,10 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
     View.OnClickListener iconClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent i = new Intent( Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-            startActivityForResult(i, RESULT_LOAD_IMAGE);
+//            Intent i = new Intent( Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//
+//            startActivityForResult(i, RESULT_LOAD_IMAGE);
+            startActivity(new Intent(getActivity(), SimplePhotoAlbumView.class));
         }
     };
 

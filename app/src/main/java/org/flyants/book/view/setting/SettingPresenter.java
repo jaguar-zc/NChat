@@ -51,7 +51,6 @@ public class SettingPresenter extends BasePresenter<SettingView,UISettingView> {
         apis.logout().enqueue(new RespEmptyCall(){
             @Override
             public void onSuccess() {
-                super.onSuccess();
                 UserStore.getInstence().clean();
                 SharedPreferencesHelper.$().clear();
                 UserStore.getInstence().login(view);
@@ -59,7 +58,6 @@ public class SettingPresenter extends BasePresenter<SettingView,UISettingView> {
 
             @Override
             public void onFail(RespError error) {
-                super.onFail(error);
                 UserStore.getInstence().clean();
                 SharedPreferencesHelper.$().clear();
                 UserStore.getInstence().login(view);

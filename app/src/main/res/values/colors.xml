@@ -24,5 +24,7 @@
     <color name="no_bg">@null</color>
     <color name="meinfo_bg">#110e09</color>
 
+    <color name="multiple_image_select_primaryDark">#000000</color>
+
     <!--//292b50-->
 </resources>

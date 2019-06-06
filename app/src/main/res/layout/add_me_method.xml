@@ -41,7 +41,7 @@
                 android:id="@+id/me_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="false"
                 android:thumb="@drawable/switch_custom_thumb_selector"
                 android:track="@drawable/switch_custom_track_selector" />
         </LinearLayout>
@@ -64,7 +64,7 @@
                 android:id="@+id/chat_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="false"
                 android:thumb="@drawable/switch_custom_thumb_selector"
                 android:track="@drawable/switch_custom_track_selector" />
         </LinearLayout>
@@ -86,7 +86,7 @@
                 android:id="@+id/me_qrcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="false"
                 android:thumb="@drawable/switch_custom_thumb_selector"
                 android:track="@drawable/switch_custom_track_selector" />
         </LinearLayout>

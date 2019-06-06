@@ -30,6 +30,11 @@ public class LoginView extends BaseActivity<LoginPresenter> implements UILoginVi
     public void onViewInit() {
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
     @OnClick(R.id.get_sms_code)
     public void onClickget_sms_code(){
         getPresenter().getCode();

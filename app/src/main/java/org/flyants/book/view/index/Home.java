@@ -70,6 +70,8 @@ public class Home extends AppCompatActivity {
         setTabSelection(0);
     }
 
+
+
     private void init() {
         fragmentList.add(new ConversationView());
         fragmentList.add(new DynamicListView());

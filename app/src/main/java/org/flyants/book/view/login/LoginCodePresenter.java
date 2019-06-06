@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 
 import org.apache.commons.lang3.StringUtils;
-import org.flyants.book.NChatApplication;
 import org.flyants.book.R;
 import org.flyants.book.dto.LoginReq;
 import org.flyants.book.dto.LoginResp;
@@ -22,7 +21,6 @@ class LoginCodePresenter extends BasePresenter<LoginCodeView,UILoginCodeView> {
 
 
     private String phone;
-    private String[] inputCode = new String[4];
 
     public int Max = 60;//60秒重发
     public int reRendSmsCode = 60;//还剩于多少秒重发
@@ -38,7 +36,6 @@ class LoginCodePresenter extends BasePresenter<LoginCodeView,UILoginCodeView> {
     public void onViewInit() {
         apis = RequestUtils.build(Apis.class);
         phone = view.getIntent().getStringExtra("phone");
-        uiView.setInputCode(inputCode);
     }
 
     @Override
