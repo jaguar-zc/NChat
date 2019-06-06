@@ -28,7 +28,7 @@ public class MyView extends BaseFragment<MyPresenterImpl> implements UiMyView  {
     @BindView(R.id.item_setting) LinearLayout item_setting;
     @BindView(R.id.nickname) TextView nickname;
     @BindView(R.id.nchat_no) TextView nchat_no;
-    @BindView(R.id.edit_info) TextView edit_info;
+    @BindView(R.id.edit_info) LinearLayout edit_info;
 
     ImageLoader imageLoader = new CenterCropImageLoaderImpl();
 

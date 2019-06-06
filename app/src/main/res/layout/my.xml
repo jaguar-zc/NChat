@@ -29,6 +29,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:layout_marginLeft="10dp"
                     android:orientation="vertical">
 
@@ -50,26 +51,25 @@
                         android:textColor="@color/gray"
                         android:textSize="@dimen/content_size" />
                 </LinearLayout>
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"></View>
-
-                <TextView
+                <LinearLayout
                     android:id="@+id/edit_info"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="个人主页"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/content_size"></TextView>
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="个人主页"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/content_size"></TextView>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@mipmap/afc" />
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/afc" />
+                </LinearLayout>
             </LinearLayout>
 
 

@@ -12,12 +12,13 @@ android:orientation="vertical">
 <org.flyants.component.scrollview.ReboundScrollView
     android:layout_width="match_parent"
     android:scrollbars="none"
+    android:background="@color/windowBackground"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/windowBackground"
+        android:background="@null"
         android:orientation="vertical">
 
         <LinearLayout
