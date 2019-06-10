@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/windowBackground"
+        android:focusable="true"
         android:orientation="vertical">
         <org.flyants.component.scrollview.ReboundScrollView
             android:layout_width="match_parent"
@@ -29,12 +30,19 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="0px"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
             <EditText
+                android:id="@+id/input_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:maxHeight="100dp"
+                android:imeOptions="actionSend"
                 android:gravity="left|top"
                 android:textColor="@color/black_text"
                 android:textSize="@dimen/toolbar_size"
