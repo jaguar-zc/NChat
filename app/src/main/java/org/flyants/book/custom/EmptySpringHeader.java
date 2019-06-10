@@ -6,12 +6,14 @@ import android.view.ViewGroup;
 
 import com.liaoinstan.springview.container.BaseHeader;
 
+import org.flyants.book.R;
+
 public class EmptySpringHeader extends BaseHeader {
 
 
     @Override
     public View getView(LayoutInflater inflater, ViewGroup viewGroup) {
-        return null;
+        return LayoutInflater.from(inflater.getContext()).inflate(R.layout.empty_spring_header, null ,false);
     }
 
     @Override

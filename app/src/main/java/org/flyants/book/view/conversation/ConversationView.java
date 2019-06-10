@@ -25,7 +25,7 @@ import butterknife.BindView;
 
 public class ConversationView extends BaseFragment<ConversationPrecenter> implements UIConversationView , BaseRecyclerAdapter.OnItemClickListener {
 
-    @BindView(R.id.springView) SpringView springView;
+//    @BindView(R.id.springView) SpringView springView;
     @BindView(R.id.recycler_view) RecyclerView recycler_view;
     private ConversationAdapter adapter;
 
@@ -61,16 +61,16 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
         recycler_view.setAdapter(proxyRecyclerViewAdapter);
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));
         recycler_view.setItemAnimator( new DefaultItemAnimator());
-        springView.setHeader(new EmptySpringHeader());
+//        springView.setHeader(new EmptySpringHeader());
 //        springView.setHeader(new DefaultHeader(getContext()));
 //        springView.setFooter(new DefaultFooter(getContext()));
-        springView.setListener(getPresenter());
-        springView.setEnableFooter(false);
+//        springView.setListener(getPresenter());
+//        springView.setEnableFooter(false);
     }
 
     @Override
     public void setPullLoadMoreCompleted(int page, List<ConversationResp> list) {
-        springView.onFinishFreshAndLoad();
+//        springView.onFinishFreshAndLoad();
         adapter.refresh(list);
         adapter.notifyDataSetChanged();
     }

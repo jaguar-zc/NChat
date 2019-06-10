@@ -81,7 +81,6 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
         @Override
         public void onClick(View v) {
 //            Intent i = new Intent( Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//
 //            startActivityForResult(i, RESULT_LOAD_IMAGE);
             startActivity(new Intent(getActivity(), SimplePhotoAlbumView.class));
         }
@@ -120,7 +119,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
         proxyAdapter.addHeaderView(meInfoHeader.rootView);
         recycler_view.setAdapter(proxyAdapter);
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));
-        recycler_view.setItemAnimator( new DefaultItemAnimator());
+//        recycler_view.setItemAnimator( new DefaultItemAnimator());
         springView.setHeader(new EmptySpringHeader());
 //        springView.setHeader(new DefaultHeader(getActivity()));
         springView.setFooter(new DefaultFooter(getActivity()));

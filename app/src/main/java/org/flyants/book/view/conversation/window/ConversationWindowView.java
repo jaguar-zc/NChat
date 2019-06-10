@@ -1,6 +1,9 @@
 package org.flyants.book.view.conversation.window;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.liaoinstan.springview.widget.SpringView;
 
@@ -18,10 +21,11 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
 
 
     @BindView(R.id.idHeader) Header idHeader;
+    @BindView(R.id.recycler_view) RecyclerView recycler_view;
 
 
     public int getStatusBarColor(){
-        return com.monke.basemvplib.R.color.white;
+        return R.color.windowBackground;
     }
 
 
@@ -37,7 +41,14 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
 
     @Override
     public void onViewInit() {
-
+        ImageView right = new ImageView(this);
+        right.setImageResource(R.mipmap.a26);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams( ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        int pxDimension = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 30,this.getResources().getDisplayMetrics());
+        right.setLayoutParams(params);
+        right.setPadding(pxDimension,pxDimension,pxDimension,pxDimension);
+        idHeader.setHeaderRight(right);
+        idHeader.setBackgrundColor(getStatusBarColor());
     }
 
     @Override
