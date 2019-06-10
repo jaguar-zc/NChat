@@ -1,5 +1,6 @@
 package org.flyants.book.view.conversation;
 
+import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -14,18 +15,19 @@ import org.flyants.book.R;
 import org.flyants.book.custom.EmptySpringHeader;
 import org.flyants.book.custom.ProxyRecyclerViewAdapter;
 import org.flyants.book.utils.ToastUtils;
+import org.flyants.book.view.base.BaseRecyclerAdapter;
+import org.flyants.book.view.conversation.window.ConversationWindowView;
 import org.flyants.common.mvp.impl.BaseFragment;
 
 import java.util.List;
 
 import butterknife.BindView;
 
-public class ConversationView extends BaseFragment<ConversationPrecenter> implements UIConversationView {
+public class ConversationView extends BaseFragment<ConversationPrecenter> implements UIConversationView , BaseRecyclerAdapter.OnItemClickListener {
 
     @BindView(R.id.springView) SpringView springView;
     @BindView(R.id.recycler_view) RecyclerView recycler_view;
     private ConversationAdapter adapter;
-
 
     @Override
     public ConversationPrecenter buildPresenter() {
@@ -42,6 +44,7 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
         View searchView = LayoutInflater.from(getActivity()).inflate(R.layout.search_lable, null ,false);
 
         adapter = new ConversationAdapter(recycler_view);
+        adapter.setOnItemClickListener(this);
         ProxyRecyclerViewAdapter proxyRecyclerViewAdapter =  new ProxyRecyclerViewAdapter(adapter);
         proxyRecyclerViewAdapter.addHeaderView(searchView);
 
@@ -70,6 +73,13 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
         springView.onFinishFreshAndLoad();
         adapter.refresh(list);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(View view, Object data, int position) {
+        Intent intent = new Intent(getContext(), ConversationWindowView.class);
+        intent.putExtra(ConversationWindowView.PARAM_NAME,(ConversationResp)data);
+        startActivity(intent);
     }
 
     @Override

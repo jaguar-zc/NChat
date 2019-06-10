@@ -1,6 +1,8 @@
 package org.flyants.book.view.conversation;
 
-public class ConversationResp {
+import java.io.Serializable;
+
+public class ConversationResp  implements Serializable {
 
     private String id;// (string, optional),
     private String type;// (string, optional) = ['SINGLE', 'GROUP']stringEnum:"SINGLE", "GROUP"

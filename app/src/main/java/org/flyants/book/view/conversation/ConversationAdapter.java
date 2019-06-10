@@ -1,7 +1,10 @@
 package org.flyants.book.view.conversation;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.flyants.book.R;
@@ -10,6 +13,7 @@ import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
 import org.flyants.book.utils.ToastUtils;
 import org.flyants.book.view.base.BaseRecyclerAdapter;
 import org.flyants.book.view.base.RecyclerHolder;
+import org.flyants.book.view.conversation.window.ConversationWindowView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,13 +43,6 @@ public class ConversationAdapter extends BaseRecyclerAdapter<ConversationResp> {
         holder.setText(R.id.name,item.getName());
         holder.setText(R.id.time,item.getType());
         holder.setText(R.id.msg,item.getType());
-        View view = holder.getView(R.id.layout_item_root);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.show(item.getName());
-            }
-        });
     }
 
     public ConversationAdapter(RecyclerView v, Collection<ConversationResp> datas, int itemLayoutId) {
