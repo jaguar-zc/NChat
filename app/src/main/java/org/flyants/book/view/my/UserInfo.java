@@ -1,8 +1,6 @@
 package org.flyants.book.view.my;
 
 
-import java.util.Date;
-
 public class UserInfo   {
 
     private String id;

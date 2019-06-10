@@ -11,6 +11,7 @@ import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
 
 import org.flyants.book.R;
+import org.flyants.book.custom.EmptySpringHeader;
 import org.flyants.book.custom.ProxyRecyclerViewAdapter;
 import org.flyants.book.utils.ToastUtils;
 import org.flyants.common.mvp.impl.BaseFragment;
@@ -57,7 +58,8 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
         recycler_view.setAdapter(proxyRecyclerViewAdapter);
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));
         recycler_view.setItemAnimator( new DefaultItemAnimator());
-        springView.setHeader(new DefaultHeader(getContext()));
+        springView.setHeader(new EmptySpringHeader());
+//        springView.setHeader(new DefaultHeader(getContext()));
 //        springView.setFooter(new DefaultFooter(getContext()));
         springView.setListener(getPresenter());
         springView.setEnableFooter(false);

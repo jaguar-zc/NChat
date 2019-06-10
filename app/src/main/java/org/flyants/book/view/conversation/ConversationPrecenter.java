@@ -8,11 +8,14 @@ import org.flyants.book.store.ConversationStore;
 import org.flyants.common.store.OnCallback;
 import org.flyants.common.mvp.impl.BasePresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class ConversationPrecenter extends BasePresenter<ConversationView, UIConversationView> implements SpringView.OnFreshListener{
 
     ConversationApis conversationApis;
+
+    List<ConversationResp> conversationRespList = new ArrayList<>();
 
     public ConversationPrecenter(ConversationView t, UIConversationView uiExperienceView) {
         super(t, uiExperienceView);
@@ -26,12 +29,7 @@ class ConversationPrecenter extends BasePresenter<ConversationView, UIConversati
 
     @Override
     public void onRefresh() {
-        ConversationStore.getInstence().loadObject(context, new OnCallback<List<ConversationResp>>() {
-            @Override
-            public void call(List<ConversationResp> resps) {
-                uiView.setPullLoadMoreCompleted(0,resps);
-            }
-        });
+        uiView.setPullLoadMoreCompleted(0,conversationRespList);
     }
 
     @Override
@@ -41,7 +39,13 @@ class ConversationPrecenter extends BasePresenter<ConversationView, UIConversati
 
     @Override
     public void onViewStart() {
-
+        ConversationStore.getInstence().loadObject(context, new OnCallback<List<ConversationResp>>() {
+            @Override
+            public void call(List<ConversationResp> resps) {
+                conversationRespList = resps;
+                uiView.setPullLoadMoreCompleted(0,resps);
+            }
+        });
     }
 
     @Override

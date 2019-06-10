@@ -125,8 +125,6 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
 //        springView.setHeader(new DefaultHeader(getActivity()));
         springView.setFooter(new DefaultFooter(getActivity()));
         springView.setListener(getPresenter());
-        springView.setEnableFooter(true);
-        springView.setEnableHeader(true);
     }
 
     @Override
@@ -188,6 +186,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
             cursor.close();
 
             meInfoHeader.icon.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
 
         }
     }

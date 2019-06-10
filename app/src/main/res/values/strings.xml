@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">蚁聊</string>
-    <string name="host">http://flyants-api.devopscloud.cn:10000</string>
+    <string name="host">https://flyants-api.devopscloud.cn</string>
     <!--<string name="host">http://88.88.10.82:10000</string>-->
     <string name="AntsChatId">蚁聊号</string>
     <string name="about">关于蚁聊</string>
