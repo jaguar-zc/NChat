@@ -50,6 +50,7 @@
         <activity android:name=".view.setting.about.AboutView"></activity>
         <activity android:name=".view.photoalbum.SimplePhotoAlbumView"></activity>
         <activity android:name=".view.conversation.window.ConversationWindowView"></activity>
+        <activity android:name=".view.my.editinfo.EditUserInfoView"></activity>
     </application>
 
 </manifest>

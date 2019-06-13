@@ -1,6 +1,8 @@
 package org.flyants.book.view.my.meinfo;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.flyants.book.R;
+import org.flyants.book.view.my.editinfo.EditUserInfoView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +25,8 @@ public class MeInfoHeaderView {
 
     MeInfoPrecenter presenter;
     RecyclerView recycler_view;
+
+    Context context;
 
     @BindView(R.id.icon) ImageView icon;
     @BindView(R.id.nickName)  TextView nickName;
@@ -40,6 +45,7 @@ public class MeInfoHeaderView {
     @BindView(R.id.location)  TextView location;
 
     public MeInfoHeaderView(Activity activity, ViewGroup group) {
+        this.context = activity;
         rootView = LayoutInflater.from(activity).inflate(R.layout.me_info_header, group ,false);
         ButterKnife.bind(this,rootView);
     }
@@ -79,6 +85,7 @@ public class MeInfoHeaderView {
 
     @OnClick(R.id.edit_people_info)
     public void edit_people_info() {
+        context.startActivity(new Intent(context, EditUserInfoView.class));
     }
 
     @OnClick(R.id.peopleAssist)

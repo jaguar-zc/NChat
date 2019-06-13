@@ -28,10 +28,15 @@ class MeInfoPrecenter  extends BasePagePresenter<MeInfoView,UIMeInfoView, Dynami
     public void onViewInit() {
         apis = RequestUtils.build(Apis.class);
         dynamicApis = RequestUtils.build(DynamicApis.class);
+    }
+
+    @Override
+    public void onViewStart() {
+        super.onViewStart();
         UserStore.getInstence().loadObject(context, new OnCallback<UserInfo>() {
             @Override
             public void call(UserInfo userInfo) {
-                    uiView.setViewAttrs(userInfo);
+                uiView.setViewAttrs(userInfo);
             }
         });
     }
