@@ -15,6 +15,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    // 签名文件
+    signingConfigs {
+        config {
+            keyAlias 'duomi-release'
+            keyPassword '123456'
+            storeFile file('../keystore/release.jks')
+            storePassword '123456'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
