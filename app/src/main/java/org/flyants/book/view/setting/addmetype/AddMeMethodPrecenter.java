@@ -41,11 +41,32 @@ class AddMeMethodPrecenter extends BasePresenter<AddMeMethodView,UIAddMeMethodVi
     }
 
     public void setChangePhone(boolean isChecked) {
+        AppConfigStrore.getInstance().loadObject(context, new OnCallback<PeopleAppConfig>() {
+            @Override
+            public void call(PeopleAppConfig appConfig) {
+                appConfig.setUsePhonePlusMe(isChecked?1:0);
+                AppConfigStrore.getInstance().update(appConfig);
+            }
+        });
     }
 
     public void setChangeChatNo(boolean isChecked) {
+        AppConfigStrore.getInstance().loadObject(context, new OnCallback<PeopleAppConfig>() {
+            @Override
+            public void call(PeopleAppConfig appConfig) {
+                appConfig.setUseChatNoPlusMe(isChecked?1:0);
+                AppConfigStrore.getInstance().update(appConfig);
+            }
+        });
     }
 
     public void setChangeQrCode(boolean isChecked) {
+        AppConfigStrore.getInstance().loadObject(context, new OnCallback<PeopleAppConfig>() {
+            @Override
+            public void call(PeopleAppConfig appConfig) {
+                appConfig.setUseQrCodePlusMe(isChecked?1:0);
+                AppConfigStrore.getInstance().update(appConfig);
+            }
+        });
     }
 }

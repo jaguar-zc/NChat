@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.monke.basemvplib.R;
@@ -23,7 +24,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity<P extends PrecenterEvent> extends Activity  implements ViewEvent {
+public abstract class BaseActivity<P extends PrecenterEvent> extends AppCompatActivity implements ViewEvent {
 
     public List<String> applyPermission(){
         return new ArrayList<String>();

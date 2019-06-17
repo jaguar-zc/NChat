@@ -1,4 +1,4 @@
-package org.flyants.book.view.my.meinfo;
+package org.flyants.book.view.my.medynamic;
 
 import android.support.v7.widget.RecyclerView;
 
@@ -11,7 +11,7 @@ import org.flyants.book.view.dynamic.DynamicResp;
 
 import java.util.Collection;
 
-class MeInfoAdapter  extends BaseRecyclerAdapter<DynamicResp> {
+class MeDynamicAdapter extends BaseRecyclerAdapter<DynamicResp> {
 
     ImageLoader imageLoader = new CenterCropImageLoaderImpl();
 
@@ -26,7 +26,7 @@ class MeInfoAdapter  extends BaseRecyclerAdapter<DynamicResp> {
 //    }.$();
 
 
-    public MeInfoAdapter(RecyclerView recyclerView) {
+    public MeDynamicAdapter(RecyclerView recyclerView) {
         this(recyclerView, null, R.layout.dynamic_item);
     }
 
@@ -38,7 +38,7 @@ class MeInfoAdapter  extends BaseRecyclerAdapter<DynamicResp> {
 //        holder.setText(R.id.last_msg,item.getLastMsg());
     }
 
-    public MeInfoAdapter(RecyclerView v, Collection<DynamicResp> datas, int itemLayoutId) {
+    public MeDynamicAdapter(RecyclerView v, Collection<DynamicResp> datas, int itemLayoutId) {
         super(v, datas, itemLayoutId);
     }
 }
