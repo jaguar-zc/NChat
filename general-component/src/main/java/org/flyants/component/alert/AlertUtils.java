@@ -19,7 +19,6 @@ public class AlertUtils {
                 .setText(R.id.ui_dialog_left_btn, "取消")
                 .setText(R.id.ui_dialog_right_btn, "确定")
                 .setText(R.id.ui_dialog_title_tv, "提示")
-                .setVisible(R.id.ui_dialog_title_tv, false)
                 .setText(R.id.ui_dialog_content_tv, content)
                 .show();
 

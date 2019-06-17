@@ -20,7 +20,9 @@ import org.flyants.book.custom.Header;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
 import org.flyants.book.view.dynamic.DynamicResp;
+import org.flyants.book.view.dynamic.publish.DynamicPublishView;
 import org.flyants.book.view.my.UserInfo;
+import org.flyants.book.view.my.editinfo.EditUserInfoView;
 import org.flyants.book.view.my.extinfo.ExtInfoView;
 import org.flyants.book.view.my.medynamic.MeDynamicView;
 import org.flyants.book.view.photoalbum.SimplePhotoAlbumView;
@@ -173,21 +175,12 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
            peopleAssist.setImageResource(R.mipmap.ab0);
         }
        peopleAssistCount.setText(resp.getPeopleAssistCount() + "");
-//        location.setText("所在地：   " + resp.getLocation() + "");
     }
 
     @Override
     public void onViewDestroy() {
 
     }
-
-    @Override
-    public void setPullLoadMoreCompleted(int page, List<DynamicResp> list) {
-//        springView.onFinishFreshAndLoad();
-//        adapter.addDataList(list);
-//        adapter.notifyDataSetChanged();
-    }
-
 
     @OnClick(R.id.tap_dynamic)
     public void onClickTapMeDynamic(){
@@ -213,14 +206,17 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
 
     @OnClick(R.id.send_message)
     public void send_message() {
+
     }
 
     @OnClick(R.id.send_dynamic)
     public void send_dynamic() {
+        startActivity(new Intent(this, DynamicPublishView.class));
     }
 
     @OnClick(R.id.edit_people_info)
     public void edit_people_info() {
+        startActivity(new Intent(this, EditUserInfoView.class));
     }
 
     @OnClick(R.id.peopleAssist)

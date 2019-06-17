@@ -2,34 +2,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:padding="10dp">
-
-
-    <RelativeLayout
+    android:layout_gravity="center" >
+    <LinearLayout
         android:id="@+id/ui_dialog_parent_rl"
         android:layout_width="match_parent"
-        android:layout_height="166dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:orientation="vertical"
         android:background="@drawable/shape_dialog_radius">
-
         <TextView
             android:id="@+id/ui_dialog_title_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:textColor="@color/black"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:layout_height="40dp"
+            android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:text="Title" />
 
         <TextView
             android:id="@+id/ui_dialog_content_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:gravity="center"
+            android:minHeight="50dp"
+            android:maxHeight="200dp"
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
@@ -62,6 +61,6 @@
                 android:background="@drawable/shape_dialog_right_btn_bg"
                 android:text="ok" />
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

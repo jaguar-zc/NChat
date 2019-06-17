@@ -225,8 +225,7 @@
                             android:gravity="center"
                             android:text="动态"
                             android:textColor="@color/black_text"
-                            android:textSize="@dimen/title_selected_size"
-                            android:textStyle="bold" />
+                            android:textSize="@dimen/title_selected_size" />
 
                         <TextView
                             android:id="@+id/tap_extinfo"
@@ -237,7 +236,8 @@
                             android:gravity="center"
                             android:text="资料"
                             android:textColor="@color/black_text"
-                            android:textSize="@dimen/title_selected_size" />
+                            android:textSize="@dimen/title_selected_size"
+                            android:textStyle="bold"/>
                     </LinearLayout>
 
 
