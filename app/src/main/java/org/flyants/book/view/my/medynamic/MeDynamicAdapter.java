@@ -1,6 +1,7 @@
 package org.flyants.book.view.my.medynamic;
 
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;

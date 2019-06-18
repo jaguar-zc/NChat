@@ -1,10 +1,7 @@
 package org.flyants.book.view.dynamic.publish;
 
-import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.liaoinstan.springview.widget.SpringView;
 
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;

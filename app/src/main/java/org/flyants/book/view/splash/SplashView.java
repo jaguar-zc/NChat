@@ -15,7 +15,7 @@ public class SplashView extends BaseActivity<SplashPrecenter> implements UISplas
 
     @Override
     public int getLayoutId() {
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         return R.layout.splash;
     }
 
@@ -25,7 +25,7 @@ public class SplashView extends BaseActivity<SplashPrecenter> implements UISplas
 
     @Override
     public void onViewStart() {
-        if (!isTaskRoot()) {
+        if (!getActivity().isTaskRoot()) {
             finish();
             return;
         }

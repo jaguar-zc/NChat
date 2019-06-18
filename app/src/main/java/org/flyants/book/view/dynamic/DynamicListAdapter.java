@@ -1,7 +1,6 @@
 package org.flyants.book.view.dynamic;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.NineGridDynamicImageListLayout;

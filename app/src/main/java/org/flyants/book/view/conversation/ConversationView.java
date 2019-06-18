@@ -1,18 +1,15 @@
 package org.flyants.book.view.conversation;
 
 import android.content.Intent;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.liaoinstan.springview.container.DefaultHeader;
-import com.liaoinstan.springview.widget.SpringView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.OrientationHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
-import org.flyants.book.custom.EmptySpringHeader;
 import org.flyants.book.custom.ProxyRecyclerViewAdapter;
 import org.flyants.book.utils.ToastUtils;
 import org.flyants.book.view.base.BaseRecyclerAdapter;
@@ -26,7 +23,8 @@ import butterknife.BindView;
 public class ConversationView extends BaseFragment<ConversationPrecenter> implements UIConversationView , BaseRecyclerAdapter.OnItemClickListener {
 
 //    @BindView(R.id.springView) SpringView springView;
-    @BindView(R.id.recycler_view) RecyclerView recycler_view;
+    @BindView(R.id.recycler_view)
+RecyclerView recycler_view;
     private ConversationAdapter adapter;
 
     @Override
@@ -56,7 +54,7 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
         });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext() );
-        layoutManager.setOrientation(OrientationHelper. VERTICAL);
+        layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recycler_view.setLayoutManager(layoutManager);
         recycler_view.setAdapter(proxyRecyclerViewAdapter);
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));

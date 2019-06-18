@@ -1,19 +1,12 @@
 package org.flyants.book.view.conversation;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
-import org.flyants.book.utils.ToastUtils;
 import org.flyants.book.view.base.BaseRecyclerAdapter;
 import org.flyants.book.view.base.RecyclerHolder;
-import org.flyants.book.view.conversation.window.ConversationWindowView;
 
 import java.util.ArrayList;
 import java.util.Collection;

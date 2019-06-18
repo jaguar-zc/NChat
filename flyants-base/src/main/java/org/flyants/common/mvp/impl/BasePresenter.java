@@ -2,10 +2,10 @@ package org.flyants.common.mvp.impl;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 
 import org.flyants.common.mvp.PrecenterEvent;
-import org.flyants.common.mvp.ViewEvent;
 
 
 public abstract class BasePresenter<View,UiView> implements PrecenterEvent {

@@ -1,23 +1,17 @@
 package org.flyants.book.view.dynamic;
 
 import android.content.Intent;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.LinearLayout;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.OrientationHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.liaoinstan.springview.container.DefaultFooter;
 import com.liaoinstan.springview.container.DefaultHeader;
 import com.liaoinstan.springview.widget.SpringView;
 
 import org.flyants.book.R;
-import org.flyants.book.custom.ProxyRecyclerViewAdapter;
-import org.flyants.book.utils.ToastUtils;
-import org.flyants.book.view.conversation.ConversationAdapter;
 import org.flyants.book.view.dynamic.publish.DynamicPublishView;
-import org.flyants.common.mvp.PrecenterEvent;
 import org.flyants.common.mvp.impl.BaseFragment;
 
 import java.util.List;
@@ -61,7 +55,7 @@ public class DynamicListView extends BaseFragment<DynamicListPrecenter> implemen
 //        ProxyRecyclerViewAdapter proxyRecyclerViewAdapter =  new ProxyRecyclerViewAdapter(adapter);
 //        proxyRecyclerViewAdapter.addHeaderView(searchView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext() );
-        layoutManager.setOrientation(OrientationHelper. VERTICAL);
+        layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recycler_view.setLayoutManager(layoutManager);
         recycler_view.setAdapter(adapter);
         springView.setHeader(new DefaultHeader(getContext()));

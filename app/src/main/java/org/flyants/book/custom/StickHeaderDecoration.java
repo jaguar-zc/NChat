@@ -1,8 +1,9 @@
 package org.flyants.book.custom;
 
 import android.graphics.Canvas;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class StickHeaderDecoration extends RecyclerView.ItemDecoration {
 

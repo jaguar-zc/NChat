@@ -1,26 +1,22 @@
 package org.flyants.book.view.conversation.window;
 
 import android.content.Context;
-import android.media.Image;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
 import org.flyants.book.utils.LogUtils;
-import org.flyants.book.view.base.BaseRecyclerAdapter;
-import org.flyants.book.view.base.RecyclerHolder;
-import org.flyants.book.view.conversation.ConversationResp;
 import org.flyants.book.view.my.UserInfo;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

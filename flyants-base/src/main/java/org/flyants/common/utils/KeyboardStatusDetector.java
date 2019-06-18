@@ -2,9 +2,10 @@ package org.flyants.common.utils;
 
 import android.app.Activity;
 import android.graphics.Rect;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewTreeObserver;
+
+import androidx.fragment.app.Fragment;
 
 public class KeyboardStatusDetector {
 

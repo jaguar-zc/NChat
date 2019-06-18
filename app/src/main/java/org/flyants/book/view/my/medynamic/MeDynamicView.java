@@ -1,8 +1,8 @@
 package org.flyants.book.view.my.medynamic;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.OrientationHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
 import org.flyants.book.view.dynamic.DynamicResp;
@@ -15,7 +15,8 @@ import butterknife.BindView;
 public class MeDynamicView extends BaseFragment<MeDynamicPrecenter> implements UIMeDynamicView {
     MeDynamicAdapter adapter;
 
-    @BindView(R.id.recycler_view) RecyclerView recycler_view;
+    @BindView(R.id.recycler_view)
+    RecyclerView recycler_view;
 
     @Override
     protected MeDynamicPrecenter buildPresenter() {
@@ -34,7 +35,7 @@ public class MeDynamicView extends BaseFragment<MeDynamicPrecenter> implements U
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity() );
-        layoutManager.setOrientation(OrientationHelper. VERTICAL);
+        layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recycler_view.setLayoutManager(layoutManager);
 
 //        ProxyRecyclerViewAdapter proxyAdapter = new ProxyRecyclerViewAdapter(adapter);

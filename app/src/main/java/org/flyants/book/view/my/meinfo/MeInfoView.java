@@ -6,20 +6,18 @@ import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
-import org.flyants.book.view.dynamic.DynamicResp;
 import org.flyants.book.view.dynamic.publish.DynamicPublishView;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.book.view.my.editinfo.EditUserInfoView;
@@ -27,7 +25,7 @@ import org.flyants.book.view.my.extinfo.ExtInfoView;
 import org.flyants.book.view.my.medynamic.MeDynamicView;
 import org.flyants.book.view.photoalbum.SimplePhotoAlbumView;
 import org.flyants.common.mvp.impl.BaseActivity;
-import org.flyants.common.utils.StatusBarUtil;
+import org.flyants.common.mvp.impl.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,7 +68,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
     @BindView(R.id.tap_dynamic) TextView tap_dynamic;
     @BindView(R.id.tap_extinfo) TextView tap_extinfo;
 
-    List<Fragment> fragmentList = new ArrayList<>();
+    List<BaseFragment> fragmentList = new ArrayList<>();
 
     /**
      * 用于对Fragment进行管理

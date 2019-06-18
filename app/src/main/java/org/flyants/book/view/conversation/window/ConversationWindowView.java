@@ -1,9 +1,5 @@
 package org.flyants.book.view.conversation.window;
 
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
@@ -12,7 +8,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.liaoinstan.springview.widget.SpringView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.OrientationHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
@@ -32,7 +31,8 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
     public static final String PARAM_NAME = "ConversationId";
 
     @BindView(R.id.idHeader) Header idHeader;
-    @BindView(R.id.recycler_view) RecyclerView recycler_view;
+    @BindView(R.id.recycler_view)
+    RecyclerView recycler_view;
     @BindView(R.id.input_message) EditText input_message;
 
     ConversationWindowAdapter conversationWindowAdapter ;
@@ -81,7 +81,7 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
     public void loadUserInfoComplete(UserInfo info) {
         conversationWindowAdapter = new ConversationWindowAdapter(info,this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(OrientationHelper. VERTICAL);
+        layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recycler_view.setLayoutManager(layoutManager);
         recycler_view.setAdapter(conversationWindowAdapter);
         recycler_view.setItemAnimator( new DefaultItemAnimator());

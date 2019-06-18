@@ -25,14 +25,21 @@ public class MeQrCodeView extends BaseActivity<MeQrCodePrecenter> implements UIM
 
     ImageLoader imageLoader = new ImageLoaderImpl();
 
-    @BindView(R.id.idHeader)  Header idHeader;
-//    @BindView(R.id.item_setting_background)  LinearLayout item_setting_background;
+    @BindView(R.id.idHeader)
+    Header idHeader;
+    //    @BindView(R.id.item_setting_background)  LinearLayout item_setting_background;
 //    @BindView(R.id.item_setting_auto_video)  LinearLayout item_setting_auto_video;
-    @BindView(R.id.icon) ImageView icon;
-    @BindView(R.id.me_qrcode) ImageView me_qrcode;
-    @BindView(R.id.nickName) TextView nickName;
-    @BindView(R.id.chat_no) TextView chat_no;
-    @BindView(R.id.call_me) TextView call_me;
+    @BindView(R.id.icon)
+    ImageView icon;
+    @BindView(R.id.me_qrcode)
+    ImageView me_qrcode;
+    @BindView(R.id.nickName)
+    TextView nickName;
+    @BindView(R.id.chat_no)
+    TextView chat_no;
+    @BindView(R.id.call_me)
+    TextView call_me;
+
     @Override
     public int getStatusBarColor() {
         return R.color.chat_background_color;
@@ -40,7 +47,7 @@ public class MeQrCodeView extends BaseActivity<MeQrCodePrecenter> implements UIM
 
     @Override
     public MeQrCodePrecenter buildPresenter() {
-        return new MeQrCodePrecenter(this,this);
+        return new MeQrCodePrecenter(this, this);
     }
 
     @Override
@@ -54,7 +61,7 @@ public class MeQrCodeView extends BaseActivity<MeQrCodePrecenter> implements UIM
         idHeader.setTitleColor(R.color.white);
         idHeader.setBackgrundColor(R.color.chat_background_color);
         idHeader.setBackColorWhite();
-        call_me.setText(MessageFormat.format("用{0}扫一扫加我好友",getString(R.string.app_name)));
+        call_me.setText(MessageFormat.format("用{0}扫一扫加我好友", getString(R.string.app_name)));
     }
 
     @Override
@@ -69,12 +76,12 @@ public class MeQrCodeView extends BaseActivity<MeQrCodePrecenter> implements UIM
 
     @Override
     public void setViewAttrs(UserInfo resp) {
-        imageLoader.loader(resp.getEncodedPrincipal(),icon);
-        nickName.setText(resp.getNickName()+"");
-        chat_no.setText(getString(R.string.AntsChatId)+":"+resp.getPeopleNo()+"");
+        imageLoader.loader(resp.getEncodedPrincipal(), icon);
+        nickName.setText(resp.getNickName() + "");
+        chat_no.setText(getString(R.string.AntsChatId) + ":" + resp.getPeopleNo() + "");
         try {
-            Bitmap mBitmap = EncodingHandler.createQRCode(resp.getPeopleNo(), 200);
-            if(mBitmap != null){
+            Bitmap mBitmap = EncodingHandler.createQRCode(resp.getId(), 200);
+            if (mBitmap != null) {
                 me_qrcode.setImageBitmap(mBitmap);
             }
         } catch (WriterException e) {
@@ -84,8 +91,8 @@ public class MeQrCodeView extends BaseActivity<MeQrCodePrecenter> implements UIM
 
     @Override
     public void setViewQrcode(String path) {
-        if(path != null){
-            imageLoader.loader(path,me_qrcode);
+        if (path != null) {
+            imageLoader.loader(path, me_qrcode);
         }
     }
 
