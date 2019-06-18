@@ -58,7 +58,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:src="@mipmap/a94"/>
                 <View
                     android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:src="@mipmap/a92"/>
                 <View
                     android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:src="@mipmap/a95"/>
                 <View
                     android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:src="@mipmap/a97"/>
             </LinearLayout>
 
