@@ -239,6 +239,12 @@
                             android:textSize="@dimen/title_selected_size"
                             android:textStyle="bold"/>
                     </LinearLayout>
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </RelativeLayout>
 
 
                     <FrameLayout

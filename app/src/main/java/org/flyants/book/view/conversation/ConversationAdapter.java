@@ -4,7 +4,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
+import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
+import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.network.image.glide.ImageLoaderImpl;
+import org.flyants.book.utils.ConversationTimeUtils;
 import org.flyants.book.view.base.BaseRecyclerAdapter;
 import org.flyants.book.view.base.RecyclerHolder;
 
@@ -13,7 +16,7 @@ import java.util.Collection;
 
 public class ConversationAdapter extends BaseRecyclerAdapter<ConversationResp> {
 
-    private ImageLoader imageLoader = new ImageLoaderImpl();
+    private ImageLoader imageLoader = new IconImageLoaderImpl();
 
 //
 //    static List<ConversationResp>   lists = new ArrayList<ConversationResp>(){
@@ -25,7 +28,6 @@ public class ConversationAdapter extends BaseRecyclerAdapter<ConversationResp> {
 //        }
 //    }.$();
 
-
     public ConversationAdapter(RecyclerView recyclerView) {
         this(recyclerView, new ArrayList<>(), R.layout.conversation_item);
     }
@@ -34,8 +36,10 @@ public class ConversationAdapter extends BaseRecyclerAdapter<ConversationResp> {
     public void convert(RecyclerHolder holder, ConversationResp item, int position, boolean isScrolling) {
         imageLoader.loader(item.getIcon(),holder.getView(R.id.icon));
         holder.setText(R.id.name,item.getName());
-        holder.setText(R.id.time,item.getType());
-        holder.setText(R.id.msg,item.getType());
+        if(item.getLastMessage() != null){
+            holder.setText(R.id.time, ConversationTimeUtils.toDateStr((Long.valueOf(item.getLastMessage().getSendTime()))));
+            holder.setText(R.id.msg,item.getLastMessage().getBody());
+        }
     }
 
     public ConversationAdapter(RecyclerView v, Collection<ConversationResp> datas, int itemLayoutId) {

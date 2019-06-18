@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.FragmentManager;
@@ -67,6 +68,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
     @BindView(R.id.frameLayout) FrameLayout frameLayout;
     @BindView(R.id.tap_dynamic) TextView tap_dynamic;
     @BindView(R.id.tap_extinfo) TextView tap_extinfo;
+    @BindView(R.id.relativeLayout) RelativeLayout relativeLayout;
 
     List<BaseFragment> fragmentList = new ArrayList<>();
 
@@ -189,10 +191,10 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
 
     @OnClick(R.id.tap_extinfo)
     public void onClickTapExtinfo(){
-        tap_extinfo.setFocusable(true);
         tap_dynamic.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));//加粗
         tap_extinfo.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));//加粗
         setTabSelection(1);
+        relativeLayout.setFocusable(true);
     }
 
 
@@ -222,8 +224,6 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
     public void onClickPeopleAssist() {
         this.getPresenter().peopleAssist();
     }
-
-
 
     public int getStatusBarHeight() {
         int result = 0;

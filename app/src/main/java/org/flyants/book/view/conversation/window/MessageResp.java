@@ -1,6 +1,8 @@
 package org.flyants.book.view.conversation.window;
 
-public class MessageResp {
+import java.io.Serializable;
+
+public class MessageResp  implements Serializable {
 
     private String   id ;
     private String   body;
