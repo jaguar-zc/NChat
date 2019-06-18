@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.apache.commons.lang3.StringUtils;
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
@@ -59,14 +60,14 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     public Boolean isRight(MessageResp messageResp) {
-        return messageResp.getBody().length() % 2 == 0;
+        return StringUtils.equals(messageResp.getMessageUserId(),userInfo.getNickName());
     }
 
 
     @Override
     public int getItemViewType(int position) {
         MessageResp messageResp = messageRespList.get(position);
-        return messageResp.getBody().length() % 2 == 0 ? 0 : 1;
+        return isRight(messageResp) ?1:0;
     }
 
     @Override

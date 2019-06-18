@@ -25,6 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 
 import static android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE;
+import static androidx.recyclerview.widget.RecyclerView.VERTICAL;
 
 public class ConversationWindowView extends BaseActivity<ConversationWindowPrecenter> implements UIConversationWindowView {
 
@@ -81,7 +82,7 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
     public void loadUserInfoComplete(UserInfo info) {
         conversationWindowAdapter = new ConversationWindowAdapter(info,this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(OrientationHelper.VERTICAL);
+        layoutManager.setOrientation(VERTICAL);
         recycler_view.setLayoutManager(layoutManager);
         recycler_view.setAdapter(conversationWindowAdapter);
         recycler_view.setItemAnimator( new DefaultItemAnimator());

@@ -16,6 +16,7 @@ public class UserInfo   {
     private String city;
     private String introduction;
     private Integer peopleAssistCount;
+    private String messageUserId ;
 
 
     public String getId() {
@@ -120,6 +121,14 @@ public class UserInfo   {
 
     public void setPeopleAssistCount(Integer peopleAssistCount) {
         this.peopleAssistCount = peopleAssistCount;
+    }
+
+    public String getMessageUserId() {
+        return messageUserId;
+    }
+
+    public void setMessageUserId(String messageUserId) {
+        this.messageUserId = messageUserId;
     }
 
     public String getLocation() {
