@@ -189,6 +189,7 @@ public class MeInfoView extends BaseActivity<MeInfoPrecenter> implements UIMeInf
 
     @OnClick(R.id.tap_extinfo)
     public void onClickTapExtinfo(){
+        tap_extinfo.setFocusable(true);
         tap_dynamic.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));//加粗
         tap_extinfo.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));//加粗
         setTabSelection(1);

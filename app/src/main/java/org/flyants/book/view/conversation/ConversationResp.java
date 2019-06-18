@@ -1,5 +1,7 @@
 package org.flyants.book.view.conversation;
 
+import org.flyants.book.view.conversation.window.MessageResp;
+
 import java.io.Serializable;
 
 public class ConversationResp  implements Serializable {
@@ -12,6 +14,7 @@ public class ConversationResp  implements Serializable {
     private Integer top;// (integer, optional),
     private Integer dontDisturb  ;//(integer, optional),
     private String  messageUserId ;//(string, optional),
+    private MessageResp lastMessage ;//(string, optional),
 
     public Integer getDontDisturb() {
         return dontDisturb;
@@ -71,6 +74,15 @@ public class ConversationResp  implements Serializable {
 
     public String getType() {
         return type;
+    }
+
+
+    public MessageResp getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setLastMessage(MessageResp lastMessage) {
+        this.lastMessage = lastMessage;
     }
 
     public void setType(String type) {

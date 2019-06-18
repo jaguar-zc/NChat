@@ -34,7 +34,7 @@ public class NineGridDynamicImageListLayout extends NineGridLayout {
 
     @Override
     protected void displayImage(ImageView imageView, String url) {
-        imageLoader.loader(url,imageView);
+        imageLoader.loader(url+"!small",imageView);
     }
 
     @Override

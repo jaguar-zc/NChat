@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
-import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
+import org.flyants.book.network.image.glide.ImageLoaderImpl;
 import org.flyants.book.view.base.BaseRecyclerAdapter;
 import org.flyants.book.view.base.RecyclerHolder;
 
@@ -13,7 +13,7 @@ import java.util.Collection;
 
 public class ConversationAdapter extends BaseRecyclerAdapter<ConversationResp> {
 
-    private ImageLoader imageLoader = new CenterCropImageLoaderImpl();
+    private ImageLoader imageLoader = new ImageLoaderImpl();
 
 //
 //    static List<ConversationResp>   lists = new ArrayList<ConversationResp>(){
