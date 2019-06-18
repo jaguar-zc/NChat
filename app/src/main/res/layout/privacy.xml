@@ -75,6 +75,7 @@
             android:layout_height="@dimen/item_setting_height"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
+            android:background="@drawable/setting_item"
             android:gravity="center_vertical"
             android:orientation="horizontal">
             <TextView
@@ -106,6 +107,7 @@
             android:layout_height="@dimen/item_setting_height"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
+            android:background="@drawable/setting_item"
             android:gravity="center_vertical"
             android:orientation="horizontal">
             <TextView
@@ -127,6 +129,7 @@
             android:layout_height="@dimen/item_setting_height"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
+            android:background="@drawable/setting_item"
             android:gravity="center_vertical"
             android:orientation="horizontal">
             <TextView

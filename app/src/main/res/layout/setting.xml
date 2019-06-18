@@ -238,6 +238,7 @@ android:orientation="vertical">
                 android:id="@+id/version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@null"
                 android:text="@string/version" />
 
             <ImageView
