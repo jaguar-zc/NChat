@@ -10,9 +10,11 @@ import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
 import org.flyants.book.utils.JsonUtils;
 import org.flyants.book.utils.LogUtils;
+import org.flyants.book.view.face.FaceView;
 import org.flyants.book.view.my.meinfo.MeInfoView;
 import org.flyants.book.view.my.meqrcode.MeQrCodeView;
 import org.flyants.book.view.setting.SettingView;
+import org.flyants.book.view.wallet.WalletView;
 import org.flyants.common.mvp.impl.BaseFragment;
 
 import butterknife.BindView;
@@ -82,6 +84,17 @@ public class MyView extends BaseFragment<MyPresenterImpl> implements UiMyView  {
     @OnClick(R.id.edit_info)
     public void onClickMeInfoView(){
         startActivity(new Intent(getActivity(), MeInfoView.class));
+    }
+
+    @OnClick(R.id.item_face)
+    public void onClickitem_face(){
+        startActivity(new Intent(getActivity(), FaceView.class));
+    }
+
+
+    @OnClick(R.id.item_wallet)
+    public void onClickitem_wallet(){
+        startActivity(new Intent(getActivity(), WalletView.class));
     }
 
 

@@ -52,6 +52,9 @@
         <activity android:name=".view.photoalbum.SimplePhotoAlbumView"></activity>
         <activity android:name=".view.conversation.window.ConversationWindowView"></activity>
         <activity android:name=".view.my.editinfo.EditUserInfoView"></activity>
+        <activity android:name=".view.face.FaceView"></activity>
+        <activity android:name=".view.wallet.WalletView"></activity>
+        <activity android:name=".view.setting.blacklist.BlackListView"></activity>
     </application>
 
 </manifest>

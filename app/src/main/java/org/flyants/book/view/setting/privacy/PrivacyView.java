@@ -9,6 +9,7 @@ import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.store.AppConfigStrore;
 import org.flyants.book.view.setting.addmetype.AddMeMethodView;
+import org.flyants.book.view.setting.blacklist.BlackListView;
 import org.flyants.common.mvp.impl.BaseActivity;
 import org.flyants.component.selected.OnSelectedItem;
 import org.flyants.component.selected.SelectedViewUtils;
@@ -74,6 +75,10 @@ public class PrivacyView extends BaseActivity<PrivacyPresenter> implements UIPri
         getPresenter().setAllowTomeRecommendedGroup(isChecked);
     }
 
+    @OnClick(R.id.item_contact_black)
+    public void onClickitem_contact_black(){
+        startActivity(new Intent(this, BlackListView.class));
+    }
 
     @OnClick(R.id.item_add_friends_type)
     public void onClickitem_add_friends_type(){
