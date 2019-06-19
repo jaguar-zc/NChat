@@ -7,7 +7,7 @@ import org.flyants.common.mvp.impl.BaseUiView;
 import java.util.List;
 
 interface UIConversationWindowView extends BaseUiView<ConversationResp> {
-    void publicMessageSuccess();
+    void publicMessageSuccess(PublishMessageReq publishMessageReq);
 
     void setPullLoadMoreCompleted(int i, List<MessageResp> rows);
 

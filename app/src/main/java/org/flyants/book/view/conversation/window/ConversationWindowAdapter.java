@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
 import org.flyants.book.utils.LogUtils;
+import org.flyants.book.view.conversation.window.holder.TextHolder;
 import org.flyants.book.view.my.UserInfo;
 
 import java.util.ArrayList;
@@ -38,31 +40,29 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LogUtils.d("Type:"+viewType);
         if(viewType == 0){
             View item = LayoutInflater.from(mContext).inflate(R.layout.conversation_window_text_left , parent ,false);
             LogUtils.d("aaa","onCreateViewHolder————"+viewType);
+            LinearLayout containerView = item.findViewById(R.id.containerView);
             TextView content = item.findViewById(R.id.item_content);
             ImageView item_icon = item.findViewById(R.id.item_icon);
-            return new TextHolder(item,content,item_icon);
+            return new TextHolder(item,containerView,content,item_icon);
         }else if(viewType == 1){
             View item = LayoutInflater.from(mContext).inflate(R.layout.conversation_window_text_right , parent ,false);
             LogUtils.d("aaa","onCreateViewHolder————"+viewType);
+            LinearLayout containerView = item.findViewById(R.id.containerView);
             TextView content = item.findViewById(R.id.item_content);
             ImageView item_icon = item.findViewById(R.id.item_icon);
-            return new TextHolder(item,content,item_icon);
-        }else{
-            View item = LayoutInflater.from(mContext).inflate(R.layout.conversation_window_text_right , parent ,false);
-            LogUtils.d("aaa","onCreateViewHolder————"+viewType);
-            TextView content = item.findViewById(R.id.item_content);
-            ImageView item_icon = item.findViewById(R.id.item_icon);
-            return new TextHolder(item,content,item_icon);
+            return new TextHolder(item,containerView,content,item_icon);
         }
+
+        return null;
     }
 
     public Boolean isRight(MessageResp messageResp) {
-        return StringUtils.equals(messageResp.getMessageUserId(),userInfo.getNickName());
+        return StringUtils.equals(messageResp.getMessageUserId(),userInfo.getMessageUserId());
     }
-
 
     @Override
     public int getItemViewType(int position) {
@@ -74,7 +74,8 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof  TextHolder){
             MessageResp mData = messageRespList.get(position);
-            ((TextHolder) holder).content.setText(mData.getBody());
+            ((TextHolder) holder).getContent().setText(mData.getBody());
+            ((TextHolder) holder).getContainerView().setBackgroundColor(mContext.getResources().getColor(R.color.windowBackground));
 //            ((TextHolder) holder).content.setText(mData.getBody());
         }
     }
@@ -84,26 +85,15 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
         return messageRespList.size();
     }
 
+    public int addItem(MessageResp lastMessage){
+        messageRespList.add(lastMessage);
+        int size = messageRespList.size();
+        notifyItemInserted(size);
+        return size;
+    }
 
-    public void refresh(List<MessageResp> rows) {
+    public void addAll(List<MessageResp> rows) {
         messageRespList.addAll(rows);
         notifyDataSetChanged();
     }
-}
-
-class TextHolder extends RecyclerView.ViewHolder {
-
-    TextView content;
-    ImageView icon;
-
-    public TextHolder(@NonNull View itemView) {
-        super(itemView);
-    }
-
-    public TextHolder(@NonNull View itemView, TextView content, ImageView icon) {
-        super(itemView);
-        this.content = content;
-        this.icon = icon;
-    }
-
 }

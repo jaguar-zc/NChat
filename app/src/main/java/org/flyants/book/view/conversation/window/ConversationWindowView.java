@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
+import org.flyants.book.utils.LogUtils;
 import org.flyants.book.view.conversation.ConversationResp;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
@@ -32,10 +33,8 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
     public static final String PARAM_NAME = "ConversationId";
 
     @BindView(R.id.idHeader) Header idHeader;
-    @BindView(R.id.recycler_view)
-    RecyclerView recycler_view;
+    @BindView(R.id.recycler_view)  RecyclerView recycler_view;
     @BindView(R.id.input_message) EditText input_message;
-
     ConversationWindowAdapter conversationWindowAdapter ;
 
     public int getStatusBarColor(){
@@ -82,6 +81,7 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
     public void loadUserInfoComplete(UserInfo info) {
         conversationWindowAdapter = new ConversationWindowAdapter(info,this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setStackFromEnd(true);
         layoutManager.setOrientation(VERTICAL);
         recycler_view.setLayoutManager(layoutManager);
         recycler_view.setAdapter(conversationWindowAdapter);
@@ -89,14 +89,24 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
     }
 
     @Override
-    public void publicMessageSuccess() {
+    public void publicMessageSuccess(PublishMessageReq publishMessageReq) {
         input_message.setText("");
         KeyboardUtils.hideKeyboard(input_message);
+        MessageResp lastMessage  = new MessageResp();
+        lastMessage.setBody(publishMessageReq.getBody());
+        lastMessage.setConversationId(publishMessageReq.getConversationId());
+        lastMessage.setMessageType(publishMessageReq.getMessageType());
+        lastMessage.setMessageUserId(getPresenter().userInfo.getMessageUserId());
+        lastMessage.setSendTime(System.currentTimeMillis()+"");
+        lastMessage.setView("0");
+        recycler_view.smoothScrollToPosition(conversationWindowAdapter.addItem(lastMessage));
     }
 
     @Override
     public void setPullLoadMoreCompleted(int i, List<MessageResp> rows) {
-        conversationWindowAdapter.refresh(rows);
+        LogUtils.d("rows:" + rows.size());
+        conversationWindowAdapter.addAll(rows);
+        recycler_view.smoothScrollToPosition(rows.size());
     }
 
     @Override
