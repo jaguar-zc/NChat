@@ -104,7 +104,7 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
 
     @Override
     public void setPullLoadMoreCompleted(int i, List<MessageResp> rows) {
-        LogUtils.d("rows:" + rows.size());
+        LogUtils.d("setPullLoadMoreCompleted:" + rows.size());
         conversationWindowAdapter.addAll(rows);
         recycler_view.smoothScrollToPosition(rows.size());
     }

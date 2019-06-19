@@ -93,6 +93,7 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     public void addAll(List<MessageResp> rows) {
+        messageRespList.clear();
         messageRespList.addAll(rows);
         notifyDataSetChanged();
     }
