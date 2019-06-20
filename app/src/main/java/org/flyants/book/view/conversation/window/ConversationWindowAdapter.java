@@ -15,7 +15,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
-import org.flyants.book.network.image.glide.ImageLoaderImpl;
 import org.flyants.book.store.MessageUserSimpleStore;
 import org.flyants.book.utils.LogUtils;
 import org.flyants.book.view.conversation.user.MessageUserSimpleInfo;
@@ -29,14 +28,18 @@ import java.util.List;
 public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
+    UIConversationWindowView uiConversationWindowView;
+
     UserInfo userInfo;
+
     List<MessageResp> messageRespList = new ArrayList<>();
 
     Context mContext;
 
-    public ConversationWindowAdapter(UserInfo userInfo, Context mContext) {
+    public ConversationWindowAdapter(UserInfo userInfo, Context mContext,UIConversationWindowView uiConversationWindowView) {
         this.userInfo = userInfo;
         this.mContext = mContext;
+        this.uiConversationWindowView = uiConversationWindowView;
     }
 
     private ImageLoader imageLoader = new CenterCropImageLoaderImpl();
@@ -60,7 +63,6 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
             ImageView item_icon = item.findViewById(R.id.item_icon);
             return new TextHolder(item,containerView,content,item_icon);
         }
-
         return null;
     }
 
@@ -84,7 +86,14 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
                 @Override
                 public void call(MessageUserSimpleInfo messageUserSimpleInfo) {
 //                    imageLoader.loader( "https://flyants.oss-cn-shanghai.aliyuncs.com/headimg/0d17b4f1.jpg!96", ((TextHolder) holder).getIcon());
-                    imageLoader.loader(messageUserSimpleInfo.getEncodedPrincipal()+"!96", ((TextHolder) holder).getIcon());
+                    imageLoader.loader(messageUserSimpleInfo.getEncodedPrincipal(), ((TextHolder) holder).getIcon());
+                }
+            });
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    uiConversationWindowView.hideKeyboard();
                 }
             });
         }

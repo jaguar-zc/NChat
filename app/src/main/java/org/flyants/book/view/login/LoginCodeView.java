@@ -10,6 +10,7 @@ import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.utils.LogUtils;
 import org.flyants.common.mvp.impl.BaseActivity;
+import org.flyants.common.utils.KeyboardUtils;
 
 import java.text.MessageFormat;
 
@@ -123,7 +124,7 @@ public class LoginCodeView extends BaseActivity<LoginCodePresenter> implements U
 
     @Override
     public void onViewStart() {
-
+        KeyboardUtils.showKeyboard(input_number);
     }
 
     @Override

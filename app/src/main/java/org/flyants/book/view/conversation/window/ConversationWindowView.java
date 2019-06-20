@@ -1,7 +1,9 @@
 package org.flyants.book.view.conversation.window;
 
+import android.content.Intent;
 import android.util.TypedValue;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -16,6 +18,7 @@ import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.utils.LogUtils;
 import org.flyants.book.view.conversation.ConversationResp;
+import org.flyants.book.view.conversation.info.ConversationInfoView;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
 import org.flyants.common.utils.KeyboardUtils;
@@ -23,7 +26,6 @@ import org.flyants.common.utils.KeyboardUtils;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 import static android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE;
 import static androidx.recyclerview.widget.RecyclerView.VERTICAL;
@@ -60,6 +62,7 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
         int pxDimension = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 30,this.getResources().getDisplayMetrics());
         right.setLayoutParams(params);
         right.setPadding(pxDimension,pxDimension,pxDimension,pxDimension);
+
         idHeader.setHeaderRight(right);
         idHeader.setBackgrundColor(getStatusBarColor());
         input_message.setInputType(TYPE_TEXT_FLAG_MULTI_LINE);
@@ -76,14 +79,17 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
         });
     }
 
-    @OnClick(R.id.recycler_view)
-    public void onClickWindow(){
+    @Override
+    public void hideKeyboard() {
         KeyboardUtils.hideKeyboard(input_message);
     }
 
     @Override
     public void loadUserInfoComplete(UserInfo info) {
-        conversationWindowAdapter = new ConversationWindowAdapter(info,this);
+
+
+
+        conversationWindowAdapter = new ConversationWindowAdapter(info,this,this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
         layoutManager.setOrientation(VERTICAL);
@@ -126,5 +132,13 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
     @Override
     public void setVeiwAttrs(ConversationResp resp) {
         idHeader.setHeaderTitle(resp.getName());
+        idHeader.setOnRightClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConversationWindowView.this, ConversationInfoView.class);
+                intent.putExtra("conversationId",resp.getId());
+                startActivity(intent);
+            }
+        });
     }
 }

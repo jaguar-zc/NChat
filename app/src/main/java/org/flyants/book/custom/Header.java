@@ -91,4 +91,8 @@ public class Header extends LinearLayout {
     public void setOnLeftClick(OnClickListener click){
         headerLeft.setOnClickListener(click);
     }
+
+    public void setOnRightClick(OnClickListener click){
+        headerRight.setOnClickListener(click);
+    }
 }

@@ -12,4 +12,6 @@ interface UIConversationWindowView extends BaseUiView<ConversationResp> {
     void setPullLoadMoreCompleted(int i, List<MessageResp> rows);
 
     void loadUserInfoComplete(UserInfo info);
+
+    void hideKeyboard();
 }
