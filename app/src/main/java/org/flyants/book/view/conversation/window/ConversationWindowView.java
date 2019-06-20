@@ -59,7 +59,7 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
         ImageView right = new ImageView(this);
         right.setImageResource(R.mipmap.a26);
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams( ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        int pxDimension = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 30,this.getResources().getDisplayMetrics());
+        int pxDimension = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 40,this.getResources().getDisplayMetrics());
         right.setLayoutParams(params);
         right.setPadding(pxDimension,pxDimension,pxDimension,pxDimension);
 
