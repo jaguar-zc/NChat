@@ -8,11 +8,12 @@ import org.flyants.book.resources.ConversationApis;
 import org.flyants.book.utils.RespList;
 import org.flyants.book.view.conversation.ConversationResp;
 import org.flyants.common.store.IStore;
+import org.flyants.common.store.IUpdate;
 import org.flyants.common.store.OnCallback;
 
 import java.util.List;
 
-public class ConversationStore implements IStore<String,List<ConversationResp> > {
+public class ConversationStore implements IUpdate<String,List<ConversationResp> > {
 
     private static ConversationStore me = new ConversationStore();
     private List<ConversationResp> conversationRespList;
@@ -44,5 +45,10 @@ public class ConversationStore implements IStore<String,List<ConversationResp> >
         }else{
             callback.call(conversationRespList);
         }
+    }
+
+    @Override
+    public void update(List<ConversationResp> list) {
+        conversationRespList = list;
     }
 }

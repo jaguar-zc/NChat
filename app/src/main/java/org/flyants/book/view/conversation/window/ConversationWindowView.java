@@ -14,13 +14,16 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.apache.commons.lang3.StringUtils;
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
+import org.flyants.book.store.ConversationStore;
 import org.flyants.book.utils.LogUtils;
 import org.flyants.book.view.conversation.ConversationResp;
 import org.flyants.book.view.conversation.info.ConversationInfoView;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
+import org.flyants.common.store.OnCallback;
 import org.flyants.common.utils.KeyboardUtils;
 
 import java.util.List;
@@ -86,9 +89,6 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
 
     @Override
     public void loadUserInfoComplete(UserInfo info) {
-
-
-
         conversationWindowAdapter = new ConversationWindowAdapter(info,this,this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
@@ -110,6 +110,18 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
         lastMessage.setSendTime(System.currentTimeMillis()+"");
         lastMessage.setView("0");
         recycler_view.smoothScrollToPosition(conversationWindowAdapter.addItem(lastMessage));
+
+        ConversationStore.getInstence().loadObject(this, new OnCallback<List<ConversationResp>>() {
+            @Override
+            public void call(List<ConversationResp> list) {
+                for (ConversationResp conversationResp : list) {
+                    if(StringUtils.equals(conversationResp.getId(),publishMessageReq.getConversationId())){
+                        conversationResp.setLastMessage(lastMessage);
+                    }
+                }
+                ConversationStore.getInstence().update(list);
+            }
+        });
     }
 
     @Override

@@ -32,11 +32,6 @@ class ConversationWindowPrecenter extends BasePresenter<ConversationWindowView,U
         conversationApis = RequestUtils.build(ConversationApis.class);
         conversationResp = (ConversationResp)view.getIntent().getSerializableExtra(ConversationWindowView.PARAM_NAME);
         uiView.setVeiwAttrs(conversationResp);
-
-    }
-
-    @Override
-    public void onViewStart() {
         UserStore.getInstence().loadObject(context, new OnCallback<UserInfo>() {
             @Override
             public void call(UserInfo info) {
@@ -52,6 +47,11 @@ class ConversationWindowPrecenter extends BasePresenter<ConversationWindowView,U
                 });
             }
         });
+    }
+
+    @Override
+    public void onViewStart() {
+
     }
 
     @Override
