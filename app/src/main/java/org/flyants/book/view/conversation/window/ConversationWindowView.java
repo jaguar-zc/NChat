@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
@@ -24,6 +23,7 @@ import org.flyants.common.utils.KeyboardUtils;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import static android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE;
 import static androidx.recyclerview.widget.RecyclerView.VERTICAL;
@@ -76,6 +76,10 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
         });
     }
 
+    @OnClick(R.id.recycler_view)
+    public void onClickWindow(){
+        KeyboardUtils.hideKeyboard(input_message);
+    }
 
     @Override
     public void loadUserInfoComplete(UserInfo info) {
@@ -91,7 +95,7 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
     @Override
     public void publicMessageSuccess(PublishMessageReq publishMessageReq) {
         input_message.setText("");
-        KeyboardUtils.hideKeyboard(input_message);
+//        KeyboardUtils.hideKeyboard(input_message);
         MessageResp lastMessage  = new MessageResp();
         lastMessage.setBody(publishMessageReq.getBody());
         lastMessage.setConversationId(publishMessageReq.getConversationId());

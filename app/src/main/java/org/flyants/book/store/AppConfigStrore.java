@@ -14,7 +14,7 @@ import org.flyants.common.store.OnCallback;
 /**
  * APP 设置
  */
-public class AppConfigStrore implements IUpdate<PeopleAppConfig> {
+public class AppConfigStrore implements IUpdate<String,PeopleAppConfig> {
 
     private PeopleAppConfig appConfig;
 
@@ -24,8 +24,14 @@ public class AppConfigStrore implements IUpdate<PeopleAppConfig> {
         return me;
     }
 
+
     @Override
     public void loadObject(Context context, OnCallback<PeopleAppConfig> callback) {
+        loadObject(context,null,callback);
+    }
+
+    @Override
+    public void loadObject(Context context,String params, OnCallback<PeopleAppConfig> callback) {
         if(appConfig == null){
             Apis apis = RequestUtils.build(Apis.class);;
             apis.getPeopleConfig().enqueue(new RespCall<PeopleAppConfig>() {

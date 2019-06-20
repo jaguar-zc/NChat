@@ -14,7 +14,7 @@ import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.store.IStore;
 import org.flyants.common.store.OnCallback;
 
-public class UserStore implements IStore<UserInfo> {
+public class UserStore implements IStore<String,UserInfo> {
     private static UserStore me = new UserStore();
 
     private UserInfo userInfo;
@@ -30,6 +30,11 @@ public class UserStore implements IStore<UserInfo> {
 
     @Override
     public void loadObject(Context context, OnCallback<UserInfo> callback) {
+        loadObject(context,null,callback);
+    }
+
+    @Override
+    public void loadObject(Context context, String params,OnCallback<UserInfo> callback) {
         if (userInfo == null) {
             Apis build = RequestUtils.build(Apis.class);
             build.userInfo().enqueue(new RespCall<UserInfo>() {

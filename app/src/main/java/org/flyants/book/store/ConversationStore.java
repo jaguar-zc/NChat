@@ -12,7 +12,7 @@ import org.flyants.common.store.OnCallback;
 
 import java.util.List;
 
-public class ConversationStore implements IStore<List<ConversationResp> > {
+public class ConversationStore implements IStore<String,List<ConversationResp> > {
 
     private static ConversationStore me = new ConversationStore();
     private List<ConversationResp> conversationRespList;
@@ -26,7 +26,12 @@ public class ConversationStore implements IStore<List<ConversationResp> > {
     }
 
     @Override
-    public void loadObject(Context context, OnCallback<List<ConversationResp> > callback) {
+    public void loadObject(Context context, OnCallback<List<ConversationResp>> callback) {
+        loadObject(context,null,callback);
+    }
+
+    @Override
+    public void loadObject(Context context,String params, OnCallback<List<ConversationResp> > callback) {
         if(conversationRespList == null){
             ConversationApis conversationApis = RequestUtils.build(ConversationApis.class);;
             conversationApis.getConversationList().enqueue(new RespCall<RespList<ConversationResp>>() {

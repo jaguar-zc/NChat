@@ -15,9 +15,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
+import org.flyants.book.network.image.glide.ImageLoaderImpl;
+import org.flyants.book.store.MessageUserSimpleStore;
 import org.flyants.book.utils.LogUtils;
+import org.flyants.book.view.conversation.user.MessageUserSimpleInfo;
 import org.flyants.book.view.conversation.window.holder.TextHolder;
 import org.flyants.book.view.my.UserInfo;
+import org.flyants.common.store.OnCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +80,13 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
             MessageResp mData = messageRespList.get(position);
             ((TextHolder) holder).getContent().setText(mData.getBody());
             ((TextHolder) holder).getContainerView().setBackgroundColor(mContext.getResources().getColor(R.color.windowBackground));
-//            ((TextHolder) holder).content.setText(mData.getBody());
+            MessageUserSimpleStore.getInstence().loadObject(mContext, mData.getMessageUserId(), new OnCallback<MessageUserSimpleInfo>() {
+                @Override
+                public void call(MessageUserSimpleInfo messageUserSimpleInfo) {
+//                    imageLoader.loader( "https://flyants.oss-cn-shanghai.aliyuncs.com/headimg/0d17b4f1.jpg!96", ((TextHolder) holder).getIcon());
+                    imageLoader.loader(messageUserSimpleInfo.getEncodedPrincipal()+"!96", ((TextHolder) holder).getIcon());
+                }
+            });
         }
     }
 
