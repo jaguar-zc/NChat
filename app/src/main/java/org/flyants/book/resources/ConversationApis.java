@@ -25,7 +25,7 @@ public interface ConversationApis {
     @POST("/api/v1/app/conversation/list")
     Call<RespList<ConversationResp>> getConversationList();
 
-    @POST("/api/v1/app/conversation/getConversation")
+    @GET("/api/v1/app/conversation/getConversation")
     Call<Map<String,Object>> getConversation(@Query("conversationId") String conversationId);
 
     @POST("/api/v1/app/conversation/createGroupConversation")
