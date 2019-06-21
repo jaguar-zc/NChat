@@ -6,6 +6,8 @@ import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.common.mvp.impl.BaseActivity;
 
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
@@ -54,6 +56,11 @@ public class ConversationInfoView extends BaseActivity<ConversationInfoPrecenter
 
     @OnClick(R.id.item_chean_chat_record)
     public void onClickitem_chean_chat_record(){
+
+    }
+
+    @Override
+    public void setVeiwAttrs(Map<String, Object> resp) {
 
     }
 

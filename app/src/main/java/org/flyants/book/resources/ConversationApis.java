@@ -10,6 +10,8 @@ import org.flyants.book.view.conversation.user.MessageUserSimpleInfo;
 import org.flyants.book.view.conversation.window.MessageResp;
 import org.flyants.book.view.conversation.window.PublishMessageReq;
 
+import java.util.Map;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -22,6 +24,9 @@ public interface ConversationApis {
 
     @POST("/api/v1/app/conversation/list")
     Call<RespList<ConversationResp>> getConversationList();
+
+    @POST("/api/v1/app/conversation/getConversation")
+    Call<Map<String,Object>> getConversation(@Query("conversationId") String conversationId);
 
     @POST("/api/v1/app/conversation/createGroupConversation")
     Call<ResponseBody> createGroupConversation(@Body CreateGroupConversationReq conversationReq);
