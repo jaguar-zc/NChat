@@ -15,7 +15,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
-import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.store.MessageUserSimpleStore;
 import org.flyants.book.utils.LogUtils;
 import org.flyants.book.view.conversation.user.MessageUserSimpleInfo;
@@ -43,7 +42,7 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
         this.uiConversationWindowView = uiConversationWindowView;
     }
 
-    private ImageLoader imageLoader = new IconImageLoaderImpl();
+    private ImageLoader imageLoader = new CenterCropImageLoaderImpl();
 
     @NonNull
     @Override
