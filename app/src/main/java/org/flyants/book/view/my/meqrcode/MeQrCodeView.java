@@ -3,7 +3,6 @@ package org.flyants.book.view.my.meqrcode;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.zxing.WriterException;
 import com.google.zxing.encoding.EncodingHandler;
@@ -11,11 +10,9 @@ import com.google.zxing.encoding.EncodingHandler;
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.network.image.ImageLoader;
-import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
 import org.flyants.book.network.image.glide.ImageLoaderImpl;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
-import org.flyants.common.utils.StatusBarUtil;
 
 import java.text.MessageFormat;
 

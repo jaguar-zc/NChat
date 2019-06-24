@@ -24,6 +24,10 @@ public class AppConfigStrore implements IUpdate<String,PeopleAppConfig> {
         return me;
     }
 
+    {
+        StoreManager.getInstance().register(this);
+    }
+
 
     @Override
     public void loadObject(Context context, OnCallback<PeopleAppConfig> callback) {

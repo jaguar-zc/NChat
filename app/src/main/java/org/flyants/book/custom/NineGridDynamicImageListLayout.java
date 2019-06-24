@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.flyants.book.network.image.ImageLoader;
-import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
 import org.flyants.book.network.image.glide.ImageLoaderImpl;
 
 import java.util.ArrayList;

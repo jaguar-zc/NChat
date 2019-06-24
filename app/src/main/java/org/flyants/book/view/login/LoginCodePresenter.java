@@ -83,9 +83,8 @@ class LoginCodePresenter extends BasePresenter<LoginCodeView,UILoginCodeView> {
             @Override
             public void onResp(LoginResp resp) {
                 SharedPreferencesHelper.$().put("token",resp.getToken());
-                AppActivityManager.getInstance().finishActivity(LoginView.class);
                 view.startActivity(new Intent(view, Home.class));
-                view.finish();
+                AppActivityManager.getInstance().finishActivity(LoginView.class,LoginCodeView.class);
             }
         });
     }

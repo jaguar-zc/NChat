@@ -26,7 +26,7 @@ public class ConversationAdapter extends BaseRecyclerAdapter<ConversationResp> {
     @Override
     public void convert(RecyclerHolder holder, ConversationResp item, int position, boolean isScrolling) {
         ImageView icon = (ImageView) holder.getView(R.id.icon)   ;
-        imageLoader.loader(item.getIcon(),icon);
+        imageLoader.loader(cxt,item.getIcon(),icon);
         holder.setText(R.id.name,item.getName());
         if(item.getLastMessage() != null){
             holder.setText(R.id.time, ConversationTimeUtils.toDateStr((Long.valueOf(item.getLastMessage().getSendTime()))));

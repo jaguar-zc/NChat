@@ -24,6 +24,9 @@ public class MessageUserSimpleStore implements IStore<String,MessageUserSimpleIn
         return me;
     }
 
+    {
+        StoreManager.getInstance().register(this);
+    }
 
     @Override
     public void loadObject(Context context, OnCallback<MessageUserSimpleInfo> callback) {

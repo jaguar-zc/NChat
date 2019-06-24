@@ -7,9 +7,7 @@ import android.widget.TextView;
 
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
-import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
-import org.flyants.book.utils.JsonUtils;
-import org.flyants.book.utils.LogUtils;
+import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.view.face.FaceView;
 import org.flyants.book.view.my.meinfo.MeInfoView;
 import org.flyants.book.view.my.meqrcode.MeQrCodeView;
@@ -32,7 +30,7 @@ public class MyView extends BaseFragment<MyPresenterImpl> implements UiMyView  {
     @BindView(R.id.nchat_no) TextView nchat_no;
     @BindView(R.id.edit_info) LinearLayout edit_info;
 
-    ImageLoader imageLoader = new CenterCropImageLoaderImpl();
+    ImageLoader imageLoader = new IconImageLoaderImpl();
 
 
     @Override
@@ -64,7 +62,7 @@ public class MyView extends BaseFragment<MyPresenterImpl> implements UiMyView  {
 
     @Override
     public void setVeiwAttrs(UserInfo resp) {
-        imageLoader.loader(resp.getEncodedPrincipal(),icon);
+        imageLoader.loader(getContext(),resp.getEncodedPrincipal(),icon);
         nickname.setText(resp.getNickName()+"");
         nchat_no.setText(getString(R.string.AntsChatId)+":"+resp.getPeopleNo()+"");
     }

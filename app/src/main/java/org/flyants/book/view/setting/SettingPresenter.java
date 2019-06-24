@@ -6,6 +6,7 @@ import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.okhttp.RespCall;
 import org.flyants.book.network.okhttp.RespEmptyCall;
 import org.flyants.book.resources.Apis;
+import org.flyants.book.store.StoreManager;
 import org.flyants.book.store.UserStore;
 import org.flyants.book.utils.RespError;
 import org.flyants.book.utils.SharedPreferencesHelper;
@@ -53,6 +54,7 @@ public class SettingPresenter extends BasePresenter<SettingView,UISettingView> {
             public void onSuccess() {
                 UserStore.getInstence().clean();
                 SharedPreferencesHelper.$().clear();
+                StoreManager.getInstance().clean();
                 UserStore.getInstence().login(view);
             }
 
@@ -60,6 +62,7 @@ public class SettingPresenter extends BasePresenter<SettingView,UISettingView> {
             public void onFail(RespError error) {
                 UserStore.getInstence().clean();
                 SharedPreferencesHelper.$().clear();
+                StoreManager.getInstance().clean();
                 UserStore.getInstence().login(view);
             }
         });

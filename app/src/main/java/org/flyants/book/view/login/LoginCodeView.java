@@ -120,11 +120,12 @@ public class LoginCodeView extends BaseActivity<LoginCodePresenter> implements U
         view_phone.setText(MessageFormat.format("短信验证码已发送至 {0}", phone));
         input_number.addTextChangedListener(this);
         input_number.setCursorVisible(false);//不显示光标
+        KeyboardUtils.showKeyboard(input_number);
     }
 
     @Override
     public void onViewStart() {
-        KeyboardUtils.showKeyboard(input_number);
+
     }
 
     @Override

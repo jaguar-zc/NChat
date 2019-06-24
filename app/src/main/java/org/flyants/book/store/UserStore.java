@@ -28,6 +28,10 @@ public class UserStore implements IStore<String,UserInfo> {
         userInfo = null;
     }
 
+    {
+        StoreManager.getInstance().register(this);
+    }
+
     @Override
     public void loadObject(Context context, OnCallback<UserInfo> callback) {
         loadObject(context,null,callback);

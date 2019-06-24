@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
-import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
+import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.utils.ToastUtils;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
@@ -19,7 +19,7 @@ public class DynamicPublishView extends BaseActivity<DynamicPublishPrecenter> im
     @BindView(R.id.small_icon) ImageView small_icon;
     @BindView(R.id.publish) TextView publish;
 
-    ImageLoader imageLoader = new CenterCropImageLoaderImpl();
+    ImageLoader imageLoader = new IconImageLoaderImpl();
 
     @Override
     public DynamicPublishPrecenter buildPresenter() {

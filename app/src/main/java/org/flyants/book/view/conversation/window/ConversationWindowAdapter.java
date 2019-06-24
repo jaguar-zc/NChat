@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.apache.commons.lang3.StringUtils;
 import org.flyants.book.R;
 import org.flyants.book.network.image.ImageLoader;
-import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
+import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.store.MessageUserSimpleStore;
 import org.flyants.book.utils.LogUtils;
 import org.flyants.book.view.conversation.user.MessageUserSimpleInfo;
@@ -42,7 +42,7 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
         this.uiConversationWindowView = uiConversationWindowView;
     }
 
-    private ImageLoader imageLoader = new CenterCropImageLoaderImpl();
+    private ImageLoader imageLoader = new IconImageLoaderImpl();
 
     @NonNull
     @Override
@@ -86,7 +86,7 @@ public class ConversationWindowAdapter extends RecyclerView.Adapter<RecyclerView
                 @Override
                 public void call(MessageUserSimpleInfo messageUserSimpleInfo) {
 //                    imageLoader.loader( "https://flyants.oss-cn-shanghai.aliyuncs.com/headimg/0d17b4f1.jpg!96", ((TextHolder) holder).getIcon());
-                    imageLoader.loader(messageUserSimpleInfo.getEncodedPrincipal(), ((TextHolder) holder).getIcon());
+                    imageLoader.loader(mContext,messageUserSimpleInfo.getEncodedPrincipal(), ((TextHolder) holder).getIcon());
                 }
             });
 

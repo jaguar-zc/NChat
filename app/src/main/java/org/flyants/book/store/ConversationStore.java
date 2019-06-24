@@ -26,6 +26,9 @@ public class ConversationStore implements IUpdate<String,List<ConversationResp> 
         conversationRespList = null;
     }
 
+    {
+        StoreManager.getInstance().register(this);
+    }
     @Override
     public void loadObject(Context context, OnCallback<List<ConversationResp>> callback) {
         loadObject(context,null,callback);

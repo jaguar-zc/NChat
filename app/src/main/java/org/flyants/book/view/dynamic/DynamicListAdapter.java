@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.flyants.book.R;
 import org.flyants.book.custom.NineGridDynamicImageListLayout;
 import org.flyants.book.network.image.ImageLoader;
-import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
+import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.view.base.BaseRecyclerAdapter;
 import org.flyants.book.view.base.RecyclerHolder;
 
@@ -14,7 +14,7 @@ import java.util.Collection;
 
 class DynamicListAdapter  extends BaseRecyclerAdapter<DynamicResp> {
 
-    ImageLoader imageLoader = new CenterCropImageLoaderImpl();
+    ImageLoader imageLoader = new IconImageLoaderImpl();
 
 
     public DynamicListAdapter(RecyclerView recyclerView) {
@@ -23,7 +23,7 @@ class DynamicListAdapter  extends BaseRecyclerAdapter<DynamicResp> {
 
     @Override
     public void convert(RecyclerHolder holder, DynamicResp item, int position, boolean isScrolling) {
-        imageLoader.loader(item.getEncodedPrincipal(), holder.getView(R.id.icon));
+        imageLoader.loader(cxt,item.getEncodedPrincipal(), holder.getView(R.id.icon));
         holder.setText(R.id.nickname, item.getNickName());
         holder.setText(R.id.showTyoe, item.getVisibility().name());
         holder.setText(R.id.text_content, item.getText());

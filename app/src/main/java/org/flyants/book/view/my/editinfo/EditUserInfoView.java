@@ -8,9 +8,7 @@ import android.widget.TextView;
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.network.image.ImageLoader;
-import org.flyants.book.network.image.glide.CenterCropImageLoaderImpl;
-import org.flyants.book.network.image.glide.ImageLoaderImpl;
-import org.flyants.book.utils.ToastUtils;
+import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
 import org.flyants.component.alert.AlertUtils;
@@ -61,7 +59,7 @@ public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> imple
     TextView location_text;
 
 
-    ImageLoader imageLoader = new CenterCropImageLoaderImpl();
+    ImageLoader imageLoader = new IconImageLoaderImpl();
 
     List<Object> listNames = new ArrayList<>(PeopleSex.listNames());
 
