@@ -23,11 +23,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"></View>
         <ImageView
+            android:id="@+id/friends_view"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:padding="5dp"
             android:src="@mipmap/adl"/>
         <ImageView
+            android:id="@+id/friends_add"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:padding="5dp"

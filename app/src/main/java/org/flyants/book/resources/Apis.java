@@ -4,6 +4,7 @@ import org.flyants.book.dto.PeopleAppConfig;
 import org.flyants.book.dto.LoginReq;
 import org.flyants.book.dto.LoginResp;
 import org.flyants.book.utils.Page;
+import org.flyants.book.view.conversation.user.MessageUserSimpleInfo;
 import org.flyants.book.view.dynamic.publish.CommentsPublishReq;
 import org.flyants.book.view.dynamic.CommentsSimpleResp;
 import org.flyants.book.view.experience.ConversationDto;
@@ -63,7 +64,8 @@ public interface Apis {
     @GET("/api/v1/app/system/sendSmsCode")
     Call<ResponseBody> sendSmsCode(@Query("phone") String phone);
 
-
+    @GET("/api/v1/app/friends/getFriendsList")
+    Call<List<MessageUserSimpleInfo>> getFriendsList();
 
     @GET("/flyants-resource/my-page-works.json")
     Call<List<WorksModel>> getWorksModelList();

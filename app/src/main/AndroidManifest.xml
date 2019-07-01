@@ -57,6 +57,8 @@
         <activity android:name=".view.wallet.WalletView"></activity>
         <activity android:name=".view.setting.blacklist.BlackListView"></activity>
         <activity android:name=".view.conversation.info.ConversationInfoView"></activity>
+        <activity android:name=".view.firends.list.FirendsListView"></activity>
+        <activity android:name=".view.search.global.GlobalSearchView"></activity>
     </application>
 
 </manifest>
