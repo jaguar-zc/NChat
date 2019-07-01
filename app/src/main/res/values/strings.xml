@@ -13,6 +13,7 @@
     <string name="input_sms_code">输入验证码</string>
     <string name="input_new_password">输入新密码</string>
     <string name="shared_preferences_name">AntsChat</string>
+    <string name="search_hint">支持搜索人、群、小组、公共主页和聊天记录</string>
 
 
     <string name="album_view">选择图片</string>

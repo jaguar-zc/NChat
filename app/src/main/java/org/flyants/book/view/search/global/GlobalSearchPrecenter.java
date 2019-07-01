@@ -1,8 +1,10 @@
 package org.flyants.book.view.search.global;
 
+import com.liaoinstan.springview.widget.SpringView;
+
 import org.flyants.common.mvp.impl.BasePresenter;
 
-class GlobalSearchPrecenter  extends BasePresenter<GlobalSearchView,UIGlobalSearchView> {
+class GlobalSearchPrecenter  extends BasePresenter<GlobalSearchView,UIGlobalSearchView>  implements SpringView.OnFreshListener{
 
 
     public GlobalSearchPrecenter(GlobalSearchView t, UIGlobalSearchView uiGlobalSearchView) {
@@ -11,6 +13,16 @@ class GlobalSearchPrecenter  extends BasePresenter<GlobalSearchView,UIGlobalSear
 
     @Override
     public void onViewInit() {
+
+    }
+
+    @Override
+    public void onRefresh() {
+
+    }
+
+    @Override
+    public void onLoadmore() {
 
     }
 
