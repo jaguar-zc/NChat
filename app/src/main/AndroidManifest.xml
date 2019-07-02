@@ -59,6 +59,7 @@
         <activity android:name=".view.conversation.info.ConversationInfoView"></activity>
         <activity android:name=".view.firends.list.FirendsListView"></activity>
         <activity android:name=".view.search.global.GlobalSearchView"></activity>
+        <activity android:name=".view.area.AreaView"></activity>
     </application>
 
 </manifest>

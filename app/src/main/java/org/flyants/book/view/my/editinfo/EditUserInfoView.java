@@ -1,14 +1,18 @@
 package org.flyants.book.view.my.editinfo;
 
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.IconImageLoaderImpl;
+import org.flyants.book.view.area.AreaView;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
 import org.flyants.component.alert.AlertUtils;
@@ -137,7 +141,8 @@ public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> imple
 
     @OnClick(R.id.location_layout)
     public void OnClicklocation_layout() {
-
+        Intent intent = new Intent(this, AreaView.class);
+        startActivityForResult(intent,100);
     }
 
     @Override
@@ -148,5 +153,15 @@ public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> imple
         chatno_text.setText(resp.getPeopleNo() == null ? "" : resp.getPeopleNo());
         sex_text.setText(PeopleSex.valueOfPeopleSex(resp.getSex()).getName());
         location_text.setText(resp.getLocation() == null ? "" : resp.getLocation());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 100 && resultCode == RESULT_OK){
+            String locatoin = data.getStringExtra("location");
+            location_text.setText(locatoin);
+        }
     }
 }

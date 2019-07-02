@@ -4,6 +4,7 @@ import org.flyants.book.dto.PeopleAppConfig;
 import org.flyants.book.dto.LoginReq;
 import org.flyants.book.dto.LoginResp;
 import org.flyants.book.utils.Page;
+import org.flyants.book.view.area.Provinces;
 import org.flyants.book.view.conversation.user.MessageUserSimpleInfo;
 import org.flyants.book.view.dynamic.publish.CommentsPublishReq;
 import org.flyants.book.view.dynamic.CommentsSimpleResp;
@@ -34,6 +35,9 @@ public interface Apis {
 
     @GET("/api/v1/app/people/info")
     Call<UserInfo> userInfo();
+
+    @GET("/api/v1/app/system/area/listAll")
+    Call<List<Provinces>> getAreaAll();
 
     @GET("/api/v1/app/people/assistPeople")
     Call<ResponseBody> assistPeople(@Query("assistPeopleId") String assistPeopleId);
