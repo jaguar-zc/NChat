@@ -42,7 +42,7 @@ public class AreaView extends BaseActivity<AreaPrecenter> implements UIAreaView{
             public void onItemClick(View view, Object data, int position) {
                 Intent intent = new Intent();
                 intent.putExtra("location",((Provinces)data).getName());
-                setResult(RESULT_OK);
+                setResult(RESULT_OK,intent);
                 finish();
             }
         });

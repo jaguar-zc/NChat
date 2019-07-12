@@ -1,6 +1,7 @@
 package org.flyants.book.view.area;
 
 import org.flyants.book.store.AreaStore;
+import org.flyants.book.utils.LogUtils;
 import org.flyants.common.mvp.impl.BasePresenter;
 import org.flyants.common.store.OnCallback;
 
@@ -17,6 +18,7 @@ class AreaPrecenter extends BasePresenter<AreaView,UIAreaView> {
         AreaStore.me.loadObject(view, new OnCallback<List<Provinces>>() {
             @Override
             public void call(List<Provinces> provinces) {
+                LogUtils.d("getAreaStr:"+provinces.size());
                 uiView.setPullLoadMoreCompleted(1,provinces);
             }
         });

@@ -1,6 +1,7 @@
 package org.flyants.book.network;
 
 
+import org.flyants.book.BuildConfig;
 import org.flyants.book.NChatApplication;
 import org.flyants.book.R;
 import org.flyants.book.network.okhttp.HeaderInterceptor;
@@ -36,17 +37,22 @@ public abstract class RequestUtils {
         .readTimeout(30, TimeUnit.SECONDS)//设置读取超时时间.writeTimeout(BuildConfig.DEFAULT_WRITE_TIMEOUT, TimeUnit.SECONDS)//设置写的超时时间
         .cache(cache)
         .retryOnConnectionFailure(true);//错误重连
-//        if (BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             builder.addInterceptor(new LoggingInterceptor());
-//        }
-        OkHttpClient client = builder.build();
+        }
         retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(NChatApplication.getFlyantsApplication().getString(R.string.host))
-                .client(client)
+                .client( builder.build())
                 .build();
     }
 
+    /**
+     * 请求自己服务器
+     * @param tClass
+     * @param <T>
+     * @return
+     */
     public static <T> T build(Class<T> tClass){
         return (T) retrofit.create(tClass);
     }

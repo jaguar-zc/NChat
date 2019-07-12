@@ -36,9 +36,6 @@ public interface Apis {
     @GET("/api/v1/app/people/info")
     Call<UserInfo> userInfo();
 
-    @GET("/api/v1/app/system/area/listAll")
-    Call<List<Provinces>> getAreaAll();
-
     @GET("/api/v1/app/people/assistPeople")
     Call<ResponseBody> assistPeople(@Query("assistPeopleId") String assistPeopleId);
 
