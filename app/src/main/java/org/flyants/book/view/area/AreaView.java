@@ -16,16 +16,18 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class AreaView extends BaseActivity<AreaPrecenter> implements UIAreaView{
+public class AreaView extends BaseActivity<AreaPrecenter> implements UIAreaView {
 
-    @BindView(R.id.idHeader)  Header idHeader;
-    @BindView(R.id.recycler_view) RecyclerView recycler_view;
+    @BindView(R.id.idHeader)
+    Header idHeader;
+    @BindView(R.id.recycler_view)
+    RecyclerView recycler_view;
 
     private AreaAdapter areaAdapter;
 
     @Override
     public AreaPrecenter buildPresenter() {
-        return new AreaPrecenter(this,this);
+        return new AreaPrecenter(this, this);
     }
 
     @Override
@@ -40,10 +42,22 @@ public class AreaView extends BaseActivity<AreaPrecenter> implements UIAreaView{
         areaAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, Object data, int position) {
-                Intent intent = new Intent();
-                intent.putExtra("location",((Provinces)data).getName());
-                setResult(RESULT_OK,intent);
-                finish();
+//                if (getPresenter().level == 1) {
+//                    Intent intent = new Intent(getActivity(), AreaView.class);
+//                    intent.putExtra("location", ((Provinces) data).getName());
+//                    intent.putExtra(AreaPrecenter.AREA_LEVEL, getPresenter().level++);
+//                    startActivityForResult(intent);
+//                } else if (getPresenter().level == 2) {
+//                    Intent intent = new Intent();
+//                    intent.putExtra("location", ((Provinces) data).getName());
+//                    setResult(RESULT_OK, intent);
+//                    finish();
+//                } else if (getPresenter().level == 3) {
+                    Intent intent = new Intent();
+                    intent.putExtra("location", ((Provinces) data).getName());
+                    setResult(RESULT_OK, intent);
+                    finish();
+//                }
             }
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -51,16 +65,16 @@ public class AreaView extends BaseActivity<AreaPrecenter> implements UIAreaView{
         recycler_view.setLayoutManager(layoutManager);
         recycler_view.setAdapter(areaAdapter);
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));
-        recycler_view.setItemAnimator( new DefaultItemAnimator());
+        recycler_view.setItemAnimator(new DefaultItemAnimator());
     }
 
 
     @Override
     public void setPullLoadMoreCompleted(int page, List<Provinces> rows) {
-        if(page == 1){
+        if (page == 1) {
             areaAdapter.refresh(rows);
-        }else{
-            if(rows.size() > 0){
+        } else {
+            if (rows.size() > 0) {
                 areaAdapter.addDataList(rows);
             }
         }

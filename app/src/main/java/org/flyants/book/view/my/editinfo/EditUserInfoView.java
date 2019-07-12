@@ -12,6 +12,7 @@ import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.IconImageLoaderImpl;
+import org.flyants.book.utils.ToastUtils;
 import org.flyants.book.view.area.AreaView;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
@@ -25,6 +26,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import chihane.jdaddressselector.BottomDialog;
+import chihane.jdaddressselector.OnAddressSelectedListener;
+import chihane.jdaddressselector.model.City;
+import chihane.jdaddressselector.model.County;
+import chihane.jdaddressselector.model.Province;
+import chihane.jdaddressselector.model.Street;
 
 public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> implements UIEditUserInfoView {
 
@@ -141,8 +148,23 @@ public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> imple
 
     @OnClick(R.id.location_layout)
     public void OnClicklocation_layout() {
-        Intent intent = new Intent(this, AreaView.class);
-        startActivityForResult(intent,100);
+//        Intent intent = new Intent(this, AreaView.class);
+//        startActivityForResult(intent,100);
+        BottomDialog dialog = new BottomDialog(getActivity());
+        dialog.setOnAddressSelectedListener(new OnAddressSelectedListener() {
+            @Override
+            public void onAddressSelected(Province province, City city, County county, Street street) {
+                StringBuffer locatoin = new StringBuffer();
+                locatoin.append(province != null ? province.name + " " : "");
+                locatoin.append(city != null ? city.name + " " : "");
+                locatoin.append(county != null ? county.name + " " : "");
+                locatoin.append(street != null ? street.name : "");
+                location_text.setText(locatoin.toString());
+                getPresenter().updateLocation(province,city,county,street);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     @Override
@@ -155,13 +177,4 @@ public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> imple
         location_text.setText(resp.getLocation() == null ? "" : resp.getLocation());
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == 100 && resultCode == RESULT_OK){
-            String locatoin = data.getStringExtra("location");
-            location_text.setText(locatoin);
-        }
-    }
 }

@@ -8,7 +8,12 @@ import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BasePresenter;
 import org.flyants.common.store.OnCallback;
 
-public class EditUserInfoPrencenter extends BasePresenter<EditUserInfoView,UIEditUserInfoView> {
+import chihane.jdaddressselector.model.City;
+import chihane.jdaddressselector.model.County;
+import chihane.jdaddressselector.model.Province;
+import chihane.jdaddressselector.model.Street;
+
+public class EditUserInfoPrencenter extends BasePresenter<EditUserInfoView, UIEditUserInfoView> {
 
     Apis apis;
 
@@ -40,7 +45,7 @@ public class EditUserInfoPrencenter extends BasePresenter<EditUserInfoView,UIEdi
     public void updateSex(String sex) {
         UserInfo userInfo = new UserInfo();
         userInfo.setSex(sex);
-        apis.updatePeopleInfo(userInfo).enqueue(new RespEmptyCall(){
+        apis.updatePeopleInfo(userInfo).enqueue(new RespEmptyCall() {
             @Override
             public void onSuccess() {
                 super.onSuccess();
@@ -52,7 +57,7 @@ public class EditUserInfoPrencenter extends BasePresenter<EditUserInfoView,UIEdi
     public void updateNickName(String content) {
         UserInfo userInfo = new UserInfo();
         userInfo.setNickName(content);
-        apis.updatePeopleInfo(userInfo).enqueue(new RespEmptyCall(){
+        apis.updatePeopleInfo(userInfo).enqueue(new RespEmptyCall() {
             @Override
             public void onSuccess() {
                 super.onSuccess();
@@ -64,7 +69,31 @@ public class EditUserInfoPrencenter extends BasePresenter<EditUserInfoView,UIEdi
     public void updateIntroduction(String content) {
         UserInfo userInfo = new UserInfo();
         userInfo.setIntroduction(content);
-        apis.editPeopleIntroduction(content).enqueue(new RespEmptyCall(){
+        apis.editPeopleIntroduction(content).enqueue(new RespEmptyCall() {
+            @Override
+            public void onSuccess() {
+                super.onSuccess();
+                UserStore.getInstence().clean();
+            }
+        });
+    }
+
+    public void updateLocation(Province province, City city, County county, Street street) {
+        UserInfo userInfo = new UserInfo();
+        if (province != null) {
+            userInfo.setProvince(province.name);
+        }
+        if (city != null) {
+            userInfo.setCity(city.name);
+        }
+        if (county != null) {
+            userInfo.setCountry(county.name);
+        }
+        if (street != null) {
+            userInfo.setStreet(street.name);
+        }
+//        userInfo.setIntroduction(content);
+        apis.updatePeopleInfo(userInfo).enqueue(new RespEmptyCall() {
             @Override
             public void onSuccess() {
                 super.onSuccess();

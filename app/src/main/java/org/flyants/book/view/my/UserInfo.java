@@ -11,13 +11,13 @@ public class UserInfo   {
     private String phone;
     private String sex;
     private String language ;
-    private String country;
     private String province;
     private String city;
+    private String country;
+    private String street;
     private String introduction;
     private Integer peopleAssistCount;
     private String messageUserId ;
-
 
     public String getId() {
         return id;
@@ -107,6 +107,14 @@ public class UserInfo   {
         this.city = city;
     }
 
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
     public String getIntroduction() {
         return introduction;
     }
@@ -132,6 +140,6 @@ public class UserInfo   {
     }
 
     public String getLocation() {
-        return String.format("%s %s %s",getCountry(),getProvince(),getCity());
+        return String.format("%s %s %s %s",getProvince(),getCity(),getCountry(),getStreet());
     }
 }
