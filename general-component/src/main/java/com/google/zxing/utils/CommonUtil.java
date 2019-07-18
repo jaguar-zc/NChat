@@ -1,4 +1,4 @@
-package com.utils;
+package com.google.zxing.utils;
 
 import android.hardware.Camera;
 

@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动权限 -->
-
     <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
 
     <application
@@ -60,6 +59,10 @@
         <activity android:name=".view.firends.list.FirendsListView"></activity>
         <activity android:name=".view.search.global.GlobalSearchView"></activity>
         <activity android:name=".view.area.AreaView"></activity>
+        <activity android:name=".view.displaystore.DisplayStoreView"></activity>
+
+        <activity android:name="com.google.zxing.activity.CaptureActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" ></activity>
+
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package org.flyants.book.view.conversation;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.zxing.activity.CaptureActivity;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.ProxyRecyclerViewAdapter;
@@ -23,6 +26,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static android.app.Activity.RESULT_OK;
 
 public class ConversationView extends BaseFragment<ConversationPrecenter> implements UIConversationView , BaseRecyclerAdapter.OnItemClickListener {
 
@@ -95,9 +100,9 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
 
     @OnClick(R.id.friends_add)
     public void onClickfriends_add(){
-
+        Intent intent = new Intent(getContext(), CaptureActivity.class);
+        startActivityForResult(intent,100);
     }
-
 
     @Override
     public void setVeiwAttrs(ConversationResp resp) {
@@ -112,5 +117,15 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
     @Override
     public void onViewDestroy() {
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 100 && resultCode == CaptureActivity.RESULT_CODE_QR_SCAN){
+            Bundle bundle = data.getExtras();
+            String scanResult = bundle.getString(CaptureActivity.INTENT_EXTRA_KEY_QR_SCAN);
+            ToastUtils.show(scanResult);
+        }
     }
 }

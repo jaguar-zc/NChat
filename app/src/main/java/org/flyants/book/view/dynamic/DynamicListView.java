@@ -55,7 +55,7 @@ public class DynamicListView extends BaseFragment<DynamicListPrecenter> implemen
 //        ProxyRecyclerViewAdapter proxyRecyclerViewAdapter =  new ProxyRecyclerViewAdapter(adapter);
 //        proxyRecyclerViewAdapter.addHeaderView(searchView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext() );
-        layoutManager.setOrientation(OrientationHelper.VERTICAL);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
         recycler_view.setLayoutManager(layoutManager);
         recycler_view.setAdapter(adapter);
         springView.setHeader(new DefaultHeader(getContext()));
