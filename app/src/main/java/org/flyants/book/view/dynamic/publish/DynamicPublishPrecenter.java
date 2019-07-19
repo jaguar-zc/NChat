@@ -1,5 +1,7 @@
 package org.flyants.book.view.dynamic.publish;
 
+import com.maning.mndialoglibrary.MProgressDialog;
+
 import org.apache.commons.lang3.StringUtils;
 import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.okhttp.RespCall;
@@ -59,18 +61,20 @@ class DynamicPublishPrecenter extends BasePresenter<DynamicPublishView,UIDynamic
         if(StringUtils.isEmpty(content)){
             return;
         }
+        int size = imageList.size();
         LogUtils.d(content);
         LogUtils.d(location);
         LogUtils.d(dynamicVisibility);
         UploadArrayImage uploadArrayImage = new UploadArrayImage(view, new UploadCallbacks() {
             @Override
             public void onProgressUpdate(int percentage) {
-                LogUtils.d(percentage+"");
+                LogUtils.d("上传图片进度["+percentage+"]");
             }
 
             @Override
             public void onError() {
                 ToastUtils.show("上传图片失败");
+                LogUtils.d("上传图片失败");
             }
 
             @Override
@@ -82,7 +86,7 @@ class DynamicPublishPrecenter extends BasePresenter<DynamicPublishView,UIDynamic
                 publishReq.setVisibility(dynamicVisibility);
                 publishReq.setLocation(location);
                 LogUtils.d("uploadImage successful:"+ JsonUtils.convertObjectToJSON(publishReq));
-                dynamicApis.publish(publishReq).enqueue(new RespCall<ResponseBody>(view,true,"发布中...") {
+                dynamicApis.publish(publishReq).enqueue(new RespCall<ResponseBody>() {
                     @Override
                     public void onResp(ResponseBody resp) {
                         ToastUtils.show("发布成功");

@@ -44,10 +44,12 @@ public class UploadArrayImage {
 
 
     public void upload(int index){
-        if(index >= imageList.size()){
+        int size = imageList.size();
+        if(index >= size){
             uploadCallbacks.onSuccessful(imageList);
             return;
         }
+        LogUtils.d(String.format("开始上传图片[%s/%s]",index,size));
         File file = new File(imageList.get(index));
         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"),file);
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("file",file.getName(),requestBody);
@@ -55,11 +57,14 @@ public class UploadArrayImage {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
+                    LogUtils.d(String.format("开始上传图片[%s/%s] onResponse isSuccessful:%s",index,size,response.isSuccessful()));
                     if(response.isSuccessful()){
                         imageList.set(index,response.body().string());
                         uploadIndex = uploadIndex + 1;
                         uploadCallbacks.onProgressUpdate(index);
                         upload(uploadIndex);
+                    }else{
+                        LogUtils.d( response.errorBody().string());
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

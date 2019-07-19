@@ -52,6 +52,7 @@ public abstract class RequestUtils {
 
         OkHttpClient.Builder builderStatic = new OkHttpClient.Builder()
                 .protocols(Collections.singletonList(Protocol.HTTP_1_1))
+                .addInterceptor(new HeaderInterceptor())//设置Header
                 .connectTimeout(60, TimeUnit.SECONDS)//设置连接超时时间
                 .readTimeout(60, TimeUnit.SECONDS)//设置读取超时时间.writeTimeout(BuildConfig.DEFAULT_WRITE_TIMEOUT, TimeUnit.SECONDS)//设置写的超时时间
                 .retryOnConnectionFailure(true);//错误重连
