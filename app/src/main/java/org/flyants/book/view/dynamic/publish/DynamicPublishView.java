@@ -1,29 +1,30 @@
 package org.flyants.book.view.dynamic.publish;
 
 import android.content.Intent;
-import android.view.View;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.flyants.book.R;
-import org.flyants.book.custom.GridItemDecoration;
 import org.flyants.book.network.image.glide.IconImageLoaderImpl;
-import org.flyants.book.utils.DevicePhotoUtils;
-import org.flyants.book.utils.MediaBean;
+import org.flyants.book.utils.JsonUtils;
 import org.flyants.book.utils.ToastUtils;
-import org.flyants.book.view.base.BaseRecyclerAdapter;
 import org.flyants.book.view.displaystore.Display;
 import org.flyants.book.view.displaystore.DisplayStoreView;
+import org.flyants.book.view.dynamic.DynamicVisibility;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
+import org.flyants.component.gallery.GalleryFragment;
+import org.flyants.component.gallery.OnGallerylistener;
 import org.flyants.component.imageloader.ImageLoader;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -36,17 +37,18 @@ public class DynamicPublishView extends BaseActivity<DynamicPublishPrecenter> im
     @BindView(R.id.publish) TextView publish;
     @BindView(R.id.display_logo) ImageView display_logo;
     @BindView(R.id.display_text) TextView display_text;
+    @BindView(R.id.dynamic_content)  EditText dynamic_content;
+    @BindView(R.id.location)  TextView location;
 
-    @BindView(R.id.recycler_view) RecyclerView recycler_view;
-
-    private PhotoListAdapter adapter;
+    @BindView(R.id.frameLayout)  FrameLayout frameLayout;
+    List<Fragment> fragmentList = new ArrayList<>();
+    /**
+     * 用于对Fragment进行管理
+     */
+    private FragmentManager fragmentManager;
+    private GalleryFragment galleryFragment;
 
     ImageLoader imageLoader = new IconImageLoaderImpl();
-
-    int selectIndex = 0;
-    int MAX_IMAGE_COUNT = 9;
-
-    List<MediaBean> selectedImages = new ArrayList<>();
 
     @Override
     public DynamicPublishPrecenter buildPresenter() {
@@ -60,43 +62,58 @@ public class DynamicPublishView extends BaseActivity<DynamicPublishPrecenter> im
 
     @Override
     public void onViewInit() {
-        DevicePhotoUtils.getAllPhotoInfo(this, new DevicePhotoUtils.OnPhotoListenner() {
+        fragmentManager = getSupportFragmentManager();
+        galleryFragment = new GalleryFragment();
+        galleryFragment.setSelectCount(9);
+        galleryFragment.setShowHeader(false);
+        galleryFragment.setOnGallerylistener(new OnGallerylistener() {
             @Override
-            public void callback(List<MediaBean> mediaBeen, HashMap<String, List<MediaBean>> allPhotosTemp) {
-                adapter.refresh(mediaBeen);
-                adapter.notifyDataSetChanged();
+            public void close() {
+                onBackPressed();
             }
-        });
-        adapter = new PhotoListAdapter(recycler_view);
-        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+
             @Override
-            public void onItemClick(View view, Object data, int position) {
-                MediaBean mediaBean = (MediaBean)data;
-                if(mediaBean.getSelectIndex() == 0){
-                    if(selectIndex >= MAX_IMAGE_COUNT){
-                        return;
-                    }
-                    selectIndex++;
-                    mediaBean.setSelectIndex(selectIndex);
-                    selectedImages.add(mediaBean);
-                }else{
-                    selectIndex--;
-                    selectedImages.remove(mediaBean.getSelectIndex());
-                    mediaBean.setSelectIndex(0);
+            public void selected(List<org.flyants.component.gallery.MediaBean> mediaBean) {
+                ArrayList<String> stringList = new ArrayList<>();
+                for (org.flyants.component.gallery.MediaBean bean : mediaBean) {
+                    stringList.add(bean.getPath());
                 }
-                adapter.notifyItemChanged(position);
+                ToastUtils.show(JsonUtils.convertObjectToJSON(stringList));
             }
         });
-        // 竖直方向的网格样式，每行四个Item
-        GridLayoutManager mLayoutManager = new GridLayoutManager(this, 4, RecyclerView.VERTICAL, false);
-        recycler_view.addItemDecoration(new GridItemDecoration(this));
-        recycler_view.setLayoutManager(mLayoutManager);
-        recycler_view.setAdapter(adapter);
+        fragmentList.add(galleryFragment);
+        setTabSelection(0);
+    }
+
+    private void setTabSelection(int index) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frameLayout,fragmentList.get(index));
+        transaction.commit();
     }
 
     @Override
     public void setViewAttrs(UserInfo userInfo) {
         imageLoader.loader(userInfo.getEncodedPrincipal(),small_icon);
+    }
+
+    @Override
+    public String getContent() {
+        return dynamic_content.getText().toString();
+    }
+
+    @Override
+    public List<String> getImageList() {
+        return galleryFragment.getSelectedItem();
+    }
+
+    @Override
+    public DynamicVisibility getDynamicVisibility() {
+        return DynamicVisibility.valueOfByValue(display_text.getText().toString());
+    }
+
+    @Override
+    public String getLocation() {
+        return location.getText().toString();
     }
 
     @OnClick(R.id.close_icon)
@@ -106,9 +123,8 @@ public class DynamicPublishView extends BaseActivity<DynamicPublishPrecenter> im
 
     @OnClick(R.id.publish)
     public void onClickPublish(){
-        ToastUtils.show("发布");
+        getPresenter().publish();
     }
-
 
     @OnClick(R.id.display_text)
     public void onClickDisplay(){

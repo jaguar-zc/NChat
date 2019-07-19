@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.flyants.book.R;
 import org.flyants.book.view.base.BaseRecyclerAdapter;
 import org.flyants.book.view.base.RecyclerHolder;
+import org.flyants.book.view.dynamic.DynamicVisibility;
 import org.flyants.common.mvp.impl.BaseActivity;
 
 import java.util.ArrayList;
@@ -26,9 +27,9 @@ public class DisplayStoreView extends BaseActivity<DisplayStorePrecenter> implem
 
     List<Display> displayList = new ArrayList<>();
     {
-        displayList.add(new Display(R.mipmap.abj,"所有人可见","所有可能认识的人都有机会看到",0));
-        displayList.add(new Display(R.mipmap.abp,"好友可见","仅互为好友可见",0));
-        displayList.add(new Display(R.mipmap.aby,"私密","仅自己可见",0));
+        displayList.add(new Display(R.mipmap.abj, DynamicVisibility.ALL.getValue(),DynamicVisibility.ALL.getDesc(),0));
+        displayList.add(new Display(R.mipmap.abp,DynamicVisibility.FIRENDS.getValue(),DynamicVisibility.FIRENDS.getDesc(),0));
+        displayList.add(new Display(R.mipmap.aby,DynamicVisibility.PRIVATE.getValue(),DynamicVisibility.PRIVATE.getDesc(),0));
     }
 
     public Display display;

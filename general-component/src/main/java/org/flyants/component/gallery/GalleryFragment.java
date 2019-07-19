@@ -1,10 +1,12 @@
 package org.flyants.component.gallery;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +26,7 @@ import java.util.Map;
 public class GalleryFragment extends Fragment implements View.OnClickListener, DevicePhotoUtils.OnPhotoListenner {
 
     RecyclerView recyclerView;
+    LinearLayout idHeaderLayout;
     TextView idHeaderCompile;
     ImageView idHeaderBack;
     TextView idHeaderTitle;
@@ -41,6 +44,10 @@ public class GalleryFragment extends Fragment implements View.OnClickListener, D
         this.onGallerylistener = onGallerylistener;
     }
 
+    public void setShowHeader(Boolean showHeader) {
+        this.showHeader = showHeader;
+    }
+
     public void setSelectCount(int selectCount) {
         this.selectCount = selectCount;
     }
@@ -54,20 +61,26 @@ public class GalleryFragment extends Fragment implements View.OnClickListener, D
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), container, false);
         recyclerView = view.findViewById(R.id.recycler_view);
+        idHeaderLayout = view.findViewById(R.id.idHeaderLayout);
         idHeaderBack = view.findViewById(R.id.idHeaderBack);
         idHeaderCompile = view.findViewById(R.id.idHeaderCompile);
         idHeaderTitle = view.findViewById(R.id.idHeaderTitle);
 //        spinner = view.findViewById(R.id.spinner);
         idHeaderBack.setOnClickListener(this);
         idHeaderCompile.setOnClickListener(this);
+        if(!showHeader){
+            idHeaderLayout.setVisibility(View.GONE);
+        }
+        DevicePhotoUtils.getAllPhotoInfo(getActivity(), this);
         return view;
     }
+
 
 
     @Override
     public void onStart() {
         super.onStart();
-        DevicePhotoUtils.getAllPhotoInfo(getActivity(), this);
+        Log.d("GALLETY","start");
     }
 
     @Override
@@ -131,6 +144,14 @@ public class GalleryFragment extends Fragment implements View.OnClickListener, D
             }
             return;
         }
+    }
+
+    public List<String> getSelectedItem(){
+        ArrayList<String> stringList = new ArrayList<>();
+        for (MediaBean bean : adapter.getSelectedItem()) {
+            stringList.add(bean.getPath());
+        }
+        return stringList;
     }
 
 

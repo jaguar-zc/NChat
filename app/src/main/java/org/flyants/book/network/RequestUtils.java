@@ -9,10 +9,12 @@ import org.flyants.book.network.okhttp.LoggingInterceptor;
 import org.flyants.book.network.okhttp.RewriteCacheControlInterceptor;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -23,6 +25,7 @@ public abstract class RequestUtils {
 //    private static final String HOST = "http://flyants-api.devopscloud.cn:10000";
 
     private static Retrofit retrofit;
+    private static Retrofit retrofitStatic;
 
 
     static {
@@ -32,11 +35,11 @@ public abstract class RequestUtils {
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
         .addInterceptor(new RewriteCacheControlInterceptor())//设置缓存拦截器
-        .addInterceptor(new HeaderInterceptor())//设置Header
-        .connectTimeout(30, TimeUnit.SECONDS)//设置连接超时时间
-        .readTimeout(30, TimeUnit.SECONDS)//设置读取超时时间.writeTimeout(BuildConfig.DEFAULT_WRITE_TIMEOUT, TimeUnit.SECONDS)//设置写的超时时间
-        .cache(cache)
-        .retryOnConnectionFailure(true);//错误重连
+                .addInterceptor(new HeaderInterceptor())//设置Header
+                .connectTimeout(30, TimeUnit.SECONDS)//设置连接超时时间
+                .readTimeout(30, TimeUnit.SECONDS)//设置读取超时时间.writeTimeout(BuildConfig.DEFAULT_WRITE_TIMEOUT, TimeUnit.SECONDS)//设置写的超时时间
+                .cache(cache)
+                .retryOnConnectionFailure(true);//错误重连
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(new LoggingInterceptor());
         }
@@ -45,6 +48,21 @@ public abstract class RequestUtils {
                 .baseUrl(NChatApplication.getFlyantsApplication().getString(R.string.host))
                 .client( builder.build())
                 .build();
+
+
+        OkHttpClient.Builder builderStatic = new OkHttpClient.Builder()
+                .protocols(Collections.singletonList(Protocol.HTTP_1_1))
+                .connectTimeout(60, TimeUnit.SECONDS)//设置连接超时时间
+                .readTimeout(60, TimeUnit.SECONDS)//设置读取超时时间.writeTimeout(BuildConfig.DEFAULT_WRITE_TIMEOUT, TimeUnit.SECONDS)//设置写的超时时间
+                .retryOnConnectionFailure(true);//错误重连
+        retrofitStatic = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(NChatApplication.getFlyantsApplication().getString(R.string.host))
+                .client( builderStatic.build())
+                .build();
+
+
+
     }
 
     /**
@@ -55,6 +73,10 @@ public abstract class RequestUtils {
      */
     public static <T> T build(Class<T> tClass){
         return (T) retrofit.create(tClass);
+    }
+
+    public static <T> T buildStaticApi(Class<T> tClass){
+        return (T) retrofitStatic.create(tClass);
     }
 
 }

@@ -53,8 +53,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <EditText
+            android:id="@+id/dynamic_content"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="260dp"
             android:textStyle="italic"
             android:hint="此时的感谢"
             android:textSize="@dimen/item_size"
@@ -67,7 +68,7 @@
             android:background="@color/light_gray"></View>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/ui_padding"
             android:paddingRight="@dimen/ui_padding"
@@ -78,6 +79,7 @@
                 android:layout_height="15dp"
                 android:background="@mipmap/location" />
             <TextView
+                android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
@@ -115,13 +117,9 @@
             android:layout_height="0.5dp"
             android:background="@color/light_gray"></View>
     </LinearLayout>
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
+    </FrameLayout>
 </LinearLayout>
