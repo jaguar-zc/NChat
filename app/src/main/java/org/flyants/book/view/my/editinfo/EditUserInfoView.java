@@ -1,6 +1,7 @@
 package org.flyants.book.view.my.editinfo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -10,17 +11,24 @@ import androidx.annotation.Nullable;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
-import org.flyants.book.network.image.ImageLoader;
+import org.flyants.book.network.RequestUtils;
 import org.flyants.book.network.image.glide.IconImageLoaderImpl;
+import org.flyants.book.resources.Constants;
+import org.flyants.book.resources.StaticApis;
+import org.flyants.book.utils.LogUtils;
 import org.flyants.book.utils.ToastUtils;
-import org.flyants.book.view.area.AreaView;
+import org.flyants.book.view.gallery.GalleryView;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
 import org.flyants.component.alert.AlertUtils;
+import org.flyants.component.gallery.DevicePhotoUtils;
+import org.flyants.component.imageloader.ImageLoader;
 import org.flyants.component.prompt.PromptUtils;
 import org.flyants.component.selected.OnSelectedItem;
 import org.flyants.component.selected.SelectedViewUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +40,19 @@ import chihane.jdaddressselector.model.City;
 import chihane.jdaddressselector.model.County;
 import chihane.jdaddressselector.model.Province;
 import chihane.jdaddressselector.model.Street;
+import me.kareluo.imaging.IMGEditActivity;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.http.Multipart;
 
 public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> implements UIEditUserInfoView {
+
+
 
     @BindView(R.id.idHeader)
     Header header;
@@ -41,6 +60,8 @@ public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> imple
     RelativeLayout cover_bg_layout;
     @BindView(R.id.icon)
     ImageView icon;
+    @BindView(R.id.open_image)
+    ImageView open_image;
     @BindView(R.id.replace_bg)
     TextView replace_bg;
 
@@ -69,7 +90,6 @@ public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> imple
     @BindView(R.id.location_text)
     TextView location_text;
 
-
     ImageLoader imageLoader = new IconImageLoaderImpl();
 
     List<Object> listNames = new ArrayList<>(PeopleSex.listNames());
@@ -97,6 +117,13 @@ public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> imple
     @Override
     public void onViewDestroy() {
 
+    }
+
+
+    @OnClick(R.id.open_image)
+    public void OnClickOpenImage() {
+        Intent intent = new Intent(this, GalleryView.class);
+        startActivityForResult(intent, Constants.GALLERY_VIEW);
     }
 
 
@@ -177,4 +204,57 @@ public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> imple
         location_text.setText(resp.getLocation() == null ? "" : resp.getLocation());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode ==  Constants.GALLERY_VIEW && resultCode == RESULT_OK){
+            ArrayList<String> imageList = data.getStringArrayListExtra("imageList");
+            LogUtils.d("imageList:"+imageList.size());
+            if(imageList.size() > 0){
+                LogUtils.d("imageList:"+imageList.get(0));
+                startImageClip(imageList.get(0));
+            }
+            return;
+        }
+
+        if(requestCode ==  Constants.REQ_IMAGE_EDIT && resultCode == RESULT_OK){
+            imageLoader.loader(buildTempImagePath,icon);
+            uploadFiles();
+        }
+    }
+
+    public void uploadFiles(){
+        StaticApis staticApis = RequestUtils.build(StaticApis.class);
+        File file = new File(buildTempImagePath);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"),file);
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("file",file.getName(),requestBody);
+        staticApis.upload(filePart).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        String logoPath = response.body().string();
+                        imageLoader.loader(logoPath,icon);
+                        getPresenter().updateLogo(logoPath);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                ToastUtils.show("上传文件失败");
+            }
+        });
+    }
+
+    String buildTempImagePath;
+    public void startImageClip(String path){
+        buildTempImagePath = DevicePhotoUtils.buildTempImagePath(this);
+        Intent intent = new Intent(this,IMGEditActivity.class);
+        intent.putExtra(IMGEditActivity.EXTRA_IMAGE_URI, Uri.fromFile(new File(path)));
+        intent.putExtra(IMGEditActivity.EXTRA_IMAGE_SAVE_PATH,buildTempImagePath);
+        startActivityForResult( intent,  Constants.REQ_IMAGE_EDIT );
+    }
 }

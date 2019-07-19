@@ -17,7 +17,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
-import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.view.dynamic.publish.DynamicPublishView;
 import org.flyants.book.view.my.UserInfo;
@@ -27,6 +26,7 @@ import org.flyants.book.view.my.medynamic.MeDynamicView;
 import org.flyants.book.view.photoalbum.SimplePhotoAlbumView;
 import org.flyants.common.mvp.impl.BaseActivity;
 import org.flyants.common.mvp.impl.BaseFragment;
+import org.flyants.component.imageloader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.Arrays;

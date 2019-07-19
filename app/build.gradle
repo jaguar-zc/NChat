@@ -67,5 +67,6 @@ dependencies {
     implementation 'com.jph.takephoto:takephoto_library:4.0.3'
     implementation project(path: ':flyants-base')
     implementation project(path: ':general-component')
+    implementation project(path: ':imagecorp')
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }

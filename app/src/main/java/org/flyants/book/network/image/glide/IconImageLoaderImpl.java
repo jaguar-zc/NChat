@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import org.flyants.book.NChatApplication;
 import org.flyants.book.R;
-import org.flyants.book.network.image.ImageLoader;
+import org.flyants.component.imageloader.ImageLoader;
 
 public class IconImageLoaderImpl implements ImageLoader {
 

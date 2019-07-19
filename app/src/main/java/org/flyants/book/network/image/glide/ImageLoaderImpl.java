@@ -4,10 +4,9 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
 import org.flyants.book.NChatApplication;
-import org.flyants.book.network.image.ImageLoader;
+import org.flyants.component.imageloader.ImageLoader;
 
 public class ImageLoaderImpl implements ImageLoader {
 

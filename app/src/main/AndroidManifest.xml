@@ -60,6 +60,7 @@
         <activity android:name=".view.search.global.GlobalSearchView"></activity>
         <activity android:name=".view.area.AreaView"></activity>
         <activity android:name=".view.displaystore.DisplayStoreView"></activity>
+        <activity android:name=".view.gallery.GalleryView"></activity>
 
         <activity android:name="com.google.zxing.activity.CaptureActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" ></activity>
 

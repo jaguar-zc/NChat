@@ -11,10 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.GridItemDecoration;
-import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.utils.DevicePhotoUtils;
-import org.flyants.book.utils.JsonUtils;
 import org.flyants.book.utils.MediaBean;
 import org.flyants.book.utils.ToastUtils;
 import org.flyants.book.view.base.BaseRecyclerAdapter;
@@ -22,8 +20,8 @@ import org.flyants.book.view.displaystore.Display;
 import org.flyants.book.view.displaystore.DisplayStoreView;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
+import org.flyants.component.imageloader.ImageLoader;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

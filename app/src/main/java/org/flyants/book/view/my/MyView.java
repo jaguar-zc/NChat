@@ -6,7 +6,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.flyants.book.R;
-import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.view.face.FaceView;
 import org.flyants.book.view.my.meinfo.MeInfoView;
@@ -14,6 +13,7 @@ import org.flyants.book.view.my.meqrcode.MeQrCodeView;
 import org.flyants.book.view.setting.SettingView;
 import org.flyants.book.view.wallet.WalletView;
 import org.flyants.common.mvp.impl.BaseFragment;
+import org.flyants.component.imageloader.ImageLoader;
 
 import butterknife.BindView;
 import butterknife.OnClick;

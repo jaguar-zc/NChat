@@ -5,11 +5,11 @@ import android.widget.LinearLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
-import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.ImageLoaderImpl;
 import org.flyants.book.utils.MediaBean;
 import org.flyants.book.view.base.BaseRecyclerAdapter;
 import org.flyants.book.view.base.RecyclerHolder;
+import org.flyants.component.imageloader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,11 +28,11 @@ class PhotoListAdapter   extends BaseRecyclerAdapter<MediaBean> {
         imageLoader.loader(cxt,item.getPath(), holder.getView(R.id.icon));
         if(item.getSelectIndex() == null || item.getSelectIndex() == 0){
             LinearLayout view = holder.getView(R.id.text_index_layout);
-            view.setBackgroundResource(R.drawable.photo_unselected);
+            view.setBackgroundResource(R.drawable.gallery_unselected);
             holder.setText(R.id.text_index,"");
         }else{
             LinearLayout view = holder.getView(R.id.text_index_layout);
-            view.setBackgroundResource(R.drawable.photo_selected);
+            view.setBackgroundResource(R.drawable.gallery_selected);
             holder.setText(R.id.text_index,item.getSelectIndex()+"");
         }
     }

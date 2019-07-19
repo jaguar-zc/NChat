@@ -1,4 +1,4 @@
-package org.flyants.book.network.image;
+package org.flyants.component.imageloader;
 
 import android.content.Context;
 import android.widget.ImageView;

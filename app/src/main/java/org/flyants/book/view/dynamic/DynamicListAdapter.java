@@ -4,10 +4,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.NineGridDynamicImageListLayout;
-import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.view.base.BaseRecyclerAdapter;
 import org.flyants.book.view.base.RecyclerHolder;
+import org.flyants.component.imageloader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.Collection;

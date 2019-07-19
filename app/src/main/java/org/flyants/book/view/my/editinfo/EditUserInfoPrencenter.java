@@ -24,16 +24,16 @@ public class EditUserInfoPrencenter extends BasePresenter<EditUserInfoView, UIEd
     @Override
     public void onViewInit() {
         apis = RequestUtils.build(Apis.class);
-    }
-
-    @Override
-    public void onViewStart() {
         UserStore.getInstence().loadObject(context, new OnCallback<UserInfo>() {
             @Override
             public void call(UserInfo userInfo) {
                 uiView.setVeiwAttrs(userInfo);
             }
         });
+    }
+
+    @Override
+    public void onViewStart() {
 
     }
 
@@ -93,6 +93,18 @@ public class EditUserInfoPrencenter extends BasePresenter<EditUserInfoView, UIEd
             userInfo.setStreet(street.name);
         }
 //        userInfo.setIntroduction(content);
+        apis.updatePeopleInfo(userInfo).enqueue(new RespEmptyCall() {
+            @Override
+            public void onSuccess() {
+                super.onSuccess();
+                UserStore.getInstence().clean();
+            }
+        });
+    }
+
+    public void updateLogo(String logoPath) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setEncodedPrincipal(logoPath);
         apis.updatePeopleInfo(userInfo).enqueue(new RespEmptyCall() {
             @Override
             public void onSuccess() {

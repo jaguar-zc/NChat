@@ -1,1 +1,1 @@
-include ':app', ':flyants-base', ':general-component'
+include ':app', ':flyants-base', ':general-component', ':imagecorp'

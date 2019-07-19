@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.flyants.book.network.image.ImageLoader;
 import org.flyants.book.network.image.glide.ImageLoaderImpl;
+import org.flyants.component.imageloader.ImageLoader;
 
 import java.util.ArrayList;
 

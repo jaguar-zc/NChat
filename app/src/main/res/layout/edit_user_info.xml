@@ -27,6 +27,7 @@
                 android:layout_centerInParent="true"
                 android:background="@mipmap/u0"/>
             <ImageView
+                android:id="@+id/open_image"
                 android:layout_toRightOf="@id/icon"
                 android:layout_alignBottom="@id/icon"
                 android:layout_marginLeft="-40dp"
