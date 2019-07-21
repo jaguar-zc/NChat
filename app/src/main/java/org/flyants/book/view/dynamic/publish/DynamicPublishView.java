@@ -1,5 +1,6 @@
 package org.flyants.book.view.dynamic.publish;
 
+import android.Manifest;
 import android.content.Intent;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -25,6 +26,7 @@ import org.flyants.component.gallery.OnGallerylistener;
 import org.flyants.component.imageloader.ImageLoader;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -49,6 +51,12 @@ public class DynamicPublishView extends BaseActivity<DynamicPublishPrecenter> im
     private GalleryFragment galleryFragment;
 
     ImageLoader imageLoader = new IconImageLoaderImpl();
+
+
+    @Override
+    public List<String> applyPermission() {
+        return Arrays.asList(Manifest.permission.CAMERA);
+    }
 
     @Override
     public DynamicPublishPrecenter buildPresenter() {
