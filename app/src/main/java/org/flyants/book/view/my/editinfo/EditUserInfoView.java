@@ -1,5 +1,6 @@
 package org.flyants.book.view.my.editinfo;
 
+import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ import org.flyants.component.selected.SelectedViewUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -49,6 +51,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.Multipart;
+
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.RECORD_AUDIO;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> implements UIEditUserInfoView {
 
@@ -93,6 +99,11 @@ public class EditUserInfoView extends BaseActivity<EditUserInfoPrencenter> imple
     ImageLoader imageLoader = new IconImageLoaderImpl();
 
     List<Object> listNames = new ArrayList<>(PeopleSex.listNames());
+
+    @Override
+    public List<String> applyPermission() {
+        return Arrays.asList(READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,RECORD_AUDIO);
+    }
 
     @Override
     public EditUserInfoPrencenter buildPresenter() {
