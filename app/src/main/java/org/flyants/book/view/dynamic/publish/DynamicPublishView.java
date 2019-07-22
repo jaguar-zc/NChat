@@ -32,6 +32,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static android.Manifest.permission.CAMERA;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+
 public class DynamicPublishView extends BaseActivity<DynamicPublishPrecenter> implements UIDynamicPublishView {
 
     @BindView(R.id.close_icon) ImageView close_icon;
@@ -55,7 +58,7 @@ public class DynamicPublishView extends BaseActivity<DynamicPublishPrecenter> im
 
     @Override
     public List<String> applyPermission() {
-        return Arrays.asList(Manifest.permission.CAMERA);
+        return Arrays.asList(CAMERA,READ_EXTERNAL_STORAGE);
     }
 
     @Override

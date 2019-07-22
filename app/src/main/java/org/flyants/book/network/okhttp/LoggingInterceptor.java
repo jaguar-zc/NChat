@@ -41,7 +41,7 @@ public class LoggingInterceptor implements Interceptor {
         LogUtils.d(TAG,"Response Status:" + response.code());
         LogUtils.d(TAG,"Response Entity:" + content);
         return response.newBuilder()
-                .      body(ResponseBody.create(MediaType.parse("UTF-8"), content))
+                .body(ResponseBody.create(MediaType.parse("UTF-8"), content))
                 .build();
     }
 }

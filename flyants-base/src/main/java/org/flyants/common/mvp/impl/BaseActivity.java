@@ -34,7 +34,7 @@ public abstract class BaseActivity<P extends PrecenterEvent> extends AppCompatAc
     private  P presenter;
 
     public void onDeniedPermission(){
-        finish();
+        setContentView(R.layout.denied_permission);
     }
 
     public int getStatusBarColor(){
@@ -49,11 +49,16 @@ public abstract class BaseActivity<P extends PrecenterEvent> extends AppCompatAc
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏
         StatusBarUtil.setStatusBarMode(this, isTextDark(), getStatusBarColor());
-        setContentView(getLayoutId());
-        ButterKnife.bind(this );
         if(applyPermission().size() > 0){
             requestPermission();
+        }else{
+            onBindView();
         }
+    }
+
+    private void onBindView(){
+        setContentView(getLayoutId());
+        ButterKnife.bind(this );
         onViewInit();
         if(getPresenter() != null)
             getPresenter().onViewInit();
@@ -133,6 +138,7 @@ public abstract class BaseActivity<P extends PrecenterEvent> extends AppCompatAc
             @Override
             public void onAction(List<String> data) {
                 Log.d("onGranted",data.toString());
+                onBindView();
             }
         }).onDenied(new Action<List<String>>() {
             @Override

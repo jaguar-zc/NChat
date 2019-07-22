@@ -16,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RespEmptyCall  implements Callback<ResponseBody> {
+public class RespEmptyCall implements Callback<ResponseBody> {
 
 
     private Context context;
@@ -28,45 +28,45 @@ public class RespEmptyCall  implements Callback<ResponseBody> {
     }
 
     public RespEmptyCall(boolean isLooding) {
-        this(isLooding,"");
+        this(isLooding, "");
     }
 
     public RespEmptyCall(boolean isLooding, String loodingText) {
-        this(NChatApplication.getFlyantsApplication(),isLooding,loodingText);
+        this(NChatApplication.getFlyantsApplication(), isLooding, loodingText);
     }
 
     public RespEmptyCall(Context context, boolean isLooding, String loodingText) {
         this.context = context;
         this.isLooding = isLooding;
         this.loodingText = loodingText;
-        if(this.isLooding){
-            MProgressDialog.showProgress(this.context,this.loodingText);
+        if (this.isLooding) {
+            MProgressDialog.showProgress(this.context, this.loodingText);
         }
     }
 
-    public void onSuccess(){
-        
+    public void onSuccess() {
+
     }
 
-    public void onFail(RespError error){
+    public void onFail(RespError error) {
 
     }
 
     @Override
     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-        if(this.isLooding){
+        if (this.isLooding) {
             MProgressDialog.dismissProgress();
         }
         okhttp3.Response raw = response.raw();
         if (raw.code() == 200) {
             onSuccess();
-        }else{
+        } else {
             try {
                 RespError error = JsonUtils.toBean(response.errorBody().string(), RespError.class);
 //                if(NotToastErrorCode.contains(error.getCode())){
 //                    onFailure(call,null);
 //                }else{
-                    ToastUtils.show(error.getResp_msg());
+                ToastUtils.show(error.getResp_msg());
 //                }
                 onFail(error);
             } catch (Exception e) {
@@ -77,7 +77,7 @@ public class RespEmptyCall  implements Callback<ResponseBody> {
 
     @Override
     public void onFailure(Call<ResponseBody> call, Throwable t) {
-        if(this.isLooding){
+        if (this.isLooding) {
             MProgressDialog.dismissProgress();
         }
         try {
