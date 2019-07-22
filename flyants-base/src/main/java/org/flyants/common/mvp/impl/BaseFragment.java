@@ -34,6 +34,8 @@ public abstract class BaseFragment<P extends PrecenterEvent> extends Fragment im
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), container, false);
         unbinder = ButterKnife.bind(this, view);
+        if(getPresenter() != null)
+            getPresenter().onViewInit();
         return view;
     }
 
@@ -45,7 +47,6 @@ public abstract class BaseFragment<P extends PrecenterEvent> extends Fragment im
         onViewStart();
         if(getPresenter() != null)
             getPresenter().onViewStart();
-
     }
 
 

@@ -23,7 +23,6 @@ public abstract class BasePresenter<View,UiView> implements PrecenterEvent {
             this.context = (Activity) view;
         }
         this.uiView = uiView;
-        onViewInit();
     }
 
 }

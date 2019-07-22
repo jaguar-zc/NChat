@@ -31,6 +31,8 @@ public abstract class BaseActivity<P extends PrecenterEvent> extends AppCompatAc
         return new ArrayList<String>();
     }
 
+    private Boolean isBindView = false;
+
     private  P presenter;
 
     public void onDeniedPermission(){
@@ -60,8 +62,10 @@ public abstract class BaseActivity<P extends PrecenterEvent> extends AppCompatAc
         setContentView(getLayoutId());
         ButterKnife.bind(this );
         onViewInit();
-        if(getPresenter() != null)
+        if(getPresenter() != null) {
             getPresenter().onViewInit();
+        }
+        isBindView = true;
     }
 
     protected Activity getActivity(){
@@ -82,7 +86,7 @@ public abstract class BaseActivity<P extends PrecenterEvent> extends AppCompatAc
     public void onStart() {
         super.onStart();
         onViewStart();
-        if(getPresenter() != null)
+        if(getPresenter() != null && isBindView)
             getPresenter().onViewStart();
     }
 
@@ -96,7 +100,7 @@ public abstract class BaseActivity<P extends PrecenterEvent> extends AppCompatAc
     protected void onDestroy() {
         super.onDestroy();
         onViewDestroy();
-        if(getPresenter() != null)
+        if(getPresenter() != null && isBindView)
             getPresenter().onViewDestroy();
     }
 
