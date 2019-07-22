@@ -17,4 +17,13 @@
         android:gravity="center_horizontal"
         android:text="程序无法继续进行,请在系统设置-应用管理中打开权限"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="返回"
+        android:id="@+id/id_back"/>
+
 </LinearLayout>

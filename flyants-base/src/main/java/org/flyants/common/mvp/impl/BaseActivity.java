@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +38,12 @@ public abstract class BaseActivity<P extends PrecenterEvent> extends AppCompatAc
 
     public void onDeniedPermission(){
         setContentView(R.layout.denied_permission);
+        findViewById(R.id.id_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public int getStatusBarColor(){
