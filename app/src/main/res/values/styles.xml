@@ -11,5 +11,4 @@
         <item name="windowNoTitle">true</item>
         <item name="editTextBackground">@color/white</item>
     </style>
-
 </resources>

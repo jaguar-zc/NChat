@@ -1,5 +1,7 @@
 package org.flyants.book.view.dynamic;
 
+import android.view.View;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.flyants.book.R;
@@ -12,7 +14,7 @@ import org.flyants.component.imageloader.ImageLoader;
 import java.util.ArrayList;
 import java.util.Collection;
 
-class DynamicListAdapter  extends BaseRecyclerAdapter<DynamicResp> {
+class DynamicListAdapter extends BaseRecyclerAdapter<DynamicResp> {
 
     ImageLoader imageLoader = new IconImageLoaderImpl();
 
@@ -23,15 +25,20 @@ class DynamicListAdapter  extends BaseRecyclerAdapter<DynamicResp> {
 
     @Override
     public void convert(RecyclerHolder holder, DynamicResp item, int position, boolean isScrolling) {
-        imageLoader.loader(cxt,item.getEncodedPrincipal(), holder.getView(R.id.icon));
+        imageLoader.loader(cxt, item.getEncodedPrincipal(), holder.getView(R.id.icon));
         holder.setText(R.id.nickname, item.getNickName());
         holder.setText(R.id.showTyoe, item.getVisibility().name());
         holder.setText(R.id.text_content, item.getText());
-        holder.setText(R.id.comments_count, item.getCommentsCount()+"");
+        holder.setText(R.id.comments_count, item.getCommentsCount() + "");
         NineGridDynamicImageListLayout layout_nine_grid = holder.getView(R.id.layout_nine_grid);
         layout_nine_grid.setIsShowAll(false); //当传入的图片数超过9张时，是否全部显示
         layout_nine_grid.setSpacing(5); //动态设置图片之间的间隔
         layout_nine_grid.setUrlList(item.getImages());
+        if (item.getImages().size() <= 0) {
+            layout_nine_grid.setVisibility(View.GONE);
+        } else {
+            layout_nine_grid.setVisibility(View.VISIBLE);
+        }
     }
 
     public DynamicListAdapter(RecyclerView v, Collection<DynamicResp> datas, int itemLayoutId) {
