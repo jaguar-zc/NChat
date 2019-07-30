@@ -6,4 +6,6 @@ import java.util.List;
 
 interface UIFirendsListView {
     void setPullLoadMoreCompleted(int i, List<MessageUserSimpleInfo> resp);
+
+    void toConversationWindow(MessageUserSimpleInfo item);
 }

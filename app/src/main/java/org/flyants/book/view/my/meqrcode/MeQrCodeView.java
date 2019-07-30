@@ -9,6 +9,7 @@ import com.google.zxing.encoding.EncodingHandler;
 
 import org.flyants.book.R;
 import org.flyants.book.custom.Header;
+import org.flyants.book.network.image.glide.IconImageLoaderImpl;
 import org.flyants.book.network.image.glide.ImageLoaderImpl;
 import org.flyants.book.view.my.UserInfo;
 import org.flyants.common.mvp.impl.BaseActivity;
@@ -20,7 +21,7 @@ import butterknife.BindView;
 
 public class MeQrCodeView extends BaseActivity<MeQrCodePrecenter> implements UIMeQrCodeView {
 
-    ImageLoader imageLoader = new ImageLoaderImpl();
+    ImageLoader imageLoader = new IconImageLoaderImpl();
 
     @BindView(R.id.idHeader)
     Header idHeader;

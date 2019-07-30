@@ -92,7 +92,7 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
         }
 
         mTopRightMenu
-                .setHeight(480)     //默认高度480
+                .setHeight(0)     //默认高度480
                 .setWidth(0)      //默认宽度wrap_content
                 .showIcon(false)     //显示菜单图标，默认为true
                 .dimBackground(true)        //背景变暗，默认为true
@@ -107,7 +107,6 @@ public class ConversationView extends BaseFragment<ConversationPrecenter> implem
 
     @Override
     public void onMenuItemClick(int position) {
-        ToastUtils.show( "点击菜单:" + position);
         switch (position){
             case 0:
                 break;

@@ -148,7 +148,7 @@ public class ConversationWindowView extends BaseActivity<ConversationWindowPrece
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ConversationWindowView.this, ConversationInfoView.class);
-                intent.putExtra("conversationId",resp.getId());
+                intent.putExtra(PARAM_NAME,resp.getId());
                 startActivity(intent);
             }
         });

@@ -1,5 +1,6 @@
 package org.flyants.book.view.firends.list;
 
+import android.content.Intent;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,9 @@ import org.flyants.book.R;
 import org.flyants.book.custom.Header;
 import org.flyants.book.custom.ProxyRecyclerViewAdapter;
 import org.flyants.book.utils.ToastUtils;
+import org.flyants.book.view.conversation.ConversationResp;
 import org.flyants.book.view.conversation.user.MessageUserSimpleInfo;
+import org.flyants.book.view.conversation.window.ConversationWindowView;
 import org.flyants.common.mvp.impl.BaseActivity;
 
 import java.util.List;
@@ -59,7 +62,7 @@ public class FirendsListView extends BaseActivity<FirendsListPrecenter> implemen
 
         View searchView = LayoutInflater.from(getActivity()).inflate(R.layout.search_lable, null ,false);
 
-        firendsListAdapter = new FirendsListAdapter(recycler_view);
+        firendsListAdapter = new FirendsListAdapter(recycler_view,this);
 //        firendsListAdapter.setOnItemClickListener(this);
         ProxyRecyclerViewAdapter proxyRecyclerViewAdapter =  new ProxyRecyclerViewAdapter(firendsListAdapter);
         proxyRecyclerViewAdapter.addHeaderView(searchView);
@@ -77,9 +80,15 @@ public class FirendsListView extends BaseActivity<FirendsListPrecenter> implemen
         recycler_view.setAdapter(proxyRecyclerViewAdapter);
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));
         recycler_view.setItemAnimator( new DefaultItemAnimator());
+
         springView.setHeader(new DefaultHeader(this));
         springView.setFooter(new DefaultFooter(this));
         springView.setListener(getPresenter());
+    }
+
+    @Override
+    public void toConversationWindow(MessageUserSimpleInfo item) {
+        getPresenter().toConversationWindow(item.getId());
     }
 
     @Override
@@ -103,5 +112,11 @@ public class FirendsListView extends BaseActivity<FirendsListPrecenter> implemen
     @Override
     public void onViewDestroy() {
 
+    }
+
+    public void openConversationWindow(ConversationResp resp) {
+        Intent intent = new Intent(this,ConversationWindowView.class);
+        intent.putExtra( ConversationWindowView.PARAM_NAME,resp);
+        startActivity(intent);
     }
 }

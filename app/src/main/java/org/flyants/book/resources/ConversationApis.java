@@ -26,16 +26,16 @@ public interface ConversationApis {
     Call<RespList<ConversationResp>> getConversationList();
 
     @GET("/api/v1/app/conversation/getConversation")
-    Call<Map<String,Object>> getConversation(@Query("conversationId") String conversationId);
+    Call<ConversationResp> getConversation(@Query("conversationId") String conversationId);
 
     @POST("/api/v1/app/conversation/createGroupConversation")
     Call<ResponseBody> createGroupConversation(@Body CreateGroupConversationReq conversationReq);
 
     @POST("/api/v1/app/conversation/createSingleConversation")
-    Call<ResponseBody> createSingleConversation(@Body CreateSingleConversationReq conversationReq);
+    Call<Map<String,Object>> createSingleConversation(@Body CreateSingleConversationReq conversationReq);
 
     @POST("/api/v1/app/conversation/editConversation/{conversationId}")
-    Call<ResponseBody> createSingleConversation(@Path("conversationId") String conversationId, @Body EditConversationReq editConversationReq);
+    Call<ResponseBody> editConversation(@Path("conversationId") String conversationId, @Body EditConversationReq editConversationReq);
 
     @GET("/api/v1/app/message/getMessageUserSimpleInfo")
     Call<MessageUserSimpleInfo> getMessageUserSimpleInfo(@Query("messageUserId") String messageUserId);

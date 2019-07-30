@@ -18,9 +18,11 @@ import java.util.Collection;
 class FirendsListAdapter extends BaseRecyclerAdapter<MessageUserSimpleInfo> {
 
     private ImageLoader imageLoader = new IconImageLoaderImpl();
+    UIFirendsListView uiFirendsListView;
 
-    public FirendsListAdapter(RecyclerView recyclerView) {
+    public FirendsListAdapter(RecyclerView recyclerView,UIFirendsListView uiFirendsListView) {
         this(recyclerView, new ArrayList<>(), R.layout.firends_item);
+        this.uiFirendsListView = uiFirendsListView;
     }
 
     @Override
@@ -33,8 +35,7 @@ class FirendsListAdapter extends BaseRecyclerAdapter<MessageUserSimpleInfo> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                
+                uiFirendsListView.toConversationWindow(item);
             }
         });
     }
